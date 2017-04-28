@@ -1,0 +1,1 @@
+@"c:\users\pannawat\desktop\quick_car_cs459\quick_car\venv\scripts\python.exe" "c:\users\pannawat\desktop\quick_car_cs459\quick_car\venv\Scripts\markdown_py" %*
