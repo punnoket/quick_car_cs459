@@ -61,8 +61,9 @@
     border-radius: 30px; 
     outline:0; 
     height:30px; 
-    width: 300px; 
+    width: 200px; 
     margin : 30px 0 0 0 ; 
+    padding: 3px 0 0 0;
     background-color: #000;
     color: #fff;
 
@@ -101,6 +102,34 @@ h3{
     /* IE 10+ */
     color: black;
 }
+
+#phone{
+  width: 240px;
+   
+}
+.fake-input { 
+  position: relative; 
+  /*width:240px;*/
+  text-align: center; 
+padding: 0 0 0 0;
+margin: 0 0 0 0 ;
+}
+
+.fake-input input { 
+  -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px;
+     border:none: background:#fff; 
+    display:inline-block; 
+    width: 60px; 
+    height: 30px;
+    box-sizing: border-box ;
+  }
+.fake-input img { 
+  position: absolute;
+   top: 2.25px; 
+   left: 32.25%; 
+ }
   @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
@@ -134,7 +163,7 @@ h3{
   and (-webkit-min-device-pixel-ratio: 2) {
 
      #form{
-      margin-top: 40%;
+      margin-top: 30%;
     }
     #imginheader{
         width: 50%;
@@ -149,43 +178,61 @@ h3{
       font-size: 50%;
     }
     .textbox { 
-    /*border: 1px solid #848484; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
     outline:0; */
     height:50%; 
     width: 90%; 
     margin :5px 0 0 0;
-    /*padding-left:10px; */
-    /*padding-right:10px; */
   }
 
   .button {
-border: 1px solid #000; */
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
     outline:0; 
     height:50%; 
-    width: 90%; 
+    width: 70%; 
     margin-top: :5%; 
-    background-color: #000;
-    color: #fff;
-
+    padding: 7px 0 7px 0;
   }
-
+  .fake-input input { 
+    width: 30%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 7px; 
+   left: 5%; 
+ }
+   #phone{
+      width: 60%;
+  }
 }
-
-
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    #form{
+      margin-top: 30%;
+    }
+    .fake-input input { 
+    width: 15%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 2.25px; 
+   left: 21.25%; 
+ }
+   #phone{
+      width: 43%;
+  }
+}
+/*--------*/
 
 /* ----------- iPhone 6 ----------- */
-
 /* Portrait and Landscape */
 @media only screen 
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
+ 
     #form{
       margin-top: 40%;
     }
@@ -198,48 +245,37 @@ border: 1px solid #000; */
         height: 10%;
         margin: 0 0 0 15px;
       }
-h3{
+  h3{
       font-size: 70%;
     }
     .textbox { 
-    /*border: 1px solid #848484; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
     outline:0; */
     height:80%; 
     width: 90%; 
     margin: 5px 0 0 0 ;
-   /* padding-left:10px; 
-    padding-right:10px; */
   }
  
   .button {
-  border: 1px solid #000; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
     outline:0; 
     height: 80%; 
-    width: 90%; 
-    background-color: #000;
-    color: #fff;
+    width: 70%; 
+    padding: 7px 0 7px 0;
 
+  }
+.fake-input input { 
+    width: 30%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 6px; 
+   left: 5%; 
+ }
+   #phone{
+      width: 60%;
   }
 }
 
 
-#fakeinput { -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; border:none: background:#fff; display:block; width: 18%; box-sizing: border-box }
-#fakeimg{ position: absolute; top: 386px; left: 20px }
-
-
-.fake-input { position: relative; width:240px; }
-.fake-input input { -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; border:none: background:#fff; display:block; width: 30%; box-sizing: border-box }
-.fake-input img { position: absolute; top: 2px; left: 5px }
 </style>
 </head>
 <body>
@@ -273,19 +309,19 @@ h3{
                 <input class="textbox" type="text" placeholder="Confirm Password" style="margin-bottom: 3%;"> 
                 <br>
 
-                 
-               
-             <div class="fake-input">
-                 <input  class="fake-input" type="text" placeholder="        +66" />
-                 <img src="{%static 'Urgent/Client/1C-Sign up/5.png'%}" width=25 />
-                 <input  id="phone" class="textbox" type="text" placeholder="Phone number" style="margin-bottom: 3%;"> 
-                <br>
-            </div>
+                      <div style="text-align: center;">
+                        <div  class="fake-input">
+                          <input   type="text" placeholder="       +66" />
+                          <img src="{%static 'Urgent/Client/1C-Sign up/5.png'%}" width=25 />
+                          <input   class="textbox" id="phone" type="text" placeholder="Phone number" style="margin-bottom: 3%; "> 
+                           <br>
+                        </div>
+                      </div>
+
+                
+             
                   
-               <input  id="fakeinput" type="text" placeholder="        +66" />
-                 <img id="fakeimg" src="{%static 'Urgent/Client/1C-Sign up/5.png'%}" width=25 />
-                 <input  id="phone" class="textbox" type="text" placeholder="Phone number" style="margin-bottom: 3%;"> 
-                <br>
+              
 
 
 
