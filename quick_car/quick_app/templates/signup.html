@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <title>sihnup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+  <style>
+      header{
+        width: 100%;
+       background-color: #0f1933;
+       padding: 15px 0 15px 0;
+       border-style: solid;
+       border-color: #0f1933 #0f1933 #fff #0f1933;
+      }
+      #imginheader{
+        width: 30%;
+        height: 30%;
+      }
+      #imgbackinheader{
+        width: 5%;
+        height: 5%;
+        margin: 0 0 0 15px;
+      }
+     
+      body{
+        width: 100%;
+        height: 100%;
+      }   
+      html, body {
+  height: 100%;
+  width: 100%;
+  /*overflow: hidden;*/
+  padding: 0;
+  margin: 0;
+}
+#form{
+  margin-top: 10%;
+}
+.textbox { 
+    border: 1px solid #848484; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 300px; 
+    padding-left:10px; 
+    padding-right:10px; 
+  }
+  .button {
+  border: 1px solid #000; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 200px; 
+    margin : 30px 0 0 0 ; 
+    padding: 3px 0 0 0;
+    background-color: #000;
+    color: #fff;
+
+  }
+     
+ #full-screen-background-image {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-attachment:scroll;
+}
+h3{
+  color: #65C6BB;
+  font-size: 175%;
+  font-weight: 400;
+  line-height: 155%;
+
+}
+*::-webkit-input-placeholder {
+    color: black;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: black;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: black;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: black;
+}
+
+#phone{
+  width: 240px;
+   
+}
+.fake-input { 
+  position: relative; 
+  /*width:240px;*/
+  text-align: center; 
+padding: 0 0 0 0;
+margin: 0 0 0 0 ;
+}
+
+.fake-input input { 
+  -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px;
+     border:none: background:#fff; 
+    display:inline-block; 
+    width: 60px; 
+    height: 30px;
+    box-sizing: border-box ;
+  }
+.fake-input img { 
+  position: absolute;
+   top: 2.25px; 
+   left: 32.25%; 
+ }
+ /* Portrait and Landscape */
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+/* ----------- iPhone 5 and 5S ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+     #form{
+      margin-top: 30%;
+    }
+    #imginheader{
+        width: 50%;
+        height: 50%;
+      }
+      #imgbackinheader{
+        width: 10%;
+        height: 10%;
+        margin: 0 0 0 15px;
+      }
+    h3{
+      font-size: 50%;
+    }
+    .textbox { 
+    outline:0; */
+    height:50%; 
+    width: 90%; 
+    margin :5px 0 0 0;
+  }
+
+  .button {
+    outline:0; 
+    height:50%; 
+    width: 70%; 
+    margin-top: :5%; 
+    padding: 7px 0 7px 0;
+  }
+  .fake-input input { 
+    width: 30%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 7px; 
+   left: 5%; 
+ }
+   #phone{
+      width: 60%;
+  }
+}
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    #form{
+      margin-top: 30%;
+    }
+    .fake-input input { 
+    width: 15%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 2.25px; 
+   left: 21.25%; 
+ }
+   #phone{
+      width: 43%;
+  }
+}
+/*--------*/
+
+/* ----------- iPhone 6 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+ 
+    #form{
+      margin-top: 40%;
+    }
+     #imginheader{
+        width: 50%;
+        height: 50%;
+      }
+      #imgbackinheader{
+        width: 10%;
+        height: 10%;
+        margin: 0 0 0 15px;
+      }
+  h3{
+      font-size: 70%;
+    }
+    .textbox { 
+    outline:0; */
+    height:80%; 
+    width: 90%; 
+    margin: 5px 0 0 0 ;
+  }
+ 
+  .button {
+    outline:0; 
+    height: 80%; 
+    width: 70%; 
+    padding: 7px 0 7px 0;
+
+  }
+.fake-input input { 
+    width: 30%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 6px; 
+   left: 5%; 
+ }
+   #phone{
+      width: 60%;
+  }
+}
+
+
+</style>
+</head>
+<body>
+
+  <img alt="full screen background image" src="{%static 'Urgent/Client/1C-Sign up/1.png' %}" id="full-screen-background-image">
+
+    <div id="container" >
+        <header id="header">
+            <div class="row">
+                <div class="col-xs-4 col-md-4" style="text-align: left;">
+                       <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                    </div>
+                    <div class="col-xs-4 col-md-4" style="text-align: center;"> 
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">SIGN UP</span>
+                        <!-- <img  id="imginheader" src="{%static 'Urgent/Mainpage/Logo.png' %}"> -->
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        
+                    </div>
+            </div>
+        </header>
+        <div class="row">
+        <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <div id="form" style="text-align: center;">
+              <input class="textbox" type="text" placeholder="Username" style="margin-bottom: 3%;"> 
+                <br>
+                <input class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 3%;"> 
+                <br>
+                <input class="textbox" type="text" placeholder="Password" style="margin-bottom: 3%;"> 
+                <br>
+                <input class="textbox" type="text" placeholder="Confirm Password" style="margin-bottom: 3%;"> 
+                <br>
+
+                      <div style="text-align: center;">
+                        <div  class="fake-input">
+                          <input   type="text" placeholder="       +66" />
+                          <img src="{%static 'Urgent/Client/1C-Sign up/5.png'%}" width=25 />
+                          <input   class="textbox" id="phone" type="text" placeholder="Phone number" style="margin-bottom: 3%; "> 
+                           <br>
+                        </div>
+                      </div>
+
+                
+             
+                  
+              
+
+
+
+                <button href="#" class="button">Submit</button>
+                 <h3>By registering, I have read and agreed to the agreement and the Private Policy</h3>
+        </div>
+        </div>
+        <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        </div>
+        
+
+       
+      
+
+    </div>
+
+</body>
+</html>
