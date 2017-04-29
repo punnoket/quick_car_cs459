@@ -11,3 +11,9 @@ def login(request):
 
 def signup(request):
 	return render(request,'signup.html')
+
+def history(request):
+	return render(request,'history.html')
+
+def signupgarage(request):
+	return render(request,'signupgarage.html')
