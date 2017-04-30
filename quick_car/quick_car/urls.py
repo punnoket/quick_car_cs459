@@ -26,7 +26,8 @@ urlpatterns = [
     url(r'^login', views.login, name='login'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
-    url(r'^signgarage',views.signupgarage,name='signupgarage')
+    url(r'^signgarage',views.signupgarage,name='signupgarage'),
+    url(r'^payment',views.payment,name='payment'),
 ]
 
 

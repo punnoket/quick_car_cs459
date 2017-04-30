@@ -2,7 +2,7 @@
 <html>
 {% load static %}
 <head>
-  <title>sihnup</title>
+  <title>PAY MENT</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -54,6 +54,7 @@
     padding-left:10px; 
     padding-right:10px; 
   }
+
   .button {
   border: 1px solid #000; 
     -webkit-border-radius: 30px; 
@@ -104,7 +105,7 @@ h3{
 }
 
 #phone{
-  width: 240px;
+  width: 150px;
    
 }
 .fake-input { 
@@ -121,7 +122,7 @@ margin: 0 0 0 0 ;
     border-radius: 30px;
      border:none: background:#fff; 
     display:inline-block; 
-    width: 60px; 
+    width: 150px; 
     height: 30px;
     box-sizing: border-box ;
   }
@@ -245,7 +246,7 @@ margin: 0 0 0 0 ;
 
   }
 .fake-input input { 
-    width: 30%; 
+    width: 45%; 
     height: 30px;
   }
 .fake-input img { 
@@ -253,7 +254,7 @@ margin: 0 0 0 0 ;
    left: 5%; 
  }
    #phone{
-      width: 60%;
+      width: 45%;
   }
 }
 
@@ -262,7 +263,7 @@ margin: 0 0 0 0 ;
 </head>
 <body>
 
-  <img alt="full screen background image" src="{%static 'Urgent/Client/1C-Sign up/1.png' %}" id="full-screen-background-image">
+  <img alt="full screen background image" src="{%static 'Urgent/Client/11C-Payment/1.png' %}" id="full-screen-background-image">
 
     <div id="container" >
         <header id="header">
@@ -271,7 +272,7 @@ margin: 0 0 0 0 ;
                        <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
                     </div>
                     <div class="col-xs-4 col-md-4" style="text-align: center;"> 
-                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">SIGN UP</span>
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">PAY MENT</span>
                         <!-- <img  id="imginheader" src="{%static 'Urgent/Mainpage/Logo.png' %}"> -->
                     </div>
                     <div class="col-xs-4 col-md-4">
@@ -283,21 +284,64 @@ margin: 0 0 0 0 ;
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
         <div class="col-xs-8 col-md-8 col-sm-8">
           <div id="form" style="text-align: center;">
-              <input class="textbox" type="text" placeholder="Username" style="margin-bottom: 3%;"> 
+              <input class="textbox" type="text" placeholder="Card Name" style="margin-bottom: 3%;"> 
                 <br>
-                <input class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 3%;"> 
+                <input class="textbox" type="text" placeholder="Card number" style="margin-bottom: 3%;"> 
                 <br>
-                <input class="textbox" type="text" placeholder="Password" style="margin-bottom: 3%;"> 
-                <br>
-                <input class="textbox" type="text" placeholder="Confirm Password" style="margin-bottom: 3%;"> 
+                
+                
+                <select  class="textbox"  name="country">
+                     <option  value="select">Select Bank</option>
+                     <option value="Saving">ธนาคารออมสิน (Government Saving Bank)</option>
+                     <option value="KrungThai">ธนาคารกรุงไทย (KrungThai Bank)</option>
+                     <option value="TMB">ธนาคารทหารไทย (TMB Bank)</option>
+                     <option value="Commercial">ธนาคารไทยพาณิชย์ (Siam Commercial Bank)</option>
+                     <option value="Bangkok">ธนาคารกรุงเทพ (Bangkok Bank)</option>
+                     <option value="Ayudhaya">ธนาคารกรุงศรีอยุธยา (Bank of Ayudhaya)</option>
+                     <option value="KasikornBank">ธนาคารกสิกรไทย (KasikornBank)</option>
+                     <option value="Military">ธนาคารทหารไทย (Thai Military Bank)</option>
+                     <option value="Krungthai">ธนาคารกรุงไทย (Krungthai Bank)</option>
+                     <option value="Citibank">ธนาคารซิติแบงก์ (Citibank)</option>
+                     <option value="CIMB">ธนาคารซีไอเอ็มบี ไทย (CIMB Thai Bank)</option>
+                 <option value="Commercial">ธนาคารไทยพาณิชย์ (Siam Commercial Bank)</option>
+                     <option value="Thanachart">ธนาคารธนชาต (Thanachart Bank)</option>
+                     <option value="Siam">ธนาคารนครหลวงไทย (Siam City Bank)</option>
+                     <option value="United">ธนาคารยูโอบี (United Overseas Bank, Thailand)</option>
+
+                </select>
+                <br><br>
+
+                <input class="textbox" type="text" placeholder="CCV" style="margin-bottom: 3%;"> 
                 <br>
 
-                      <div style="text-align: center;">
+                      <div >
                         <div  class="fake-input">
-                          <input   type="text" placeholder="       +66" />
-                          <img src="{%static 'Urgent/Client/1C-Sign up/5.png'%}" width=25 />
-                          <input   class="textbox" id="phone" type="text" placeholder="Phone number" style="margin-bottom: 3%; "> 
-                           <br>
+
+                <select  class="textbox" id="phone" name="country">
+                     <option value="select">Select Month</option>
+                     <option value="select">1</option>
+                     <option value="select">2</option>
+                     <option value="select">3</option>
+                     <option value="select">4</option>
+                     <option value="select">5</option>
+                     <option value="select">6</option>
+                     <option value="select">7</option>
+                     <option value="select">8</option>
+                     <option value="select">9</option>
+                     <option value="select">10</option>
+                     <option value="select">11</option>
+                     <option value="select">12</option>
+
+                </select>
+                <select  class="textbox" id="phone" name="country">
+                     <option value="select">Year</option>
+                     <option value="select">Year</option>
+
+                </select>
+
+                         
+                          
+                          
                         </div>
                       </div>
 
@@ -309,10 +353,10 @@ margin: 0 0 0 0 ;
 
 
                 <button href="#" class="button">Submit</button>
-                 <h3>By registering, I have read and agreed to the agreement and the Private Policy</h3>
+                 <!-- <h3>By registering, I have read and agreed to the agreement and the Private Policy</h3> -->
         </div>
         </div>
-        <div class="col-xs-1col-md-1 col-sm-1"></div>
+        <div class="col-xs-2 col-md-2 col-sm-2"></div>
         </div>
         
 
