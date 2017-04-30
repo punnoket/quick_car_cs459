@@ -17,12 +17,17 @@ def signup(request):
 def history(request):
 	return render(request,'history.html')
 
-<<<<<<< HEAD
 def signupgarage(request):
 	return render(request,'signupgarage.html')
 
 def open_send_bill(request):
     return render(request,'send_notification.html')
+
+def payment(request):
+	return render(request,'payment.html')
+
+def test(request):
+	return render(request,'test.html')
 
 def send_notification(request):
     print(request.GET.get('detail'))
@@ -38,13 +43,3 @@ def send_notification(request):
 def get_notification(request):
     notification = Notification.objects.filter(to_user='pun')
     return render(request,'get_notification.html')
-=======
-def signgarage(request):
-	return render(request,'signgarage.html')
-
-def payment(request):
-	return render(request,'payment.html')
-
-def test(request):
-	return render(request,'test.html')
->>>>>>> 54d76559416fed0a194000b7b2e22895a7fe6c94
