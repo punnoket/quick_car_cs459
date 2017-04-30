@@ -26,7 +26,10 @@ urlpatterns = [
     url(r'^login', views.login, name='login'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
-    url(r'^signgarage',views.signupgarage,name='signupgarage')
+    url(r'^signgarage',views.signupgarage,name='signupgarage'),
+    url(r'^send_notification',views.send_notification,name='send_notification'),
+    url(r'^get_notification',views.get_notification,name='get_notification'),
+    url(r'^open_send_bill',views.open_send_bill,name='open_send_bill')
 ]
 
 
