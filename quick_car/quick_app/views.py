@@ -20,3 +20,6 @@ def signupgarage(request):
 
 def payment(request):
 	return render(request,'payment.html')
+
+def test(request):
+	return render(request,'test.html')
