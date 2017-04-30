@@ -256,30 +256,30 @@ margin: 0 0 0 0 ;
       width: 45%;
   }
 }
-/*.bgimg {
+.bgimg {
     background-image: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
     min-height: 100%;
     background-position: center;
     background-size: cover;
-}*/
+}
 
 </style>
 </head>
 <body>
 
-  <img alt="full screen background image" src="{%static 'Urgent/Client/11C-Payment/1.png' %}" id="full-screen-background-image">
+  <!-- <img alt="full screen background image" src="{%static 'Urgent/Client/11C-Payment/1.png' %}" id="full-screen-background-image"> -->
 
     <div id="container" >
         <header id="header">
             <div class="row">
-                <div class="col-xs-4 col-md-4" style="text-align: left;">
+                <div class="col-xs-3 col-md-3" style="text-align: left;">
                        <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
                     </div>
-                    <div class="col-xs-4 col-md-4" style="text-align: center;"> 
+                    <div class="col-xs-6 col-md-6" style="text-align: center;"> 
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">PAY MENT</span>
                         <!-- <img  id="imginheader" src="{%static 'Urgent/Mainpage/Logo.png' %}"> -->
                     </div>
-                    <div class="col-xs-4 col-md-4">
+                    <div class="col-xs-3 col-md-3">
                         
                     </div>
             </div>
@@ -287,6 +287,20 @@ margin: 0 0 0 0 ;
 
         <!-- <div class="bgimg w3-display-container w3-animate-opacity w3-text-white"> -->
             
+
+        
+        
+
+       
+      
+
+    </div>
+
+    <div class="bgimg ">
+  <!-- <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+  </div> -->
+  <!-- <div class="w3-display-middle"> -->
 <div class="row">
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
         <div class="col-xs-8 col-md-8 col-sm-8">
@@ -297,7 +311,7 @@ margin: 0 0 0 0 ;
                 <br>
                 
                 
-                <select  class="textbox"  name="country">
+                <select  class="textbox"  name="country" style="margin-bottom:  10px; ">
                      <option  value="select">Select Bank</option>
                      <option value="Saving">ธนาคารออมสิน (Government Saving Bank)</option>
                      <option value="KrungThai">ธนาคารกรุงไทย (KrungThai Bank)</option>
@@ -316,15 +330,15 @@ margin: 0 0 0 0 ;
                      <option value="United">ธนาคารยูโอบี (United Overseas Bank, Thailand)</option>
 
                 </select>
-                <br><br>
+                <br>
 
-                <input class="textbox" type="text" placeholder="CCV" style="margin-bottom: 3%;"> 
+                <input class="textbox" type="text" placeholder="CCV" style="margin-bottom: 1%;"> 
                 <br>
 
                       <div >
                         <div  class="fake-input">
 
-                <select  class="textbox" id="phone" name="country">
+                <select  class="textbox" id="phone" name="country" style="margin-top: 1%;">
                      <option value="select">Select Month</option>
                      <option value="select">1</option>
                      <option value="select">2</option>
@@ -345,19 +359,9 @@ margin: 0 0 0 0 ;
                      <option value="select">Year</option>
 
                 </select>
-
-                         
-                          
                           
                         </div>
                       </div>
-
-                
-             
-                  
-              
-
-
 
                 <button href="#" class="button">Submit</button>
                  <!-- <h3>By registering, I have read and agreed to the agreement and the Private Policy</h3> -->
@@ -365,15 +369,10 @@ margin: 0 0 0 0 ;
         </div>
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
         </div>
-        <!-- </div> -->
+  <!-- </div> -->
+  
+</div>
 
-        
-        
-
-       
-      
-
-    </div>
 
 </body>
 </html>

@@ -15,8 +15,8 @@ def signup(request):
 def history(request):
 	return render(request,'history.html')
 
-def signupgarage(request):
-	return render(request,'signupgarage.html')
+def signgarage(request):
+	return render(request,'signgarage.html')
 
 def payment(request):
 	return render(request,'payment.html')
