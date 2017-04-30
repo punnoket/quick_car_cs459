@@ -26,10 +26,16 @@ urlpatterns = [
     url(r'^login', views.login, name='login'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
+<<<<<<< HEAD
     url(r'^signgarage',views.signupgarage,name='signupgarage'),
     url(r'^send_notification',views.send_notification,name='send_notification'),
     url(r'^get_notification',views.get_notification,name='get_notification'),
     url(r'^open_send_bill',views.open_send_bill,name='open_send_bill')
+=======
+    url(r'^signgarage',views.signgarage,name='signgarage'),
+    url(r'^payment',views.payment,name='payment'),
+    url(r'^test',views.test,name='test'),
+>>>>>>> 54d76559416fed0a194000b7b2e22895a7fe6c94
 ]
 
 
