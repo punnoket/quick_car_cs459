@@ -32,6 +32,8 @@ urlpatterns = [
     url(r'^signupgarage',views.signupgarage,name='signupgarage'),
     url(r'^payment',views.payment,name='payment'),
     url(r'^test',views.test,name='test'),
+    url(r'^create_job',views.create_job,name='create_job'),
+    url(r'^send_job',views.send_job,name='send_job'),
 
 ]
 

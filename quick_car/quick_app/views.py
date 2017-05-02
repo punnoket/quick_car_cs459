@@ -1,5 +1,6 @@
 from django.shortcuts import render ,redirect
 from models import Notification, Mechanic, User, Job
+import json
 
 # Create your views here.
 
@@ -43,3 +44,14 @@ def send_notification(request):
 def get_notification(request):
     notification = Notification.objects.filter(to_user='pun')
     return render(request,'get_notification.html')
+
+def send_job(request):
+    return render(request,'create_job.html')
+
+def create_job(request):
+    #job = Job.objects.create()
+    #job.save()
+    json_data = json.loads(request.body)
+    data = json_data['username']
+    print(json_data)
+    return redirect('login.html')

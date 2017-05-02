@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>send bill</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+      Detail<br>
+      <input type="text" id="detail">
+       <button ng-click="myFunc()">OK</button>
+ </div>
+
+</div>
+
+
+<script>
+
+  var date = new Date().toLocaleString();
+  console.log(date);
+
+  var app = angular.module('myApp', []);
+
+  app.config(function($httpProvider) {
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+  });
+  app.config(function($interpolateProvider) {
+      $interpolateProvider.startSymbol('[[');
+      $interpolateProvider.endSymbol(']]');
+  });
+  app.controller('myCtrl', function($scope, $http) {
+    $scope.myFunc = function() {
+      var   x=angular.element(document.getElementById("detail"));
+
+      var parameter = JSON.stringify({username:x.val(), date:date});
+
+          $http.post("{% url 'create_job' %}", parameter)
+          .then(function(response) {
+
+          }, function(response) {
+              $scope.content = "Something went wrong";
+          });
+      };
+
+  });
+</script>
+
+</body>
+
+</html>
