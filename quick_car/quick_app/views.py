@@ -72,6 +72,7 @@ def create_job(request):
     print(json_data)
     return redirect('login.html')
 
+@csrf_exempt 
 def auth_login(request):
 
     json_data = json.loads(request.body)
