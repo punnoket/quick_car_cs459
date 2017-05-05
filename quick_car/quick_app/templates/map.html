@@ -8,8 +8,13 @@
             width: 100%;
            }
         </style>
-      <div id="map"></div>
-    <script>
+      <body ng-init="myFunc">
+      <div id = "map"><div ng-app="myApp" ng-controller="myCtrl" ></div></div>
+      </body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script>
 
       var map, infoWindow;
       var locations = [
@@ -19,6 +24,37 @@
         ['Manly ', 14.0569173, 100.5979667, 2],
         ['Maroubra ', 14.0907186, 100.5935893, 1]
         ];
+
+        var locations_arr = new Array()
+        var data
+        var app = angular.module('myApp', []);
+
+        app.config(function($httpProvider) {
+            $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+            $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+        });
+        app.config(function($interpolateProvider) {
+            $interpolateProvider.startSymbol('[[');
+            $interpolateProvider.endSymbol(']]');
+        });
+        app.controller('myCtrl', function($scope, $http) {
+          $scope.myFunc = function() {
+
+                $http.get("{% url 'get_garage' %}")
+                .then(function(response) {
+                  console.log(response.data);
+                  data = response.data
+                  console.log(data);
+                }, function(response) {
+
+                });
+            };
+
+        });
+
+
+      console.log(data);
+
 
       var successHandler = function(position) {
       alert(position.coords.latitude);
@@ -58,7 +94,7 @@
                   lng: position.coords.longitude
                 };
 
-                console.log(pos);
+               
 
                 infoWindow.setPosition(pos);
                 infoWindow.setContent("You here")

@@ -20,6 +20,7 @@ class NotificationSerializer(serializers.ModelSerializer):
 
 class Mechanic(models.Model):
     owner_name = models.CharField(max_length=50)
+    username = models.CharField(max_length=50)
     citizen_id = models.CharField(max_length=50)
     email=models.EmailField(max_length=50)
     password = models.CharField(max_length=50)
@@ -27,6 +28,8 @@ class Mechanic(models.Model):
     commercial_registration_no = models.CharField(max_length=50)
     account = models.CharField(max_length=50)
     locations = models.CharField(max_length=100)
+    def __unicode__(self):
+		return "%s"%(self.owner_name)
 
 class User(models.Model):
     username = models.CharField(max_length=50)
