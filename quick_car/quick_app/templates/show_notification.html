@@ -38,6 +38,7 @@
 
             $http.get("{% url 'get_notification' %}")
             .then(function(response) {
+              console.log(response.data.fields);
               document.getElementById("noti").innerHTML = response.data.fields.detail;
             }, function(response) {
 
