@@ -303,7 +303,10 @@ label{
                 <br>
                 <input type="checkbox" id="remember_me" name="_remember_me" checked />
                 <label for="remember_me">Remember me</label>
-                 <br><br><br>
+                <label style="color:red;" id="invalidpw"></label>
+                 <br>
+
+                 <br><br>
                  <p style="color: #65C6BB" id="signup">Sign up? <a style="color: #65C6BB" id="signup" href="">Client</a> | <a style="color: #65C6BB" id="signup" href="">Garage</a></p>
                  <button ng-click="login()" class="button">LOGIN</button>
               </div>
@@ -370,7 +373,7 @@ label{
           $interpolateProvider.startSymbol('[[');
           $interpolateProvider.endSymbol(']]');
       });
-      app.controller('myCtrl', function($scope, $http) {
+      app.controller('myCtrl', function($scope, $http, $location, $window) {
         $scope.login = function() {
               var email=angular.element(document.getElementById("email"));
               var password=angular.element(document.getElementById("password"));
@@ -379,7 +382,18 @@ label{
 
               $http.post("{% url 'auth_login' %}",parameter)
               .then(function(response) {
-                console.log(response);
+                console.log(response.data.type);
+                if(response.data.type == 'user') {
+                  $window.location.href = "/show_notification"
+                } else if(response.data.type == 'mechanic') {
+                  $window.location.href = "/send_notification"
+                } else {
+
+                document.getElementById("invalidpw").innerHTML = "* Invalid User/Password"
+
+                }
+
+
               }, function(response) {
 
               });
