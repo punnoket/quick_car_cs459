@@ -1,5 +1,7 @@
 
 <!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
 <html>
 
 <head>
@@ -9,12 +11,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 
-<body>
-  <div ng-app="myApp" ng-controller="myCtrl">
+<body >
+  <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
         bill<br>
 
-         <button ng-click="myFunc()">get notification</button>
+         <!-- <button ng-click="myFunc()">get notification</button> -->
          <h3 id="noti"></h3>
    </div>
 
@@ -39,7 +41,7 @@
             $http.get("{% url 'get_notification' %}")
             .then(function(response) {
               console.log(response.data);
-              //document.getElementById("noti").innerHTML = response.data.fields.detail;
+              document.getElementById("noti").innerHTML = response.data[0].fields.detail;
             }, function(response) {
 
             });
@@ -50,3 +52,4 @@
 </body>
 
 </html>
+{% endblock %}
