@@ -15,6 +15,7 @@
         bill<br>
 
          <button ng-click="myFunc()">get notification</button>
+         <h3 id="noti"></h3>
    </div>
 
   </div>
@@ -37,7 +38,7 @@
 
             $http.get("{% url 'get_notification' %}")
             .then(function(response) {
-              console.log(response.data.fields);
+              document.getElementById("noti").innerHTML = response.data.fields.detail;
             }, function(response) {
 
             });

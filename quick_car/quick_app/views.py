@@ -53,7 +53,7 @@ def send_notification(request):
     return redirect('login.html')
 
 def get_notification(request):
-    notification = Notification.objects.filter(to_user='pun')
+    notification = Notification.objects.filter(to_user=request.session['username'])
     notification_json = serializers.serialize('json', notification)
     print(notification_json)
     return HttpResponse(notification_json, content_type='application/json')
@@ -74,20 +74,32 @@ def auth_login(request):
     json_data = json.loads(request.body)
     username = json_data['username']
     password = json_data['password']
-    check = false
+    check = 0
 
     user_all = User.objects.all()
     for i in user_all:
         if(username == i.username):
             if(password == i.password):
                 request.session['username'] = i.username
-                check = true
+                check = 1
 
-    if(check):
+    mechanic_all = Mechanic.objects.all()
+    for i in mechanic_all:
+        if(username == i.owner_name):
+            if(password == i.password):
+                request.session['username_machanic'] = i.username
+                check = 2
+
+    if(check == 1):
         user = {'user': request.session['username'], 'type': 'user'}
+        user_json = json.dumps(user)
+        print(user_json)
+    elif(check == 2):
+        user = {'user': request.session['username_machanic'], 'type': 'machanic'}
         user_json = json.dumps(user)
         print(user_json)
     else:
         user = {'user': "null", 'type': 'null'}
+        user_json = json.dumps(user)
 
     return HttpResponse(user_json, content_type='application/json')
