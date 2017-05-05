@@ -43,14 +43,14 @@ def test(request):
 def show_notification(request):
 	return render(request,'show_notification.html')
 
-@csrf_exempt 
+@csrf_exempt
 def send_notification(request):
     print(request.GET.get('detail'))
     print(request.GET.get('user'))
     notification = Notification.objects.create()
     notification.topics = request.GET.get('detail')
     notification.detail = request.GET.get('detail')
-    notification.to_user = request.GET.get('user')
+    notification.to_user = request.session['username']
     notification.is_read = 'false'
     notification.save()
     return redirect('login.html')
@@ -72,6 +72,7 @@ def create_job(request):
     print(json_data)
     return redirect('login.html')
 
+@csrf_exempt
 def auth_login(request):
 
     json_data = json.loads(request.body)
@@ -90,7 +91,7 @@ def auth_login(request):
     for i in mechanic_all:
         if(username == i.owner_name):
             if(password == i.password):
-                request.session['username_machanic'] = i.username
+                request.session['username_machanic'] = i.owner_name
                 check = 2
 
     if(check == 1):
@@ -98,7 +99,7 @@ def auth_login(request):
         user_json = json.dumps(user)
         print(user_json)
     elif(check == 2):
-        user = {'user': request.session['username_machanic'], 'type': 'machanic'}
+        user = {'user': request.session['username_machanic'], 'type': 'mechanic'}
         user_json = json.dumps(user)
         print(user_json)
     else:

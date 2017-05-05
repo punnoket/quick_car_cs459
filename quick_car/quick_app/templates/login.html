@@ -386,7 +386,8 @@ label{
                 if(response.data.type == 'user') {
                   $window.location.href = "/show_notification"
                 } else if(response.data.type == 'mechanic') {
-                  $window.location.href = "/send_notification"
+                  console.log(111111111111111111);
+                  $window.location.href = "/open_send_bill"
                 } else {
 
                 document.getElementById("invalidpw").innerHTML = "* Invalid User/Password"
