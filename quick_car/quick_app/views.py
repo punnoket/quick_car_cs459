@@ -18,6 +18,15 @@ class NotificationViewSet(viewsets.ModelViewSet):
 def map(request):
     return render(request, 'map.html')
 
+def wait(request):
+    return render(request, 'wait.html')
+
+def match_complete(request):
+    return render(request, 'match_complete.html')
+
+def match_fail(request):
+    return render(request, 'match_fail.html')
+
 def login(request):
 	return render(request,'login.html')
 
