@@ -28,12 +28,14 @@ urlpatterns = [
     url(r'^history',views.history,name='history'),
     url(r'^send_notification',views.send_notification,name='send_notification'),
     url(r'^get_notification',views.get_notification,name='get_notification'),
+    url(r'^show_notification',views.show_notification,name='show_notification'),
     url(r'^open_send_bill',views.open_send_bill,name='open_send_bill'),
     url(r'^signupgarage',views.signupgarage,name='signupgarage'),
     url(r'^payment',views.payment,name='payment'),
     url(r'^test',views.test,name='test'),
     url(r'^create_job',views.create_job,name='create_job'),
     url(r'^send_job',views.send_job,name='send_job'),
+    url(r'^auth_login',views.auth_login,name='auth_login'),
 
 ]
 

@@ -1,10 +1,18 @@
 from django.shortcuts import render ,redirect
-from models import Notification, Mechanic, User, Job
+from models import Notification, Mechanic, User, Job, NotificationSerializer
 import json
+from django.core import serializers
+from django.http import JsonResponse
+from rest_framework import viewsets
+from django.http import HttpResponse
 
 # Create your views here.
 
 username = ''
+
+class NotificationViewSet(viewsets.ModelViewSet):
+    queryset = Notification.objects.all()
+    serializer_class = NotificationSerializer
 
 def map(request):
     return render(request, 'map.html')
@@ -30,6 +38,9 @@ def payment(request):
 def test(request):
 	return render(request,'test.html')
 
+def show_notification(request):
+	return render(request,'show_notification.html')
+
 def send_notification(request):
     print(request.GET.get('detail'))
     print(request.GET.get('user'))
@@ -43,7 +54,9 @@ def send_notification(request):
 
 def get_notification(request):
     notification = Notification.objects.filter(to_user='pun')
-    return render(request,'get_notification.html')
+    notification_json = serializers.serialize('json', notification)
+    print(notification_json)
+    return HttpResponse(notification_json, content_type='application/json')
 
 def send_job(request):
     return render(request,'create_job.html')
@@ -55,3 +68,26 @@ def create_job(request):
     data = json_data['username']
     print(json_data)
     return redirect('login.html')
+
+def auth_login(request):
+
+    json_data = json.loads(request.body)
+    username = json_data['username']
+    password = json_data['password']
+    check = false
+
+    user_all = User.objects.all()
+    for i in user_all:
+        if(username == i.username):
+            if(password == i.password):
+                request.session['username'] = i.username
+                check = true
+
+    if(check):
+        user = {'user': request.session['username'], 'type': 'user'}
+        user_json = json.dumps(user)
+        print(user_json)
+    else:
+        user = {'user': "null", 'type': 'null'}
+
+    return HttpResponse(user_json, content_type='application/json')

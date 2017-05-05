@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from rest_framework import serializers
 
 # Create your models here.
 
@@ -11,6 +12,11 @@ class Notification(models.Model):
     is_read = models.CharField(max_length=100)
     def __unicode__(self):
 		return "topics: %s to: %s"%(self.topics, self.to_user)
+
+class NotificationSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Notification
+		fields = ('topics','detail','to_user','is_read')
 
 class Mechanic(models.Model):
     owner_name = models.CharField(max_length=50)
