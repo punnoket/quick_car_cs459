@@ -5,6 +5,7 @@ from django.core import serializers
 from django.http import JsonResponse
 from rest_framework import viewsets
 from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -38,9 +39,11 @@ def payment(request):
 def test(request):
 	return render(request,'test.html')
 
+@csrf_exempt
 def show_notification(request):
 	return render(request,'show_notification.html')
 
+@csrf_exempt 
 def send_notification(request):
     print(request.GET.get('detail'))
     print(request.GET.get('user'))
