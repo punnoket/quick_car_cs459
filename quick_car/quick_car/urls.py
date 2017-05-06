@@ -23,6 +23,7 @@ from quick_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^map', views.map, name='map'),
+    url(r'^mechanic_home', views.mechanic_home, name='mechanic_home'),
     url(r'^login', views.login, name='login'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
@@ -36,10 +37,11 @@ urlpatterns = [
     url(r'^create_job',views.create_job,name='create_job'),
     url(r'^send_job',views.send_job,name='send_job'),
     url(r'^auth_login',views.auth_login,name='auth_login'),
-    url(r'^get_garage',views.get_garage,name='get_garage'), 
+    url(r'^get_garage',views.get_garage,name='get_garage'),
     url(r'^wait',views.wait,name='wait'),
     url(r'^match_complete',views.match_complete,name='match_complete'),
     url(r'^match_fail',views.match_fail,name='match_fail'),
+    url(r'^get_location_garage',views.get_location_garage,name='get_location_garage'),
 
 
 ]

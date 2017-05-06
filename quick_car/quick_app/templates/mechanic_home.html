@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+
+        <style>
+           #map {
+            height: 600px;
+            width: 100%;
+           }
+        </style>
+
+      <div id = "map" ></div>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script>
+
+        var map, infoWindow
+        var pos_mechanic, mechanic_name
+
+        var successHandler = function(position) {
+        alert(position.coords.latitude);
+        alert(position.coords.longitude);
+        };
+
+        var errorHandler = function (errorObj) {
+        alert(errorObj.code + ": " + errorObj.message);
+
+        alert("something wrong take this lat " + 26.0546106 );
+        alert("something wrong take this lng " +-98.3939791);
+
+        };
+
+
+          function initMap() {
+            $.ajax({
+                    url: '/get_location_garage',
+                    async:false,
+                    complete: function(data, err) {
+
+                    data = data.responseJSON;
+                    console.log(data);
+                    var cut = data.location.split(",");
+                    mechanic_name = data.username_mechanic
+
+                    pos_mechanic = {
+                      lat: parseFloat(cut[0]),
+                      lng: parseFloat(cut[1])
+                    };
+
+                  }
+              })
+
+          //init map
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 14
+          });
+          infoWindow = new google.maps.InfoWindow({
+            content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
+          });
+
+        infoWindow.setPosition(pos_mechanic);
+        infoWindow.setContent(mechanic_name)
+        infoWindow.open(map);
+        map.setCenter(pos_mechanic);
+            //marker
+            var marker, i;
+            infoCradle = new google.maps.InfoWindow();
+
+        }
+
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          posFix = {lat: 14.065574699999999, lng: 100.6057261};
+          //infoWindow.setPosition(posFix);
+
+          infoWindow.setContent(browserHasGeolocation ?
+                                'Error: The Geolocation service failed.' :
+                                'Error: Your browser doesn\'t support geolocation.');
+          infoWindow.setContent("You here")
+          infoWindow.open(map);
+        }
+
+
+
+        </script>
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
+        </script>
+
+{% endblock %}

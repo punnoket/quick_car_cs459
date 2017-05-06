@@ -18,6 +18,9 @@ class NotificationViewSet(viewsets.ModelViewSet):
 def map(request):
     return render(request, 'map.html')
 
+def mechanic_home(request):
+    return render(request, 'mechanic_home.html')
+
 def wait(request):
     return render(request, 'wait.html')
 
@@ -46,7 +49,8 @@ def payment(request):
 	return render(request,'payment.html')
 
 def test(request):
-	return render(request,'test.html')
+    print(Mechanic.objects.all())
+    return render(request,'test.html')
 
 @csrf_exempt
 def show_notification(request):
@@ -100,9 +104,10 @@ def auth_login(request):
 
     mechanic_all = Mechanic.objects.all()
     for i in mechanic_all:
-        if(username == i.owner_name):
+        if(username == i.username):
             if(password == i.password):
-                request.session['username_machanic'] = i.owner_name
+                request.session['username_mechanic'] = i.owner_name
+                request.session['location_mechanic'] = i.locations
                 check = 2
 
     if(check == 1):
@@ -110,7 +115,7 @@ def auth_login(request):
         user_json = json.dumps(user)
         print(user_json)
     elif(check == 2):
-        user = {'user': request.session['username_machanic'], 'type': 'mechanic'}
+        user = {'user': request.session['username_mechanic'], 'type': 'mechanic'}
         user_json = json.dumps(user)
         print(user_json)
     else:
@@ -124,3 +129,9 @@ def get_garage(request):
     garages_json = serializers.serialize('json', garages)
     print(garages_json)
     return HttpResponse(garages_json, content_type='application/json')
+
+def get_location_garage(request):
+    location_garage = {'username_mechanic': request.session['username_mechanic'], 'location': request.session['location_mechanic']}
+    location_garage_json = json.dumps(location_garage)
+    print(location_garage_json)
+    return HttpResponse(location_garage_json, content_type='application/json')
