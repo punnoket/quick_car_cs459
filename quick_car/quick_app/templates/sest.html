@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
-{% load static %}
 <head>
-  <title></title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <style type="text/css">
-    .upload-button {
+    <title></title>
+    <style type="text/css">
+        .upload-button {
     padding: 4px;
     border: 1px solid black;
     border-radius: 5px;
@@ -22,9 +20,9 @@
 .file-upload {
     display: none;
 }
-  </style>
-  <script type="text/javascript">
-    $(document).ready(function() {
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
 
     
     var readURL = function(input) {
@@ -48,11 +46,10 @@
        $(".file-upload").click();
     });
 });
-  </script>
+    </script>
 </head>
 <body>
-<!-- <img src="{%static 'Urgent/MainPage/11.png' %}">; -->
-<img class="profile-pic" src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg" />
+<img class="profile-pic" src="{%static 'Urgent/Garage/1G-Sign up/5.png' %}" />
 <div class="upload-button">Upload Image</div>
 <input class="file-upload" type="file" accept="image/*"/>
 

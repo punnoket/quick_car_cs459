@@ -47,6 +47,8 @@ def payment(request):
 
 def test(request):
 	return render(request,'test.html')
+def sest(request):
+    return render(request,'ttest.html')
 
 @csrf_exempt
 def show_notification(request):
