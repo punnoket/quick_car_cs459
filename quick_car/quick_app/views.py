@@ -49,8 +49,10 @@ def payment(request):
 	return render(request,'payment.html')
 
 def test(request):
-    print(Mechanic.objects.all())
-    return render(request,'test.html')
+	return render(request,'test.html')
+
+def sest(request):
+    return render(request,'ttest.html')
 
 @csrf_exempt
 def show_notification(request):
