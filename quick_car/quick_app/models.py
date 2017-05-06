@@ -10,6 +10,7 @@ class Notification(models.Model):
     detail = models.CharField(max_length=50)
     to_user = models.CharField(max_length=50)
     is_read = models.CharField(max_length=100)
+    time = models.CharField(max_length=100)
     def __unicode__(self):
 		return "topics: %s to: %s"%(self.topics, self.to_user)
 
