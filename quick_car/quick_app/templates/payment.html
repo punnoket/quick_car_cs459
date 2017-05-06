@@ -44,7 +44,18 @@
 #form{
   margin-top: 10%;
 }
-.textbox ,.selectbox{ 
+.textbox { 
+    border: 1px solid #848484; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 300px; 
+    padding-left:10px; 
+    padding-right:10px; 
+  }
+  .selectbox{ 
     border: 1px solid #848484; 
     -webkit-border-radius: 30px; 
     -moz-border-radius: 30px; 
@@ -68,20 +79,11 @@
     padding: 3px 0 0 0;
     background-color: #000;
     color: #fff;
+    display:inline-block; 
 
   }
      
- #full-screen-background-image {
-  z-index: -999;
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-attachment:scroll;
-}
+
 h3{
   color: #65C6BB;
   font-size: 175%;
@@ -111,7 +113,6 @@ h3{
 }
 .fake-input { 
   position: relative; 
-  /*width:240px;*/
   text-align: center; 
 padding: 0 0 0 0;
 margin: 0 0 0 0 ;

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style type="text/css">
+	#myRange{
+		/*padding-top: 100px;*/
+	}
+button{
+	float: right;;
+}
+</style>
+
+<div ng-app="blank_app" ng-controller="blank_ctrl">
+	<div class="col-sm-3">
+		Min Price:
+		<input type="range" id="myRange" min="0" max="{{max_price}}" step="100000" ng-change="my_click()" ng-model="min_price">
+		max Price:
+		<input type="range" id="myRange" min="25" max="75">
+		Min Price:
+		<input type="range" id="myRange" min="25" max="75">
+		max Price:
+		<input type="range" id="myRange" min="25" max="75">
+
+	</div>
+	<div class="col-sm-8">
+		<p id="demo"></p>
+		<div ng-repeat="i in car_list" class="jumbotron"  >
+			<p> Rent your carrr!!!</p>
+      <h1>[[i.model_name]]<h1>
+			<button id="rent" type="button" class="btn btn-success" onclick="changeColor()">Rent</button>
+		</div>
+	</div>
+
+</div>
+
+
+{% endblock content %}
+{% block script %}
+
+<script>
+
+
+function myFunction() {
+    var x = document.getElementById("myRange").max;
+    document.getElementById("demo").innerHTML = x;
+
+}
+function changeColor() {
+    document.getElementById("rent").className = "btn btn-danger";
+
+
+}
+
+var app = angular.module('blank_app', [])//
+app.config(function($httpProvider) {
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+});
+app.config(function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
+
+app.controller('blank_ctrl', function($scope, $http) {
+    angular.element(document).ready(function () {
+	    $scope.my_click=function(){
+	    	console.log("Click!!"+ $scope.min_price)
+	        $http.get("{% url 'myapp:car-list' %}")
+	        .then(function(response) {
+	            $scope.car_list=response.data
+	            console.log( JSON.stringify($scope.car_list))
+	        });
+	    }
+	});
+});
+</script>
+{% endblock script %}
