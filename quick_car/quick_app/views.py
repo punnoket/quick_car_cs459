@@ -73,6 +73,7 @@ def get_notification(request):
 def send_job(request):
     return render(request,'create_job.html')
 
+
 def create_job(request):
     #job = Job.objects.create()
     #job.save()
