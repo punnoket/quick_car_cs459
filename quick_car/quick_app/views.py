@@ -17,6 +17,7 @@ class NotificationViewSet(viewsets.ModelViewSet):
 
 def map(request):
     return render(request, 'map.html')
+
 def bill(request):
     return render(request, 'bill.html')
 
@@ -76,7 +77,7 @@ def send_notification(request):
 def get_notification(request):
     notification = Notification.objects.filter(to_user=request.session['username'])
     notification_json = serializers.serialize('json', notification)
-    print(notification_json)
+    #print(notification_json)
     return HttpResponse(notification_json, content_type='application/json')
 
 def send_job(request):
@@ -88,7 +89,7 @@ def create_job(request):
     #job.save()
     json_data = json.loads(request.body)
     data = json_data['username']
-    print(json_data)
+    #print(json_data)
     return redirect('login.html')
 
 
@@ -132,11 +133,24 @@ def auth_login(request):
 def get_garage(request):
     garages = Mechanic.objects.all()
     garages_json = serializers.serialize('json', garages)
-    print(garages_json)
+    #print(garages_json)
     return HttpResponse(garages_json, content_type='application/json')
 
 def get_location_garage(request):
     location_garage = {'username_mechanic': request.session['username_mechanic'], 'location': request.session['location_mechanic']}
     location_garage_json = json.dumps(location_garage)
-    print(location_garage_json)
+    #print(location_garage_json)
     return HttpResponse(location_garage_json, content_type='application/json')
+
+def get_noti_from_click(request):
+    json_data = json.loads(request.body)
+    print(json_data["notification"])
+    request.session['single_noti'] = json_data["notification"]
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+def res_noti_to_bill(request):
+    print(type(request.session['single_noti']))
+    noti_json = json.dumps(request.session['single_noti'])
+    return HttpResponse(noti_json, content_type='application/json')

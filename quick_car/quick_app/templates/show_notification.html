@@ -35,8 +35,8 @@
       /* ----------- iPhone 5 and 5S ----------- */
 
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
       #imgbill{
@@ -52,10 +52,10 @@
 /* ----------- iPhone 6 ----------- */
 
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
  #imgbill{
         width: 10%;
         height: 10%;
@@ -66,7 +66,7 @@
 }
     </style>
     <script type="text/javascript">
-      
+
       function v(i){
           console.log(i);
       }
@@ -78,14 +78,14 @@
 <header>
    <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
-      <div id="divbill" ng-repeat="i in billist"  onclick="v([[i]])">
+      <div id="divbill" ng-repeat="i in billist"  ng-click="listener($index)">
         <h1> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.time]] [[i.fields.detail]] <h1>
       </div>
 
    </div>
 </header>
- 
-  
+
+
 
 
   <script>
@@ -100,7 +100,7 @@
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
     });
-    app.controller('myCtrl', function($scope, $http) {
+    app.controller('myCtrl', function($scope, $http ,$location, $window) {
       $scope.myFunc = function() {
 
             $http.get("{% url 'get_notification' %}")
@@ -108,11 +108,24 @@
 
               console.log(response.data);
               $scope.billist = response.data;
+              $scope.listener = function(i) {
+                var noti = response.data[i];
+                console.log(noti);
+                var parameter = JSON.stringify({notification:noti});
+                $http.post("{% url 'get_noti_from_click' %}", parameter)
+                .then(function(response) {
+                    $window.location.href = "/bill"
+                    console.log(response.status);
+                }, function(response) {
 
-              document.getElementById("noti").innerHTML = response.data[0].fields.detail;
+                });
+
+              }
+
             }, function(response) {
 
             });
+
         };
 
     });
