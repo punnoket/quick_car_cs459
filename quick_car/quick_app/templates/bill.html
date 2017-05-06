@@ -1,6 +1,3 @@
-
-<<<<<<< HEAD
-
 <!DOCTYPE html>
 <html>
 {% load static %}
@@ -9,6 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -270,6 +268,7 @@ body {
         <div class="col-xs-3 col-md-3 col-sm-3"></div>
         <div class="col-xs-6 col-md-6 col-sm-6">
           <div id="form" style="text-align: center;">
+          <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
               <button ng-click="login()" class="button">Cash</button>
               <a href="/payment">  <button ng-click="login()"  class="button">Credit Card</button></a>
             
@@ -279,29 +278,6 @@ body {
         </div>
 
 
-  
-=======
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>send bill</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-</head>
-
-
-<body>
-
-  <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
->>>>>>> 78966a94c09908d1ae71d1e50a9a086e47d8fa39
-
-
-
-</body>
-<<<<<<< HEAD
-=======
 <script>
 
   var app = angular.module('myApp', []);
@@ -328,5 +304,4 @@ body {
   });
 </script>
 
->>>>>>> 78966a94c09908d1ae71d1e50a9a086e47d8fa39
 </html>
