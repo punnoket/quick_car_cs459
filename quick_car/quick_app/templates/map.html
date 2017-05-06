@@ -17,13 +17,7 @@
       <script>
 
       var map, infoWindow;
-      var locations = [
-        ['Bondi', 14.0902322, 100.6185316, 4],
-        ['Coogee ', 14.0732099, 100.6144063, 5],
-        ['Cronulla ', 14.0809367, 100.5935035, 3],
-        ['Manly ', 14.0569173, 100.5979667, 2],
-        ['Maroubra ', 14.0907186, 100.5935893, 1]
-        ];
+      var locations = new Array()
 
         var locations_arr = new Array()
         var data,len
@@ -58,17 +52,11 @@
 
           // get current location
           if (navigator.geolocation) {
-
              navigator.geolocation.getCurrentPosition(function(position) {
-
-
                   var pos = {
                     lat: position.coords.latitude,
                     lng: position.coords.longitude
                   };
-
-
-
                   infoWindow.setPosition(pos);
                   infoWindow.setContent("You here")
                   infoWindow.open(map);
@@ -105,7 +93,7 @@
                   }
 
                   for (i = 0; i < locations.length; i++) {
-                      console.log(locations[i][1]+" "+ locations[i][2]);
+
                       marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                       map: map
                     });
