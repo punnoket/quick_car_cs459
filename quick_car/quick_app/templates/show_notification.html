@@ -1,7 +1,9 @@
 
 <!DOCTYPE html>
+
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 <html>
 
 <head>
@@ -9,18 +11,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style type="text/css">
+      body {
+        background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
+        background-size: cover;
+    }
+    #divbill{
+      width: 100%;
+        border-style: solid;
+        background-color: white;
+    }
+
+   #imgbill{
+        margin: 3% 5% 3% 5%;
+        width: 5%;
+        height: 5%;
+      }
+    </style>
 </head>
 
 <body >
-  <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
-        bill<br>
-
-         <!-- <button ng-click="myFunc()">get notification</button> -->
-         <h3 id="noti"></h3>
+<header>
+   <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
+      <div id="divbill" ng-repeat="i in billist" >
+        <h1> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.detail]]<h1>
+      </div>
    </div>
-
-  </div>
+</header>
+ 
+  
 
 
   <script>
@@ -41,6 +61,7 @@
             $http.get("{% url 'get_notification' %}")
             .then(function(response) {
               console.log(response.data);
+              $scope.billist = response.data;
               document.getElementById("noti").innerHTML = response.data[0].fields.detail;
             }, function(response) {
 
