@@ -60,13 +60,14 @@ def show_notification(request):
 
 @csrf_exempt
 def send_notification(request):
-    print(request.GET.get('detail'))
-    print(request.GET.get('user'))
+    json_data = json.loads(request.body)
+    print(json_data)
     notification = Notification.objects.create()
-    notification.topics = request.GET.get('detail')
-    notification.detail = request.GET.get('detail')
+    notification.topics = json_data['detail']
+    notification.detail = json_data['detail']
     notification.to_user = request.session['username']
     notification.is_read = 'false'
+    notification.time = json_data['time']
     notification.save()
     return redirect('login.html')
 
