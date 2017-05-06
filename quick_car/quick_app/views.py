@@ -117,3 +117,9 @@ def auth_login(request):
         user_json = json.dumps(user)
 
     return HttpResponse(user_json, content_type='application/json')
+
+def get_garage(request):
+    garages = Mechanic.objects.all()
+    garages_json = serializers.serialize('json', garages)
+    print(garages_json)
+    return HttpResponse(garages_json, content_type='application/json')
