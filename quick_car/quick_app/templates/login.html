@@ -190,69 +190,96 @@
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    .col-xs-6{
-      height: 690px;
-    }
-    #imginarticle{
-      margin: 140% 0 0 0;
-      width: 100%;
-     padding-left: 0px;
-    }
-
-    #form{
-      margin-top: 40%;
-    }
+    .bgimg {
+    background-image: url('{%static 'Urgent/Mainpage/11.png' %}');
+    background-position: center;
+    background-size: cover;
+   }
      #imginheader{
-        width: 70%;
-        height: 70%;
+        width: 90%;
       }
-      #imgbackinheader{
-        width: 10%;
-        height: 10%;
-        margin: 0 0 0 15px;
-      }
+   
       #signup{
         font-size: 100%;
       }
-  h3{
-      font-size: 70%;
-    }
     .textbox {
     outline:0; */
     height:80%;
     width: 90%;
     margin: 5px 0 0 0 ;
-  }
+    }
 
   .button {
     outline:0;
     height: 10%;
     width: 70%;
-    padding: 3px 0 0 0;
+    padding: 2px 0 0 0;
+    }
 
-  }
 .fake-input input {
     width: 30%;
     height: 30px;
   }
+
 .fake-input img {
    top: 6px;
    left: 5%;
  }
-   #phone{
-      width: 60%;
-  }
   #fastandsure{
     width: 40%;
+    height: 360px;
   }
   #signin{
     width: 60%;
-    padding: 50% 0 0 30px;
+    height: 360px;
   }
-  #imginarticle2{
-    width: 50%;
-  }
+   #imginarticle{
+        width: 90%;
+      }
+       #imginarticle2 {
+        margin-top: 15%;
+        width: 50%;
+
+      }
+       #imginarticle3 {
+        margin-top: 25%;
+        width: 35%;
+
+      }
+      #imginarticle5{
+        margin-top: 30%;
+        width: 20%;
+      }
+      #imginarticle4{
+        margin-top: 25%;
+        width: 20%;
+      }
+
+      p {
+        font-size: 100%;
+        color: #fff;
+        text-decoration: none;
+      }
+      #convenience{
+        text-align: right;
+        padding: 15px 20px 15px 0;
+      }
+      #safty{
+        text-align: left;
+        padding: 0 15px 15px 20px;
+      }
+      #fast{
+        text-align: right;
+        padding: 15px 20px 15px 0;
+      }
+      #trust{
+        text-align: center;
+        padding: 0 0 20% 0;
+      }
 }
+
+
+
  #fastandsure{
     width: 40%;
     padding: 15% 0 0 5%;
@@ -270,8 +297,8 @@ label{
 }
 .bgimg {
     background-image: url('{%static 'Urgent/Mainpage/11.png' %}');
-    min-height: 100%;
-    background-position: center;
+    /*min-height: 100%;*/
+    /*background-position: center;*/
     background-size: cover;
 }
 </style>
@@ -296,10 +323,11 @@ label{
     <div class="bgimg">
          <section  id="login">
           <article>
-              <div class="col-xs-6" id="fastandsure" >
+              <div class="col-xs-6 col-md-6" id="fastandsure" >
                 <img id="imginarticle" src="{%static 'Urgent/Mainpage/2.png' %}">
               </div>
-               <div ng-app="myApp" ng-controller="myCtrl" class="col-xs-6"  id="signin">
+
+               <div class="col-xs-6 col-md-6" ng-app="myApp" ng-controller="myCtrl"   id="signin">
           <input id="email" class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 1%;">
                 <br>
                 <input id="password" class="textbox" type="password"  placeholder="Password" style="margin-bottom: 1%;">
