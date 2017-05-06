@@ -35,6 +35,7 @@
           $http.get("{% url 'res_noti_to_bill' %}")
           .then(function(response) {
             console.log(response.data);
+            console.log();
           }, function(response) {
             console.log(response.data);
           });
