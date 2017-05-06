@@ -60,8 +60,12 @@
 
             $http.get("{% url 'get_notification' %}")
             .then(function(response) {
+<<<<<<< HEAD
               console.log(response.data);
               $scope.billist = response.data;
+=======
+              console.log(response);
+>>>>>>> 4c5c2cb5516b8d81a7d42a5f178cb50091bba2ae
               document.getElementById("noti").innerHTML = response.data[0].fields.detail;
             }, function(response) {
 
