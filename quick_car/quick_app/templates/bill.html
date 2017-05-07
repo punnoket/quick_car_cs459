@@ -6,7 +6,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -47,29 +49,8 @@
 #form{
   margin-top: 10%;
 }
-.textbox { 
-    border: 1px solid #848484; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
-    outline:0; 
-    height:30px; 
-    width: 300px; 
-    padding-left:10px; 
-    padding-right:10px; 
-  }
-  .selectbox{ 
-    border: 1px solid #848484; 
-    background-color: white;
-    /*-webkit-border-radius: 30px; */
-    /*-moz-border-radius: 30px; */
-    /*border-radius: 30px; */
-    /*outline:0; */
-    height:30px; 
-    width: 300px; 
-    padding-left:10px; 
-    padding-right:10px; 
-  }
+
+  
 
   .button {
   border: 1px solid #000; 
@@ -244,6 +225,7 @@ body {
 </style>
 </head>
 <body>
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
     <div id="container" >
         <header id="header">
             <div class="row">
@@ -251,7 +233,7 @@ body {
                        <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;"> 
-                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">[[]]</span>
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">[[onebill.fields.time]]</span>
                     </div>
                     <div class="col-xs-3 col-md-3" style="padding-right: 30px">
                         <a href="/show_notification.html">
@@ -268,7 +250,12 @@ body {
         <div class="col-xs-3 col-md-3 col-sm-3"></div>
         <div class="col-xs-6 col-md-6 col-sm-6">
           <div id="form" style="text-align: center;">
-          <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
+           <!-- <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()"> -->
+             <!-- <div id="divbill" ng-repeat="i in onebill"  ng-click="listener($index)"> -->
+            <h1> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[onebill.fields.time]] [[onebill.fields.detail]] <h1>
+            <!-- </div> -->
+
+   <!-- </div> -->
               <button ng-click="login()" class="button">Cash</button>
               <a href="/payment">  <button ng-click="login()"  class="button">Credit Card</button></a>
             
@@ -276,7 +263,7 @@ body {
         </div>
         <div class="col-xs-2col-md-2 col-sm-2"></div>
         </div>
-
+</div>
 
 <script>
 
@@ -296,7 +283,7 @@ body {
           $http.get("{% url 'res_noti_to_bill' %}")
           .then(function(response) {
             console.log(response.data);
-            console.log();
+            $scope.onebill = response.data;
           }, function(response) {
             console.log(response.data);
           });
