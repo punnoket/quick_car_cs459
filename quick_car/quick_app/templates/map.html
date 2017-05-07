@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 {% block content %}
-
+{% load static %}
         <style>
            #map {
-            height: 600px;
+            height: 350px;
             width: 100%;
            }
         </style>
 
-      <div id = "map" ></div>
+      <!-- <div id = "map" ></div>
+      <div id="deal" style="width: 100%;" >
+        <div style="width: 40%; text-align: center; background-color: red; float: left;">
+
+          <img style="width: 60%; height: 60%; margin: 12% 0 12% 0;" src="{%static 'Urgent/Client/4C-Location Select/8.png'%}">
+
+        </div>
+        <div style="width: 50%; background-color: yellow; height: 60%;">
+              <h1>name :[[name]]</h1>
+
+        </div>
+          
+
+      </div> -->
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -100,15 +113,41 @@
 
                     google.maps.event.addListener(marker, 'click', (function(marker, i) {
                       return function() {
-                        infoCradle.setContent(locations[i][0]+ '<button onclick="myFunction()">Deal</button>');
+                        infoCradle.setContent(locations[i][0]+ 
+                     '<button onclick="myFunction()">Deal</button>');
+
+
+                        boxText = document.createElement("html");
+boxText.innerHTML = "<div id = "map" ></div>
+      <div id="deal" style="width: 100%;" >
+        <div style="width: 40%; text-align: center; background-color: red; float: left;">
+
+          <img style="width: 60%; height: 60%; margin: 12% 0 12% 0;" src="{%static 'Urgent/Client/4C-Location Select/8.png'%}">
+
+        </div>
+        <div style="width: 50%; background-color: yellow; height: 60%;">
+              <h1>name :[[name]]</h1>
+
+        </div>
+          
+
+      </div>";
+
+infowindow.setContent(boxText);
+
+
+                        console.log("ff"+locations[i][0]);
+                        
                         infoCradle.open(map, marker);
-                      }
+
+                      
+                         }
                     })(marker, i));
                   }
 
                 }
               });
-              console.log(locations);
+              // console.log(locations);
 
 
         }
