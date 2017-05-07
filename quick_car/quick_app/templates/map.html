@@ -1,174 +1,115 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
-        <style>
-           #map {
-            height: 350px;
-            width: 100%;
-           }
-        </style>
+    {% extends 'base.html' %}
+    {% block content %}
 
-      <!-- <div id = "map" ></div>
-      <div id="deal" style="width: 100%;" >
-        <div style="width: 40%; text-align: center; background-color: red; float: left;">
+            <style>
+               #map {
+                height: 600px;
+                width: 100%;
+               }
+            </style>
 
-          <img style="width: 60%; height: 60%; margin: 12% 0 12% 0;" src="{%static 'Urgent/Client/4C-Location Select/8.png'%}">
+          <div id = "map" ></div>
 
-        </div>
-        <div style="width: 50%; background-color: yellow; height: 60%;">
-              <h1>name :[[name]]</h1>
-
-        </div>
-          
-
-      </div> -->
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-      <script>
-
-      var map, infoWindow;
-      var locations = new Array()
-
-        var locations_arr = new Array()
-        var data,len
-
-
-        var successHandler = function(position) {
-        alert(position.coords.latitude);
-        alert(position.coords.longitude);
-        };
-
-        var errorHandler = function (errorObj) {
-        alert(errorObj.code + ": " + errorObj.message);
-
-        alert("something wrong take this lat " + 26.0546106 );
-        alert("something wrong take this lng " +-98.3939791);
-
-        };
-
-
-
-
-        function initMap() {
-
-          //init map
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 14
-          });
-          infoWindow = new google.maps.InfoWindow({
-            content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
-          });
-
-          // get current location
-          if (navigator.geolocation) {
-             navigator.geolocation.getCurrentPosition(function(position) {
-                  var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                  };
-                  infoWindow.setPosition(pos);
-                  infoWindow.setContent("You here")
-                  infoWindow.open(map);
-                  map.setCenter(pos);
-                }, function() {
-                    handleLocationError(true, infoWindow, map.getCenter());
-                  });
-            } else {
-              // Browser doesn't support Geolocation
-              handleLocationError(false, infoWindow, map.getCenter());
-            }
-
-            //marker
-            var marker, i;
-            infoCradle = new google.maps.InfoWindow();
-
-            $.ajax({
-                  url: '/get_garage',
-                  async:false,
-                  complete: function(data, err) {
-
-                  data = data.responseJSON;
-                  len = Object.keys(data).length
-
-                  for(var i = 0 ; i< len ; i++) {
-                    //console.log(data[i].fields);
-                    var cut = data[i].fields.locations.split(",")
-                    var lat,lon
-                    lat = cut[0]
-                    lon = cut[1]
-                    var locaion =[data[i].fields.owner_name, parseFloat(lat), parseFloat(lon), i]
-                    locations.push(locaion)
-
-                  }
-
-                  for (i = 0; i < locations.length; i++) {
-
-                      marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                      map: map
-                    });
-
-                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                      return function() {
-                        infoCradle.setContent(locations[i][0]+ 
-                     '<button onclick="myFunction()">Deal</button>');
-
-
-                        boxText = document.createElement("html");
-boxText.innerHTML = "<div id = "map" ></div>
-      <div id="deal" style="width: 100%;" >
-        <div style="width: 40%; text-align: center; background-color: red; float: left;">
-
-          <img style="width: 60%; height: 60%; margin: 12% 0 12% 0;" src="{%static 'Urgent/Client/4C-Location Select/8.png'%}">
-
-        </div>
-        <div style="width: 50%; background-color: yellow; height: 60%;">
-              <h1>name :[[name]]</h1>
-
-        </div>
-          
-
-      </div>";
-
-infowindow.setContent(boxText);
-
-
-                        console.log("ff"+locations[i][0]);
-                        
-                        infoCradle.open(map, marker);
-
-                      
-                         }
-                    })(marker, i));
-                  }
-
-                }
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+          <script>
+          var map, infoWindow;
+          var locations = new Array()
+            var data,len
+            var successHandler = function(position) {
+            alert(position.coords.latitude);
+            alert(position.coords.longitude);
+            };
+            var errorHandler = function (errorObj) {
+            alert(errorObj.code + ": " + errorObj.message);
+            alert("something wrong take this lat " + 26.0546106 );
+            alert("something wrong take this lng " +-98.3939791);
+            };
+            function initMap() {
+              //init map
+              map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 14
               });
-              // console.log(locations);
+              infoWindow = new google.maps.InfoWindow({
+                content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
+              });
+              // get current location
+              if (navigator.geolocation) {
+                 navigator.geolocation.getCurrentPosition(function(position) {
+                      var pos = {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                      };
+                      infoWindow.setPosition(pos);
+                      infoWindow.setContent("You here")
+                      infoWindow.open(map);
+                      map.setCenter(pos);
+                    }, function() {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                      });
+                } else {
+                  // Browser doesn't support Geolocation
+                  handleLocationError(false, infoWindow, map.getCenter());
+                }
+                //marker
+                var marker, i;
+                infoCradle = new google.maps.InfoWindow();
+                $.ajax({
+                      url: '/get_garage',
+                      async:false,
+                      complete: function(data, err) {
+                      data = data.responseJSON;
+                      len = Object.keys(data).length
+                      for(var i = 0 ; i< len ; i++) {
+                        //console.log(data[i].fields);
+                        var cut = data[i].fields.locations.split(",")
+                        var lat,lon
+                        lat = cut[0]
+                        lon = cut[1]
+                        var locaion =[data[i].fields.owner_name, parseFloat(lat), parseFloat(lon), i]
+                        locations.push(locaion)
+                      }
+                      for (i = 0; i < locations.length; i++) {
+                          console.log(locations[i][1]+" "+ locations[i][2]);
+                          marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                          map: map
+                        });
+                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                          return function() {
 
+                            infoCradle.setContent(locations[i][0]+ "<div id = \"map\" ></div>"+
+                            "<div id=\"deal\" style=\"width: 100%;\" >"+
+                            "<div style=\"width: 40%; text-align: center; background-color: red; float: left;\">"+
+                            "<img style=\"width: 60%; height: 60%; margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'></div>"+
+                            "<div style=\"width: 50%; background-color: yellow; height: 60%;\">"+
+                            "<h1>name :[[name]]</h1>"+
+                            "</div>"+
+                            "</div>")
 
-        }
+                            infoCradle.open(map, marker);
+                          }
+                        })(marker, i));
+                      }
+                    }
+                  });
+                  console.log(locations);
+            }
+            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+              posFix = {lat: 14.065574699999999, lng: 100.6057261};
+              //infoWindow.setPosition(posFix);
+              infoWindow.setContent(browserHasGeolocation ?
+                                    'Error: The Geolocation service failed.' :
+                                    'Error: Your browser doesn\'t support geolocation.');
+              infoWindow.setContent("You here")
+              infoWindow.open(map);
+            }
+            </script>
+            <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+            <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
+            </script>
 
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          posFix = {lat: 14.065574699999999, lng: 100.6057261};
-          //infoWindow.setPosition(posFix);
-
-          infoWindow.setContent(browserHasGeolocation ?
-                                'Error: The Geolocation service failed.' :
-                                'Error: Your browser doesn\'t support geolocation.');
-          infoWindow.setContent("You here")
-          infoWindow.open(map);
-        }
-
-
-
-        </script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
-        </script>
-
-{% endblock %}
+    {% endblock %}

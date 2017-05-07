@@ -2,6 +2,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
+          <!-- <div id = "map" ></div>
+          <div id="deal" style="width: 100%;" >
+            <div style="width: 40%; text-align: center; background-color: red; float: left;">
+
+              <img style="width: 60%; height: 60%; margin: 12% 0 12% 0;" src="{%static 'Urgent/Client/4C-Location Select/8.png'%}">
+
+            </div>
+            <div style="width: 50%; background-color: yellow; height: 60%;">
+                  <h1>name :[[name]]</h1>
+
+            </div>
+
+
+          </div> -->
         <style>
            #map {
             height: 600px;
@@ -17,15 +31,7 @@
       <script>
 
       var map, infoWindow;
-      var locations = [
-        ['Bondi', 14.0902322, 100.6185316, 4],
-        ['Coogee ', 14.0732099, 100.6144063, 5],
-        ['Cronulla ', 14.0809367, 100.5935035, 3],
-        ['Manly ', 14.0569173, 100.5979667, 2],
-        ['Maroubra ', 14.0907186, 100.5935893, 1]
-        ];
-
-        var locations_arr = new Array()
+      var locations = new Array()
         var data,len
         var app = angular.module('myApp', []);
 
@@ -140,7 +146,7 @@
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
-                infoCradle.setContent(locations[i][0]+ '<button onclick="myFunction()">Deal</button>');
+                
                 infoCradle.open(map, marker);
               }
             })(marker, i));
