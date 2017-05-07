@@ -5,7 +5,7 @@ from django.core import serializers
 from django.http import JsonResponse
 from rest_framework import viewsets
 from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 
 # Create your views here.
 
@@ -154,5 +154,12 @@ def get_noti_from_click(request):
 
 def res_noti_to_bill(request):
     print(type(request.session['single_noti']))
+    noti_json = json.dumps(request.session['single_noti'])
+    return HttpResponse(noti_json, content_type='application/json')
+
+@csrf_protect
+def match_mechanic(request):
+    json_data = json.loads(request.body)
+    print(json_data["mechanic"])
     noti_json = json.dumps(request.session['single_noti'])
     return HttpResponse(noti_json, content_type='application/json')

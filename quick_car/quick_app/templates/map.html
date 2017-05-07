@@ -73,21 +73,24 @@
                         locations.push(locaion)
                       }
                       for (i = 0; i < locations.length; i++) {
-                          console.log(locations[i][1]+" "+ locations[i][2]);
+
                           marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                           map: map
                         });
                         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                           return function() {
 
-                            infoCradle.setContent(locations[i][0]+ "<div id = \"map\" ></div>"+
-                            "<div id=\"deal\" style=\"width: 100%;\" >"+
-                            "<div style=\"width: 40%; text-align: center; background-color: red; float: left;\">"+
-                            "<img style=\"width: 60%; height: 60%; margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'></div>"+
-                            "<div style=\"width: 50%; background-color: yellow; height: 60%;\">"+
-                            "<h1>name :[[name]]</h1>"+
-                            "</div>"+
-                            "</div>")
+                            infoCradle.setContent(
+                          "<div style=\"width: 80%; \">"+
+                          "<div style=\"width: 39%; text-align:center;    float:left;\">"+
+                            "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
+                                                    "</div>"+
+                                                    "<div style=\"width: 40%; display: inline-block\">"+
+                                                        "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
+                                                    "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
+
+
+
 
                             infoCradle.open(map, marker);
                           }
@@ -95,7 +98,7 @@
                       }
                     }
                   });
-                  console.log(locations);
+
             }
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
               posFix = {lat: 14.065574699999999, lng: 100.6057261};
@@ -105,7 +108,58 @@
                                     'Error: Your browser doesn\'t support geolocation.');
               infoWindow.setContent("You here")
               infoWindow.open(map);
+              map.setCenter(posFix);
+              infoWindow.setPosition(posFix);
+              infoWindow.setContent("You here")
+
             }
+
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie != '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = jQuery.trim(cookies[i]);
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            var csrftoken = getCookie('csrftoken');
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
+            function myFunction(i) {
+                  console.log(locations[i][0]);
+                  var mechanic = { "mechanic":locations[i][0]};
+
+            $.ajax({
+                type: "POST",
+                url: "/match_mechanic",
+                data: JSON.stringify(mechanic),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){alert(data);},
+                failure: function(errMsg) {
+                    alert(errMsg);
+                }
+              });
+            }
+
+
             </script>
             <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
             <script async defer
