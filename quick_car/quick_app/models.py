@@ -6,11 +6,17 @@ from rest_framework import serializers
 # Create your models here.
 
 class Notification(models.Model):
+    garage_name = models.CharField(max_length=50)
+    mechanic_name = models.CharField(max_length=50)
+    cilent_name = models.CharField(max_length=50)
+    license_plae_number = models.CharField(max_length=50)
+    telephone = models.CharField(max_length=50)
     topics = models.CharField(max_length=50)
     detail = models.CharField(max_length=50)
     to_user = models.CharField(max_length=50)
     is_read = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
+    date = models.CharField(max_length=50)
     def __unicode__(self):
 		return "topics: %s to: %s"%(self.topics, self.to_user)
 
