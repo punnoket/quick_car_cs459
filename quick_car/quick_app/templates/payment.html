@@ -324,7 +324,17 @@ body {
                         </div>
                       </div>
 
-                <button href="#" class="button">Submit</button>
+                <button href="#" id="show" class="button">Submit</button>
+                <script>
+                  $(document).ready(function(){
+                     $("#hide").click(function(){
+                       $("p").hide();
+                      });
+                    $("#show").click(function(){
+                        $("p").show();
+                      });
+                  });
+                </script>
         </div>
         </div>
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
