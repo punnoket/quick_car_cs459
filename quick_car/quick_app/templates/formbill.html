@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+<head>
+  <title>Billing form</title>
+  <meta charset="utf-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+  <style>
+      header{
+        width: 100%;
+       background-color: #0f1933;
+       padding: 15px 0 15px 0;
+       border-style: solid;
+       border-color: #0f1933 #0f1933 #fff #0f1933;
+      }
+      #imginheader{
+        width: 30%;
+        height: 30%;
+      }
+      #imgbackinheader{
+        width: 5%;
+        height: 5%;
+        margin: 0 0 0 15px;
+      }
+     
+      
+      html, body {
+  height: auto;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+#form{
+  margin-top: 10%;
+}
+.textbox { 
+    border: 1px solid #848484; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 300px; 
+    padding-left:10px; 
+    padding-right:10px; 
+  }
+  .button {
+  border: 1px solid #000; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 200px; 
+    margin : 30px 0 0 0 ; 
+    padding: 3px 0 0 0;
+    background-color: #000;
+    color: #fff;
+
+  }
+     
+ #full-screen-background-image {
+  z-index: -999;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-attachment:scroll;
+}
+h3{
+  color: #65C6BB;
+  font-size: 175%;
+  font-weight: 400;
+  line-height: 155%;
+
+}
+*::-webkit-input-placeholder {
+    color: black;
+}
+*:-moz-placeholder {
+    /* FF 4-18 */
+    color: black;
+}
+*::-moz-placeholder {
+    /* FF 19+ */
+    color: black;
+}
+*:-ms-input-placeholder {
+    /* IE 10+ */
+    color: black;
+}
+
+#phone{
+  width: 240px;
+   
+}
+.fake-input { 
+  position: relative; 
+  /*width:240px;*/
+  text-align: center; 
+padding: 0 0 0 0;
+margin: 0 0 0 0 ;
+}
+
+.fake-input input { 
+  -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px;
+     border:none: background:#fff; 
+    display:inline-block; 
+    width: 60px; 
+    height: 30px;
+    box-sizing: border-box ;
+  }
+.fake-input img { 
+  position: absolute;
+   top: 2.25px; 
+   left: 32.25%; 
+ }
+ /* Portrait and Landscape */
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+/* ----------- iPhone 5 and 5S ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+     #form{
+      margin-top: 30%;
+    }
+    #imginheader{
+        width: 50%;
+        height: 50%;
+      }
+      #imgbackinheader{
+        width: 10%;
+        height: 10%;
+        margin: 0 0 0 15px;
+      }
+    h3{
+      font-size: 50%;
+    }
+    .textbox { 
+    outline:0; */
+    height:50%; 
+    width: 90%; 
+    margin :5px 0 0 0;
+  }
+
+  .button {
+    outline:0; 
+    height:50%; 
+    width: 70%; 
+    margin-top: :5%; 
+    padding: 7px 0 7px 0;
+  }
+  .fake-input input { 
+    width: 30%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 7px; 
+   left: 5%; 
+ }
+   #phone{
+      width: 60%;
+  }
+}
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+    #form{
+      margin-top: 30%;
+    }
+    .fake-input input { 
+    width: 15%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 2.25px; 
+   left: 21.25%; 
+ }
+   #phone{
+      width: 43%;
+  }
+}
+/*--------*/
+
+/* ----------- iPhone 6 ----------- */
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
+ 
+    #form{
+      margin-top: 30%;
+    }
+     #imginheader{
+        width: 50%;
+        height: 50%;
+      }
+      #imgbackinheader{
+        width: 10%;
+        height: 10%;
+        margin: 0 0 0 15px;
+      }
+  h3{
+      font-size: 70%;
+    }
+    .textbox { 
+    outline:0; */
+    height:80%; 
+    width: 90%; 
+    margin: 5px 0 0 0 ;
+  }
+ 
+  .button {
+    outline:0; 
+    height: 80%; 
+    width: 70%; 
+    padding: 7px 0 7px 0;
+
+  }
+.fake-input input { 
+    width: 30%; 
+    height: 30px;
+  }
+.fake-input img { 
+   top: 6px; 
+   left: 5%; 
+ }
+   #phone{
+      width: 60%;
+  }
+}
+.bgimg {
+    background-image: url('{%static 'Urgent/Client/1C-Sign up/1.png' %}');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+  .upload-button {
+    padding: 4px;
+    border: 1px solid black;
+    border-radius: 4px;
+    display: block;
+    float: left;
+}
+
+.profile-pic {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+}
+
+.file-upload {
+    display: none;
+}
+</style>
+<script type="text/javascript">
+     $(document).ready(function() {
+
+    
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+});
+    </script>
+</head>
+<body style="background-color: #0c1c3e;" >
+
+    <div  id="container" >
+        <header id="header">
+            <div class="row">
+                <div class="col-xs-4 col-md-4" style="text-align: left;">
+                       <a href="/login"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                    </div>
+                    <div class="col-xs-4 col-md-4" style="text-align: center;"> 
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">SIGN UP</span>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        
+                    </div>
+            </div>
+        </header>
+        <div  class="row" >
+        <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        <div class="col-xs-8 col-md-8 col-sm-8" >
+          <div id="form" style="text-align: center;">
+              <input class="textbox" type="text" placeholder="DD/MM/YY" style="margin-bottom: 3%;">  <br>
+
+               <input class="textbox" type="text" placeholder="License plate number" style="margin-bottom: 3%;">  <br>
+                <input class="textbox" type="text" placeholder="Client's car detail" style="margin-bottom: 3%;">  <br>
+
+
+              <div class="headerdetail">
+              		<div class="row" style="text-align: center;">
+              			<div class="col-sm-6 col-md-6 col-xs-6">
+              				<h4 style="color: white;"><b>Detail<b></h4>
+              				<br>
+              				<h4 style="color: white; font-size: 100%;">Service Charge</h4>
+              			</div>
+              			<div class="col-sm-6 col-md-6 col-xs-6" >
+              				<h4 style="color: white; "><b>Price<b></h4><br>
+              				<input class="textbox"  type="text" placeholder="" />
+              			</div>
+              		</div>
+              </div>
+              <br>
+              <div class="headerdetai2">
+              		<div class="row"  style="text-align: center;">
+              			<div  class="col-sm-6 col-md-6 col-xs-6">
+              				<div id="test1"> 
+              						<input class="textbox"  type="text" placeholder="" /><br><br>
+              				</div>
+              			</div>
+              			<div  class="col-sm-6 col-md-6 col-xs-6" >
+              				<div id="test2">
+              					<input   class="textbox"  type="text" placeholder="" ><br><br>
+              				</div>
+              				 
+              			</div>
+              		</div>
+              </div>
+               <div class="headerdetai2">
+              		<div class="row"  style="text-align: center;">
+              			<div  class="col-sm-6 col-md-6 col-xs-6">
+              				
+              			</div>
+              			<div  class="col-sm-6 col-md-6 col-xs-6" >
+              				 <div  id="newq" onclick="addp()"> 
+	                   			<a  style="font-size: 20px;"><img  style="width: 40%; height: 30px;" src="{%static 'Urgent/Garage/12G-Billing form/4.png' %}" > </a><br><br>
+	                    
+	                   </div>  
+	              </div>
+              			</div>
+              		</div>
+
+              	<div class="headerdetai2">
+              		<div class="row"  style="text-align: center;">
+              			<div  class="col-sm-6 col-md-6 col-xs-6">
+              				<h4 style="color: white; font-size: 100%;">ToTal</h4>
+              			</div>
+              			<div  class="col-sm-6 col-md-6 col-xs-6" >
+	                   			<input class="textbox"  type="text" placeholder="" /> 
+	                   </div>  
+	              </div>
+              			</div>
+
+              			<button href="#" class="button">Submit</button>
+	    
+          </div>
+        </div>
+        <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        </div>
+        
+
+       
+      
+
+    </div>
+
+</body>
+<script type="text/javascript">
+	  function addp() {
+       document.getElementById("test1").innerHTML = document.getElementById("test1").innerHTML + ('<div id="test1"><input class="textbox"  type="text" placeholder="" /><br><br> </div');
+
+       document.getElementById("test2").innerHTML = document.getElementById("test2").innerHTML + ('<div id="test2"><input class="textbox"  type="text" placeholder="" /><br><br> </div>');
+                }
+</script>
+</html>

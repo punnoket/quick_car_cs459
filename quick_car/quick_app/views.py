@@ -18,6 +18,9 @@ class NotificationViewSet(viewsets.ModelViewSet):
 
 def map(request):
     return render(request, 'map.html')
+def formbill(request):
+    return render(request, 'formbill.html')
+
 def contact(request):
     return render(request, 'contact.html')
 
