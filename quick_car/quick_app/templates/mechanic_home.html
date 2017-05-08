@@ -17,23 +17,24 @@
       <script>
 
         var map, infoWindow
-        var pos_mechanic, mechanic_name
-
-        var successHandler = function(position) {
-        alert(position.coords.latitude);
-        alert(position.coords.longitude);
-        };
-
-        var errorHandler = function (errorObj) {
-        alert(errorObj.code + ": " + errorObj.message);
-
-        alert("something wrong take this lat " + 26.0546106 );
-        alert("something wrong take this lng " +-98.3939791);
-
-        };
+        var pos_mechanic, mechanic_name, pos_user
 
 
           function initMap() {
+
+            var csrftoken = getCookie('csrftoken');
+            function csrfSafeMethod(method) {
+                // these HTTP methods do not require CSRF protection
+                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+            }
+            $.ajaxSetup({
+                beforeSend: function(xhr, settings) {
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }
+            });
+
             $.ajax({
                     url: '/get_location_garage',
                     async:false,
@@ -52,6 +53,31 @@
                   }
               })
 
+              $.ajax({
+                  type: "POST",
+                  async:false,
+                  url: "/get_user_match",
+                  data: JSON.stringify({ mechanic_name: mechanic_name }),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function(data){
+                    console.log(data);
+                    location_user = data.locations
+                    var cut = location_user.split(",")
+                    location_user = data.locations
+                    var cut = location_user.split(",")
+                    pos_user = {
+                      lat: parseFloat(cut[0]),
+                      lng: parseFloat(cut[1])
+                    };
+
+                  },
+                  failure: function(errMsg) {
+                      alert(errMsg);
+                  }
+              });
+
+
           //init map
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -34.397, lng: 150.644},
@@ -69,7 +95,31 @@
             var marker, i;
             infoCradle = new google.maps.InfoWindow();
 
+            var myLatLng = {lat: -25.363, lng: 131.044};
+
+            var marker = new google.maps.Marker({
+              position: pos_user,
+              map: map,
+              title: 'Hello World!'
+            });
+
+            var infowindow = new google.maps.InfoWindow({
+              content: '<button onclick="acept()">acept</button><a href="tel:1234567">Call 123-4567</a>'
+            });
+
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+
+
+
         }
+
+        function acept() {
+          console.log(55);
+        }
+
+
 
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           posFix = {lat: 14.065574699999999, lng: 100.6057261};
@@ -81,6 +131,39 @@
           infoWindow.setContent("You here")
           infoWindow.open(map);
         }
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+
+
+        var markers = [{ "position": "128.3657142857143", "markerPosition": "7" },
+               { "position": "235.1944023323615", "markerPosition": "19" },
+               { "position": "42.5978231292517", "markerPosition": "-3" }];
 
 
 

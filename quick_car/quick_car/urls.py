@@ -47,7 +47,10 @@ urlpatterns = [
     url(r'^get_location_garage',views.get_location_garage,name='get_location_garage'),
     url(r'^get_noti_from_click',views.get_noti_from_click,name='get_noti_from_click'),
     url(r'^res_noti_to_bill',views.res_noti_to_bill,name='res_noti_to_bill'),
-    url(r'^match_mechanic',views.match_mechanic,name='match_mechanic'),
+    url(r'^select_mechanic',views.select_mechanic,name='select_mechanic'),
+    url(r'^is_match_complete',views.is_match_complete,name='is_match_complete'),
+    url(r'^get_user_match',views.get_user_match,name='get_user_match'),
+
 
 
 ]

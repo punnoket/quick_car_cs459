@@ -4,14 +4,52 @@
 {% block content %}
 {% load static %}
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
      <style type="text/css">
        body{
-    background-image: url('{%static 'Urgent/Client/5C-Waiting/2.png' %}');
-    background-size: cover;
+    background-image: url('{%static 'Urgent/Client/5C-Waiting/wait.gif' %}');
+    /*background-size: cover;*/
 }
      </style>
 
-     
-      <body></body>
-     
+
+      <body >
+        <div ng-app="myApp" ng-controller="myCtrl" ng-click="myFunc()">d</div>
+      </body>
+
+      <script>
+      var app = angular.module('myApp', []);
+
+      app.config(function($httpProvider) {
+          $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+          $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+      });
+      app.config(function($interpolateProvider) {
+          $interpolateProvider.startSymbol('[[');
+          $interpolateProvider.endSymbol(']]');
+      });
+      app.controller('myCtrl', function($scope, $http, $window) {
+        $scope.myFunc = function() {
+
+              $http.get("{% url 'is_match_complete' %}")
+              .then(function(response) {
+                console.log(response.data);
+                $window.location.href = "/match_complete"
+
+              }, function(response) {
+                console.log(response.data);
+              });
+          };
+
+      });
+
+
+      </script>
+
 {% endblock %}

@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 # Create your views here.
 
 username = ''
+GLOBAL_MECHANIC = None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -76,16 +77,19 @@ def send_notification(request):
     notification.save()
     return redirect('login.html')
 
+@csrf_exempt
 def get_notification(request):
     notification = Notification.objects.filter(to_user=request.session['username'])
     notification_json = serializers.serialize('json', notification)
     #print(notification_json)
     return HttpResponse(notification_json, content_type='application/json')
 
+@csrf_exempt
 def send_job(request):
     return render(request,'create_job.html')
 
 
+@csrf_exempt
 def create_job(request):
     #job = Job.objects.create()
     #job.save()
@@ -108,6 +112,7 @@ def auth_login(request):
         if(username == i.username):
             if(password == i.password):
                 request.session['username'] = i.username
+                request.session['username_location'] = i.locations
                 check = 1
 
     mechanic_all = Mechanic.objects.all()
@@ -132,18 +137,21 @@ def auth_login(request):
 
     return HttpResponse(user_json, content_type='application/json')
 
+@csrf_exempt
 def get_garage(request):
     garages = Mechanic.objects.all()
     garages_json = serializers.serialize('json', garages)
     #print(garages_json)
     return HttpResponse(garages_json, content_type='application/json')
 
+@csrf_exempt
 def get_location_garage(request):
     location_garage = {'username_mechanic': request.session['username_mechanic'], 'location': request.session['location_mechanic']}
     location_garage_json = json.dumps(location_garage)
     #print(location_garage_json)
     return HttpResponse(location_garage_json, content_type='application/json')
 
+@csrf_exempt
 def get_noti_from_click(request):
     json_data = json.loads(request.body)
     print(json_data["notification"])
@@ -152,14 +160,40 @@ def get_noti_from_click(request):
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
 
+@csrf_exempt
 def res_noti_to_bill(request):
     print(type(request.session['single_noti']))
     noti_json = json.dumps(request.session['single_noti'])
     return HttpResponse(noti_json, content_type='application/json')
 
-@csrf_protect
-def match_mechanic(request):
+@csrf_exempt
+def select_mechanic(request):
+    global GLOBAL_MECHANIC
     json_data = json.loads(request.body)
-    print(json_data["mechanic"])
+    GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
+    request.session['match_mechanic'] = json_data
+    print(request.session['match_mechanic'])
     noti_json = json.dumps(request.session['single_noti'])
     return HttpResponse(noti_json, content_type='application/json')
+
+@csrf_exempt
+def is_match_complete(request):
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def get_user_match(request):
+    global GLOBAL_MECHANIC
+    print(GLOBAL_MECHANIC)
+    json_data = json.loads(request.body)
+    # print(request.session['username_location'])
+    detail = "sdss"
+
+    if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
+        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : detail}
+    else:
+        user = {'user': "null", 'locations': 'null','topic' : detail}
+
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')

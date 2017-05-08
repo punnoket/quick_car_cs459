@@ -148,18 +148,17 @@
 
             $.ajax({
                 type: "POST",
-                url: "/match_mechanic",
+                url: "/select_mechanic",
                 data: JSON.stringify(mechanic),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                success: function(data){alert(data);},
+                success: function(data){
+                  document.location.href = "/wait"
+                  ;},
                 failure: function(errMsg) {
-                    alert(errMsg);
                 }
               });
             }
-
-
             </script>
             <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
             <script async defer
