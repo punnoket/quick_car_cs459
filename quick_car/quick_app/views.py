@@ -23,6 +23,12 @@ class NotificationViewSet(viewsets.ModelViewSet):
 
 def map(request):
     return render(request, 'map.html')
+def brows(request):
+    return render(request, 'brows.html')
+
+def editprofile(request):
+    return render(request, 'editprofile.html')
+
 def formbill(request):
     return render(request, 'formbill.html')
 
@@ -101,7 +107,7 @@ def send_job(request):
 def create_job(request):
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
-    
+
 
     return HttpResponse(user_json, content_type='application/json')
 
@@ -183,7 +189,6 @@ def select_mechanic(request):
     json_data = json.loads(request.body)
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     GLOBAL_MECHANIC_OBJECT = json.loads(request.body)["mechanic_object"]
-
     noti_json = json.dumps(request.session['match_mechanic'])
     return HttpResponse(noti_json, content_type='application/json')
 

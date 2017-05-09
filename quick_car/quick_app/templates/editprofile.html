@@ -3,7 +3,7 @@
 <html>
 {% load static %}
 <head>
-    <title>history</title>
+    <title>EditProfile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -129,8 +129,8 @@
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
      #imgbackinheader{
-        width: 15%;
-        height: 15%;
+        width: 20%;
+        height: 20%;
         margin: 0 0 0 15px;
       }
     #imgprofile{
@@ -150,7 +150,7 @@
 }
 
 .sidenav{
-    background-image: url({%static 'Urgent/Client/13C-Profile/1.png'%});
+    background-image: url({%static 'Urgent/Client/14C-Edit/1.png' %});
 }#border{
     border-style: solid;
     border-color: #000 #F5CB0D #F5CB0D #F5CB0D;
@@ -159,6 +159,13 @@
     border-style: solid;
     border-color: #000 #F5CB0D #000 #F5CB0D;
 }
+
+
+    body {
+        background: url('{%static 'Urgent/Client/14C-Edit/1.png' %}');
+         /*no-repeat center center fixed;*/
+        background-size: cover;
+    }
     </style>
 </head>
 <body>
@@ -197,14 +204,14 @@
 
                 <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
                     <div class="col-xs-3 col-md-3">
-                        <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                        <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Close.png' %}"></a>
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;"> 
-                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">HISTORY</span>
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">EDIT PROFILE</span>
                          <!-- <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}"> -->
                     </div>
                     <div class="col-xs-3 col-md-3">
-                        <img  id="iconbell" style=" float: right;" src="{%static 'Urgent/Icon/Bell.png' %}">
+                        <!-- <img  id="iconbell" style=" float: right;" src="{%static 'Urgent/Icon/Bell.png' %}"> -->
 
                      <!--    <i   style="font-size: 30px; float: right;" class="fa fa-bell" aria-hidden="true"></i> -->
 
