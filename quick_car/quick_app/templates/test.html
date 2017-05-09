@@ -3,39 +3,34 @@
 <head>
 {% load static %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <style type="text/css">
+     
+/*
+      #contain{
+        background: url('{%static 'Urgent/Garage/3G-Need help/6.png' %}');
+        width: 400px;
+        background-size: cover;
+        }*/
 
-<script type="text/javascript">
-	function readURL(input, aa) {
-                    if (input.files && input.files[0]) {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            name = '#blah' + aa;
-                            $(name).attr('src', e.target.result);
-                        }
 
-                        reader.readAsDataURL(input.files[0]);
-                    }
-                }
-                function upload(value) {
-                   console.log(value);
-                        document.getElementById("blah").removeAttribute("src");
-                        document.getElementById("blah").setAttribute("src","value")
-                        document.getElementById("blah").setAttribute("width", '100px');
-                         document.getElementById("blah").setAttribute("height", '100px');
-                  
-                }
-</script>
-<style>
-		dun
-</style>
+ </style>
+	
 </head>
-<body>
-		<!-- <img id="blah"> -->
-		<img  id="blah" src="{%static 'Urgent/Garage/1G-Sign up/5.png' %}" style="height: 25%; width: 25%; cursor: pointer;" onclick="document.getElementById('imgInp1').click();"/>
-		 <br>
-         
-          <input type='file' id="imgInp1" onclick="upload(value)" style="display:none;" />
-<div></div>
+<body>  
+        <!-- <div style=""> -->
+            <div id="contain" style="background-color: #E75E55; border-radius: 5px; width: 250px; border: 2px solid #DC4F46;">
+                <img src="{%static 'Urgent/Icon/Close.png' %}" style="position: relative; top:3px; left: 3px; width: 4%; margin: 1% 0 0 1%; ">
+                    <h3 style=" font-size: 100%; color: white;  left: 15%; position: relative;">Someone need your help!!</h3>
+                    <h3 style="font-size: 100%; color: white; left: 16%;position: relative;">[{}]</h3>
 
+                    <div style="display: inline-block; text-align: center;">
+                        <a href=""><img src="{%static 'Urgent/Garage/3G-Need help/9.png' %}" style="width: 30%; margin-left: 2%;margin-bottom: 2%;"></a>
+                        <a href=""><img src="{%static 'Urgent/Garage/3G-Need help/10.png' %}" style="margin-bottom: 2%; width: 30%;"></a>
+                    </div>
+                 
+            </div>
+
+        <!-- </div> -->
+            
 </body>
 </html>
