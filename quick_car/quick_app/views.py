@@ -115,7 +115,8 @@ def create_job(request):
 
 @csrf_exempt
 def auth_login(request):
-
+    global GLOBAL_USER_LOGIN
+    global GLOBAL_MECHANIC_LOGIN
     json_data = json.loads(request.body)
     username = json_data['username']
     password = json_data['password']
@@ -127,7 +128,9 @@ def auth_login(request):
             if(password == i.password):
                 request.session['username'] = i.username
                 request.session['username_location'] = i.locations
-                GLOBAL_USER_LOGIN = i
+                user = {'user': i.username, 'email': i.email, 'phone': i.phone, 'locations': i.locations}
+                GLOBAL_USER_LOGIN = json.dumps(user)
+                print(GLOBAL_USER_LOGIN)
                 check = 1
 
     mechanic_all = Mechanic.objects.all()
@@ -205,26 +208,29 @@ def is_match_complete(request):
         json_data = json.loads(request.body)
         is_match = json.loads(request.body)["answer"]
         print(is_match)
-        is_match = ""
+
     elif(request.method == 'GET'):
-        res = {'user': "null", 'answer': is_match}
+        math = is_match
+        res = {'user': "null", 'answer': math}
         res_json = json.dumps(res)
         print(is_match)
-        is_match = ""
-
+        is_match=""
 
     return HttpResponse(res_json, content_type='application/json')
 
 @csrf_exempt
 def get_user_match(request):
     global GLOBAL_MECHANIC
+
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
     # print(request.session['username_location'])
     detail = "sdss"
+    print(GLOBAL_USER_LOGIN)
+    print('**********************')
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER}
+        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 
