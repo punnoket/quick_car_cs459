@@ -21,8 +21,18 @@
 
             <div id="setz" class="row" style="width: 100%; padding: 0; margin: 0;">
               <div class="col-xs-1 col-md-1 col-sm-1">
-                
+
               </div>
+<<<<<<< HEAD
+             <div class="col-xs-10 col-md-10 col-sm-10"  id="opac" style="border-color: #45606D; border-style: solid; border-radius: 5px;   border-color:#14384B" >
+                  <div  style="height: 4%;" >
+                        <img style="text-align: left; width: 5%; margin:5% 5% 5% 5%;" src="{%static 'Urgent/Client/2C-Home/2.png'%}">
+
+                  </div>
+                  <div >
+                        <input id="detail" type="text" name="argarn" style=" width: 80%; height: 100%; margin: 5% 5% 5% 5%; display: inline-block; float: right;">
+
+=======
              <div class="col-xs-10 col-md-10 col-sm-10"  id="opac" style=" border-color: #45606D; border-style: solid; border-radius: 5px;   border-color:#14384B ;" >
 
                   <div  ">
@@ -33,16 +43,17 @@
                   <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
                         <input type="text" name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%; display: inline-block; float: right; padding: 2%;">
                       
+>>>>>>> 0fdac7c441c9d80e03e6dd63265fa181e1dec079
                   </div>
 
              </div>
                <div class="col-xs-1 col-md-1 col-sm-1">
-                 
+
                </div>
 
             </div>
-            
-            
+
+
           <div id = "map" ></div>
 
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -182,11 +193,16 @@
                 }
             });
 
+            var detail = document.getElementById("detail")
+
             function myFunction(i) {
 
+                  console.log(detail.value);
+
                   console.log(locations[i][0]);
-                  var mechanic = { "mechanic":locations[i][0],"mechanic_object": mechanic_object[i],"detail":"รถไฟไหม้"};
+                  var mechanic = { "mechanic":locations[i][0],"mechanic_object": mechanic_object[i],"detail":detail.value};
                   console.log(mechanic_object[i]);
+
             $.ajax({
                 type: "POST",
                 url: "/select_mechanic",

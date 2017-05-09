@@ -50,7 +50,9 @@ class User(models.Model):
 
 class Job(models.Model):
     topics = models.CharField(max_length=50)
+    date = models.CharField(max_length=50)
+    time =  models.CharField(max_length=50)
+    locations = models.CharField(max_length=50)
     detail = models.CharField(max_length=50)
-    date_joined = models.DateField()
     mechanic = models.ForeignKey(Mechanic, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

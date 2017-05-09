@@ -17,7 +17,7 @@
       <script>
 
         var map, infoWindow
-        var pos_mechanic, mechanic_name, pos_user
+        var pos_mechanic, mechanic_name, pos_user, detail
 
 
           function initMap() {
@@ -66,6 +66,7 @@
                     var cut = location_user.split(",")
                     location_user = data.locations
                     var cut = location_user.split(",")
+                    detail = data.topic
                     pos_user = {
                       lat: parseFloat(cut[0]),
                       lng: parseFloat(cut[1])
@@ -104,7 +105,7 @@
             });
 
             var infowindow = new google.maps.InfoWindow({
-              content: '<button onclick="accept()">acept</button><button onclick="decline()">decline</button><a href="tel:1234567">Call 123-4567</a>'
+              content: '<h3>'+detail+'</h3>'+'<button onclick="accept()">acept</button><button onclick="decline()">decline</button><a href="tel:1234567">Call 123-4567</a>'
             });
 
             marker.addListener('click', function() {

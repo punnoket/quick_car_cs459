@@ -15,6 +15,7 @@ GLOBAL_MECHANIC_OBJECT = None
 GLOBAL_MECHANIC_LOGIN = None
 GLOBAL_USER_LOGIN = None
 GLOBAL_JOB = None
+GOLBAL_DETAIL_FROM_USER = None
 is_match = None
 
 class NotificationViewSet(viewsets.ModelViewSet):
@@ -107,7 +108,7 @@ def send_job(request):
 def create_job(request):
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
-
+    
 
     return HttpResponse(user_json, content_type='application/json')
 
@@ -186,9 +187,11 @@ def res_noti_to_bill(request):
 def select_mechanic(request):
     global GLOBAL_MECHANIC
     global GLOBAL_MECHANIC_OBJECT
+    global GOLBAL_DETAIL_FROM_USER
     json_data = json.loads(request.body)
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     GLOBAL_MECHANIC_OBJECT = json.loads(request.body)["mechanic_object"]
+    GOLBAL_DETAIL_FROM_USER = json.loads(request.body)["detail"]
     noti_json = json.dumps(request.session['match_mechanic'])
     return HttpResponse(noti_json, content_type='application/json')
 
@@ -220,7 +223,7 @@ def get_user_match(request):
     detail = "sdss"
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : detail}
+        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 
