@@ -111,12 +111,28 @@ def send_job(request):
 
 @csrf_exempt
 def create_job(request):
+    global GLOBAL_MECHANIC
+    json_data = json.loads(request.body)
+    print(json_data)
+    job = Job.objects.create()
+    job.topics = json_data["detail"]
+    job.date = json_data["date"]
+    job.time = json_data["time"]
+    job.locations = json_data["user_data"]["locations"]
+    job.detail = json_data["detail"]
+    job.mechanic = GLOBAL_MECHANIC
+    job.user = json_data["user_data"]["user"]
+    print(job.topics)
+    job.save()
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
-
-
     return HttpResponse(user_json, content_type='application/json')
 
+@csrf_exempt
+def get_history(request):
+    jobs = Job.objects.filter(user='pun')
+    jobs_json = serializers.serialize('json', jobs)
+    return HttpResponse(jobs_json, content_type='application/json')
 
 @csrf_exempt
 def auth_login(request):

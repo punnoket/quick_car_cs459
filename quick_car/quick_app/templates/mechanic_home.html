@@ -44,11 +44,10 @@
          x.style.display = 'none';
            }
 
-           var y = document.getElementById('containn');
-        y.style.display = 'none';
+
            }
         var map, infoWindow, infowindow
-        var pos_mechanic, mechanic_name, pos_user, detail
+        var pos_mechanic, mechanic_name, pos_user, detail, user_data
         var phone
 
           function initMap() {
@@ -102,10 +101,11 @@
                     detail = data.topic
 
                     json_data = JSON.parse(data.user_object)
+                    user_data = json_data
                     console.log(json_data);
                     document.getElementById("title").innerHTML = "Name:" +json_data.user +"<br>Client: "+json_data.user+"<br>Phone: "+json_data.phone
                     phone = json_data.phone
-                    document.getElementById("cell_phone").href="tel:"+phone; 
+                    document.getElementById("cell_phone").href="tel:"+phone;
                     pos_user = {
                       lat: parseFloat(cut[0]),
                       lng: parseFloat(cut[1])
@@ -200,11 +200,16 @@
         }
 
         function create_job() {
+          var time = new Date().toLocaleTimeString();
+          var date = new Date().toLocaleDateString();
+          console.log(time);
+          console.log(detail);
+          console.log(user_data);
           $.ajax({
               type: "POST",
               async:false,
               url: "/create_job",
-              data: JSON.stringify({ mechanic_name: "mechanic_name" ,answer : "decline"}),
+              data: JSON.stringify({ user_data: user_data ,detail: detail, date: date, time: time}),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
               success: function(data){

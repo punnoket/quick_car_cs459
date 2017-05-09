@@ -54,6 +54,7 @@ urlpatterns = [
     url(r'^select_mechanic',views.select_mechanic,name='select_mechanic'),
     url(r'^is_match_complete',views.is_match_complete,name='is_match_complete'),
     url(r'^get_user_match',views.get_user_match,name='get_user_match'),
+    url(r'^get_history',views.get_history,name='get_history'),
 
 
 

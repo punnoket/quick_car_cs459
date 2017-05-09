@@ -54,5 +54,5 @@ class Job(models.Model):
     time =  models.CharField(max_length=50)
     locations = models.CharField(max_length=50)
     detail = models.CharField(max_length=50)
-    mechanic = models.ForeignKey(Mechanic, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    mechanic = models.CharField(max_length=50)
+    user = models.CharField(max_length=50)
