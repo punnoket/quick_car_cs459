@@ -154,10 +154,6 @@
 }
 
     </style>
-
-</head>
-<body>
-
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -174,6 +170,10 @@
         document.getElementById("mySidenav").style.width = "0";
     }
 </script>
+</head>
+<body>
+
+
 <header>
             <div id="mySidenav" class="sidenav" >
                 <img id="imgprofile" style=" text-align: center; margin-left: 20%;" src="{%static 'Urgent/Client/13C-Profile/2.png'%}">
@@ -195,11 +195,9 @@
 
 
             <div class="container-fluid" style="width: 100%; background-color: #0f1933;" >
-            <!-- <div class="navbar-header" style="width: 100%;"> -->
-
                 <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
                     <div class="col-xs-4 col-md-4">
-                        <i  id="" style="font-size: 30px; ; cursor:pointer" class="fa fa-bars" aria-hidden="true"
+                        <i  id="" style="font-size: 30px;  cursor:pointer" class="fa fa-bars" aria-hidden="true"
                         onclick="openNav()"></i>
                     </div>
                     <div class="col-xs-4 col-md-4" style="text-align: center;"> 
@@ -212,15 +210,18 @@
                     </div>
                 </div>
             </div>
-</nav>
+<!-- </nav> -->
 
 </header>
-<span id="content">
-
-    {% block content %}
+<!-- <span id="content"> -->
+<div id="content">
+    
+     {% block content %}
     {% endblock %}
+</div>
+   
 
-</span>
+<!-- </span> -->
 <footer id="contact">
 
 </footer>
