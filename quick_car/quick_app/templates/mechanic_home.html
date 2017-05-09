@@ -11,7 +11,7 @@
         </style>
 
 
-
+        <meta http-equiv="refresh" content="300">
       <div id = "map" ></div>
       <div id = "contact" style=" width: 100%;">
                             <div  style="float: left; width: 50%; text-align: center;" >
@@ -51,6 +51,10 @@
         var phone
 
           function initMap() {
+
+            setInterval(function() {
+                    window.location.reload();
+                  }, 20000);
 
             var csrftoken = getCookie('csrftoken');
             function csrfSafeMethod(method) {
@@ -121,7 +125,7 @@
           //init map
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -34.397, lng: 150.644},
-            zoom: 14
+            zoom: 13
           });
           infoWindow = new google.maps.InfoWindow({
             content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
@@ -137,11 +141,7 @@
 
             var myLatLng = {lat: -25.363, lng: 131.044};
 
-            var marker = new google.maps.Marker({
-              position: pos_user,
-              map: map,
-              title: 'Hello World!'
-            });
+
 
             var content = '<div id=\"contain\" style=\"overflow: hidden; background-color: #E75E55; border-radius: 5px; width: 250px; border: 2px solid #DC4F46;\"><h3 style=\" font-size: 100%; color: white;  left: 15%; position: relative;\">Someone need your help!!</h3><h3 style=\"font-size: 100%; color: white; left: 16%;position: relative;\">'+detail+'</h3><div style=\"display: inline-block; text-align: center;\"><a id=\"containn\" onclick=\"decline()\"><img src=\"https://www.mx7.com/i/177/7DvR6J.png\" style=\"width: 30%; margin-left: 2%;margin-bottom: 2%;\"></a><a  onclick=\"accept()\"><img src=\"https://www.mx7.com/i/103/ZbFS45.png\" style=\"margin-bottom: 2%; width: 30%;\"></a></div></div>'
 
@@ -150,13 +150,22 @@
 
             });
 
+
+            var marker = new google.maps.Marker({
+              position: pos_user,
+              map: map,
+              animation: google.maps.Animation.DROP
+            });
+            marker.setAnimation(google.maps.Animation.BOUNCE)
             marker.addListener('click', function() {
               infowindow.open(map, marker);
+              marker.setAnimation(google.maps.Animation.BOUNCE);
             });
 
 
-        }
 
+        }
+        //infowindow.open(map, marker);
         function accept() {
           console.log(555);
           infowindow.close();
