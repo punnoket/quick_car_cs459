@@ -104,7 +104,7 @@
             });
 
             var infowindow = new google.maps.InfoWindow({
-              content: '<button onclick="acept()">acept</button><a href="tel:1234567">Call 123-4567</a>'
+              content: '<button onclick="accept()">acept</button><button onclick="decline()">decline</button><a href="tel:1234567">Call 123-4567</a>'
             });
 
             marker.addListener('click', function() {
@@ -115,8 +115,62 @@
 
         }
 
-        function acept() {
-          console.log(55);
+        function accept() {
+
+          $.ajax({
+              type: "POST",
+              async:false,
+              url: "/is_match_complete",
+              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : "accept"}),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+               console.log(data);
+               create_job()
+              },
+              failure: function(errMsg) {
+                  alert(errMsg);
+              }
+          });
+        }
+
+        function decline() {
+
+          $.ajax({
+              type: "POST",
+              async:false,
+              url: "/is_match_complete",
+              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : "decline"}),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+               console.log(data);
+
+
+              },
+              failure: function(errMsg) {
+                  alert(errMsg);
+              }
+          });
+        }
+
+        function create_job() {
+          $.ajax({
+              type: "POST",
+              async:false,
+              url: "/create_job",
+              data: JSON.stringify({ mechanic_name: "mechanic_name" ,answer : "decline"}),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+               console.log(data);
+
+
+              },
+              failure: function(errMsg) {
+                  alert(errMsg);
+              }
+          });
         }
 
 
