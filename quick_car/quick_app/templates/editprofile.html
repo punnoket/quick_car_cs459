@@ -3,7 +3,7 @@
 <html>
 {% load static %}
 <head>
-    <title>base</title>
+    <title>EditProfile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -11,6 +11,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <style>
+     #imgbackinheader{
+        width: 5%;
+        height: 5%;
+        margin: 0 0 0 15px;
+      }
         body {
             font-family: "Lato", sans-serif;
         }
@@ -37,7 +42,7 @@
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
-    background: #dddddd;
+             background: #dddddd;
     border-bottom-right-radius: 2em;
     border-top-right-radius: 2em;
         }
@@ -86,6 +91,11 @@
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
+   #imgbackinheader{
+        width: 15%;
+        height: 15%;
+        margin: 0 0 0 15px;
+      }
      #imginheader{
         padding-top: 6px;
         width: 70%;
@@ -118,6 +128,11 @@
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
+     #imgbackinheader{
+        width: 20%;
+        height: 20%;
+        margin: 0 0 0 15px;
+      }
     #imgprofile{
         width:50%; 
         height:30%;
@@ -135,16 +150,8 @@
 }
 
 .sidenav{
-    background-image: url({%static 'Urgent/Client/13C-Profile/1.png'%});
-    background-size: cover;
-}
-/*body {
-        background: url('{%static 'Urgent/Client/13C-Profile/1.png'%}');
-         no-repeat center center fixed;
-        background-size: cover;
-    }*/
-
-#border{
+    background-image: url({%static 'Urgent/Client/14C-Edit/1.png' %});
+}#border{
     border-style: solid;
     border-color: #000 #F5CB0D #F5CB0D #F5CB0D;
 }
@@ -153,7 +160,16 @@
     border-color: #000 #F5CB0D #000 #F5CB0D;
 }
 
+
+    body {
+        background: url('{%static 'Urgent/Client/14C-Edit/1.png' %}');
+         /*no-repeat center center fixed;*/
+        background-size: cover;
+    }
     </style>
+</head>
+<body>
+
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
@@ -162,21 +178,13 @@
         // document.getElementById("mySidenav").style.-moz-border-radius="30px";
         
     }
-    function rendershownoti(){
-       
-    }
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
 </script>
-</head>
-<body>
-
-
 <header>
-            <div id="mySidenav" class="sidenav" style="position: absolute;
-             z-index: 3;" >
+            <div id="mySidenav" class="sidenav" >
                 <img id="imgprofile" style=" text-align: center; margin-left: 20%;" src="{%static 'Urgent/Client/13C-Profile/2.png'%}">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <div id="border">
@@ -185,44 +193,38 @@
                 <div id="border">
                 <a style="color:#0f1933" href="/history">HISTORY</a>
                 </div>
-                <div id="border">
-                <a style="color:#0f1933" href="/contact">CONTACT US</a>
-                </div>
                 <div id="border2">
                 <a style="color:#0f1933" href="/login">LOG OUT</a>
                 </div>
-               
             </div>
 
 
             <div class="container-fluid" style="width: 100%; background-color: #0f1933;" >
+            <!-- <div class="navbar-header" style="width: 100%;"> -->
+
                 <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
-                    <div class="col-xs-4 col-md-4">
-                        <i  id="" style="font-size: 30px;  cursor:pointer" class="fa fa-bars" aria-hidden="true"
-                        onclick="openNav()"></i>
+                    <div class="col-xs-3 col-md-3">
+                        <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Close.png' %}"></a>
                     </div>
-                    <div class="col-xs-4 col-md-4" style="text-align: center;"> 
-                         <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}">
+                    <div class="col-xs-6 col-md-6" style="text-align: center;"> 
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">EDIT PROFILE</span>
+                         <!-- <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}"> -->
                     </div>
-                    <div class="col-xs-4 col-md-4">
-                        <a href="/show_notification">
-                             <img  id="iconbell"   style=" float: right;  cursor:pointer;" src="{%static 'Urgent/Icon/Bell.png' %}">
-                        </a>
+                    <div class="col-xs-3 col-md-3">
+                        <!-- <img  id="iconbell" style=" float: right;" src="{%static 'Urgent/Icon/Bell.png' %}"> -->
+
+                     <!--    <i   style="font-size: 30px; float: right;" class="fa fa-bell" aria-hidden="true"></i> -->
+
                     </div>
                 </div>
+            <!-- </div> -->
             </div>
-<!-- </nav> -->
+</nav>
 
 </header>
-<!-- <span id="content"> -->
-<div id="content">
-    
-     {% block content %}
-    {% endblock %}
-</div>
-   
+<span id="content">
 
-<!-- </span> -->
+</span>
 <footer id="contact">
 
 </footer>

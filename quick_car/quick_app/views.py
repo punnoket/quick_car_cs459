@@ -21,6 +21,9 @@ def map(request):
 def brows(request):
     return render(request, 'brows.html')
 
+def editprofile(request):
+    return render(request, 'editprofile.html')
+
 def formbill(request):
     return render(request, 'formbill.html')
 
