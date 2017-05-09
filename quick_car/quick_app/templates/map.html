@@ -17,6 +17,7 @@
           <script>
           var map, infoWindow;
           var locations = new Array()
+          var mechanic_object = new Array;
             var data,len
             var successHandler = function(position) {
             alert(position.coords.latitude);
@@ -55,7 +56,7 @@
                   handleLocationError(false, infoWindow, map.getCenter());
                 }
                 //marker
-                var marker, i;
+                var marker, i,
                 infoCradle = new google.maps.InfoWindow();
                 $.ajax({
                       url: '/get_garage',
@@ -66,6 +67,7 @@
                       for(var i = 0 ; i< len ; i++) {
                         //console.log(data[i].fields);
                         var cut = data[i].fields.locations.split(",")
+                        mechanic_object.push(data[i])
                         var lat,lon
                         lat = cut[0]
                         lon = cut[1]
@@ -99,7 +101,11 @@
                     }
                   });
 
+
+
             }
+
+
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
               posFix = {lat: 14.065574699999999, lng: 100.6057261};
               //infoWindow.setPosition(posFix);
@@ -143,9 +149,10 @@
             });
 
             function myFunction(i) {
-                  console.log(locations[i][0]);
-                  var mechanic = { "mechanic":locations[i][0]};
 
+                  console.log(locations[i][0]);
+                  var mechanic = { "mechanic":locations[i][0],"mechanic_object": mechanic_object[i],"detail":"รถไฟไหม้"};
+                  console.log(mechanic_object[i]);
             $.ajax({
                 type: "POST",
                 url: "/select_mechanic",
@@ -167,4 +174,3 @@
 
 
     {% endblock %}
-
