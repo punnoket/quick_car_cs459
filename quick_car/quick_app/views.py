@@ -108,7 +108,7 @@ def send_job(request):
 def create_job(request):
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
-    
+
 
     return HttpResponse(user_json, content_type='application/json')
 
@@ -192,8 +192,9 @@ def select_mechanic(request):
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     GLOBAL_MECHANIC_OBJECT = json.loads(request.body)["mechanic_object"]
     GOLBAL_DETAIL_FROM_USER = json.loads(request.body)["detail"]
-    noti_json = json.dumps(request.session['match_mechanic'])
-    return HttpResponse(noti_json, content_type='application/json')
+    user = {'user': "null", 'locations': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
 def is_match_complete(request):
