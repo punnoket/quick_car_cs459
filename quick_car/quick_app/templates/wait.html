@@ -40,7 +40,12 @@
               $http.get("{% url 'is_match_complete' %}")
               .then(function(response) {
                 console.log(response.data);
-                $window.location.href = "/match_complete"
+                if(response.data.fields.answer == "accept") {
+                  $window.location.href = "/match_complete"
+                } else if(response.data.fields.answer == "decline") {
+                  console.log("decline");
+                }
+
 
               }, function(response) {
                 console.log(response.data);

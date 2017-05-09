@@ -104,7 +104,7 @@
             });
 
             var infowindow = new google.maps.InfoWindow({
-              content: '<button onclick="acept()">acept</button><a href="tel:1234567">Call 123-4567</a>'
+              content: '<button onclick="accept("accept")">acept</button><button onclick="decline("decline")">acept</button><a href="tel:1234567">Call 123-4567</a>'
             });
 
             marker.addListener('click', function() {
@@ -115,8 +115,23 @@
 
         }
 
-        function acept() {
-          console.log(55);
+        function acept(answer) {
+
+          $.ajax({
+              type: "POST",
+              async:false,
+              url: "/get_user_match",
+              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : answer}),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){
+               console.log(data);
+
+              },
+              failure: function(errMsg) {
+                  alert(errMsg);
+              }
+          });
         }
 
 

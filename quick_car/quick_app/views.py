@@ -116,6 +116,7 @@ def auth_login(request):
             if(password == i.password):
                 request.session['username'] = i.username
                 request.session['username_location'] = i.locations
+                request.session['username_object'] = i
                 check = 1
 
     mechanic_all = Mechanic.objects.all()
@@ -124,6 +125,7 @@ def auth_login(request):
             if(password == i.password):
                 request.session['username_mechanic'] = i.owner_name
                 request.session['location_mechanic'] = i.locations
+                request.session['mechanic_object'] = i
                 check = 2
 
     if(check == 1):
@@ -176,14 +178,22 @@ def select_mechanic(request):
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     request.session['match_mechanic'] = json_data
     print(request.session['match_mechanic'])
-    noti_json = json.dumps(request.session['single_noti'])
+    noti_json = json.dumps(request.session['match_mechanic'])
     return HttpResponse(noti_json, content_type='application/json')
 
 @csrf_exempt
 def is_match_complete(request):
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
+    is_match = "accept"
+    if(request.method == 'POST'):
+        res = {'user': "null", 'type': 'null'}
+        res_json = json.dumps(user)
+        json_data = json.loads(request.body)
+        is_match = json.loads(request.body)["answer"]
+    elif(request.method == 'GET'):
+        res = {'user': "null", 'answer': is_match}
+        res_json = json.dumps(user)
+
+    return HttpResponse(res_json, content_type='application/json')
 
 @csrf_exempt
 def get_user_match(request):
