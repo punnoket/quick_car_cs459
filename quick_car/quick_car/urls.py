@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^bill', views.bill, name='bill'),
     url(r'^mechanic_home', views.mechanic_home, name='mechanic_home'),
     url(r'^login', views.login, name='login'),
+    url(r'^logout', views.logout, name='logout'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
     url(r'^send_notification',views.send_notification,name='send_notification'),

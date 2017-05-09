@@ -74,16 +74,16 @@
             .sidenav a {font-size: 18px;}
         }
         /* Portrait and Landscape */
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
      #imginheader{
@@ -100,26 +100,26 @@
 }
 /* ----------- iPad 1 and 2 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
       #imgprofile{
-        width:55%; 
+        width:55%;
         height:23%;
     }
-   
+
 }
 /*--------*/
 
 /* ----------- iPhone 6 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
     #imgprofile{
-        width:50%; 
+        width:50%;
         height:30%;
     }
 
@@ -160,10 +160,10 @@
         // document.getElementById("mySidenav").style.border-radius="30px";
         // document.getElementById("mySidenav").style.-webkit-border-radius="30px";
         // document.getElementById("mySidenav").style.-moz-border-radius="30px";
-        
+
     }
     function rendershownoti(){
-       
+
     }
 
     function closeNav() {
@@ -189,9 +189,9 @@
                 <a style="color:#0f1933" href="/contact">CONTACT US</a>
                 </div>
                 <div id="border2">
-                <a style="color:#0f1933" href="/login">LOG OUT</a>
+                <a style="color:#0f1933" href="/logout">LOG OUT</a>
                 </div>
-               
+
             </div>
 
 
@@ -201,7 +201,7 @@
                         <i  id="" style="font-size: 30px;  cursor:pointer" class="fa fa-bars" aria-hidden="true"
                         onclick="openNav()"></i>
                     </div>
-                    <div class="col-xs-4 col-md-4" style="text-align: center;"> 
+                    <div class="col-xs-4 col-md-4" style="text-align: center;">
                          <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}">
                     </div>
                     <div class="col-xs-4 col-md-4">
@@ -216,11 +216,11 @@
 </header>
 <!-- <span id="content"> -->
 <div id="content">
-    
+
      {% block content %}
     {% endblock %}
 </div>
-   
+
 
 <!-- </span> -->
 <footer id="contact">
