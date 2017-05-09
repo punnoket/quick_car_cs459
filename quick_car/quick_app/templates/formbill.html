@@ -39,7 +39,7 @@
   margin: 0;
 }
 #form{
-  margin-top: 10%;
+  margin-top: 5%;
 }
 .textbox { 
     border: 1px solid #848484; 
@@ -51,6 +51,18 @@
     width: 300px; 
     padding-left:10px; 
     padding-right:10px; 
+  }
+  .textbox2 { 
+    border: 1px solid #848484; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 350px; 
+    padding-left:10px; 
+    padding-right:10px; 
+    display: inline-block;
   }
   .button {
   border: 1px solid #000; 
@@ -143,7 +155,7 @@ margin: 0 0 0 0 ;
   and (-webkit-min-device-pixel-ratio: 2) {
 
      #form{
-      margin-top: 30%;
+      margin-top: 10%;
     }
     #imginheader{
         width: 50%;
@@ -158,6 +170,12 @@ margin: 0 0 0 0 ;
       font-size: 50%;
     }
     .textbox { 
+    outline:0; */
+    height:50%; 
+    width: 90%; 
+    margin :5px 0 0 0;
+  }
+  .textbox2 { 
     outline:0; */
     height:50%; 
     width: 90%; 
@@ -190,7 +208,7 @@ margin: 0 0 0 0 ;
   and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
     #form{
-      margin-top: 30%;
+      margin-top: 10%;
     }
     .fake-input input { 
     width: 15%; 
@@ -214,7 +232,7 @@ margin: 0 0 0 0 ;
   and (-webkit-min-device-pixel-ratio: 2) { 
  
     #form{
-      margin-top: 30%;
+      margin-top: 10%;
     }
      #imginheader{
         width: 50%;
@@ -233,6 +251,12 @@ margin: 0 0 0 0 ;
     height:80%; 
     width: 90%; 
     margin: 5px 0 0 0 ;
+  }
+  .textbox2 { 
+    outline:0; */
+    height:50%; 
+    width: 95%; 
+    margin :5px 0 0 0;
   }
  
   .button {
@@ -338,8 +362,8 @@ margin: 0 0 0 0 ;
             </div>
         </header>
         <div  class="row" >
-        <div class="col-xs-2 col-md-2 col-sm-2"></div>
-        <div class="col-xs-8 col-md-8 col-sm-8" >
+        <div class="col-xs-1 col-md-1 col-sm-1"></div>
+        <div class="col-xs-10 col-md-10 col-sm-10" >
           <div id="form" style="text-align: center;">
               <input class="textbox" type="text" placeholder="DD/MM/YY" style="margin-bottom: 3%;">  <br>
 
@@ -349,28 +373,28 @@ margin: 0 0 0 0 ;
 
               <div class="headerdetail">
               		<div class="row" style="text-align: center;">
-              			<div class="col-sm-6 col-md-6 col-xs-6">
+              			<div class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
               				<h4 style="color: white;"><b>Detail<b></h4>
               				<br>
               				<h4 style="color: white; font-size: 100%;">Service Charge</h4>
               			</div>
-              			<div class="col-sm-6 col-md-6 col-xs-6" >
+              			<div class="col-sm-5 col-md-5 col-xs-5" style="margin: 0;padding: 0;">
               				<h4 style="color: white; "><b>Price<b></h4><br>
-              				<input class="textbox"  type="text" placeholder="" />
+              				<input class="textbox2"  type="text" placeholder="" />
               			</div>
               		</div>
               </div>
               <br>
               <div class="headerdetai2">
               		<div class="row"  style="text-align: center;">
-              			<div  class="col-sm-6 col-md-6 col-xs-6">
+              			<div  class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
               				<div id="test1"> 
-              						<input class="textbox"  type="text" placeholder="" /><br><br>
+              						<input class="textbox2"  type="text" placeholder="" /><br><br>
               				</div>
               			</div>
-              			<div  class="col-sm-6 col-md-6 col-xs-6" >
+              			<div  class="col-sm-5 col-md-5 col-xs-5" style="margin: 0;padding: 0;">
               				<div id="test2">
-              					<input   class="textbox"  type="text" placeholder="" ><br><br>
+              					<input   class="textbox2"  type="text" placeholder="" ><br><br>
               				</div>
               				 
               			</div>
@@ -378,12 +402,12 @@ margin: 0 0 0 0 ;
               </div>
                <div class="headerdetai2">
               		<div class="row"  style="text-align: center;">
-              			<div  class="col-sm-6 col-md-6 col-xs-6">
+              			<div  class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
               				
               			</div>
-              			<div  class="col-sm-6 col-md-6 col-xs-6" >
+              			<div  class="col-sm-5 col-md-5 col-xs-5"  style="margin: 0;padding: 0;">
               				 <div  id="newq" onclick="addp()"> 
-	                   			<a  style="font-size: 20px;"><img  style="width: 40%; height: 30px;" src="{%static 'Urgent/Garage/12G-Billing form/4.png' %}" > </a><br><br>
+	                   			<a  style="font-size: 20px;"><!-- <img  style="width: 40%; height: 30px;" src="{%static 'Urgent/Garage/12G-Billing form/4.png' %}" > --> <button class="textbox2" style="background-color: #F5C00D; text-align: center; color: black;"><b>+<b></button></a><br><br>
 	                    
 	                   </div>  
 	              </div>
@@ -392,11 +416,11 @@ margin: 0 0 0 0 ;
 
               	<div class="headerdetai2">
               		<div class="row"  style="text-align: center;">
-              			<div  class="col-sm-6 col-md-6 col-xs-6">
-              				<h4 style="color: white; font-size: 100%;">ToTal</h4>
+              			<div  class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
+              				<h4 style="color: white; font-size: 100%; text-align: right; padding-right: 10%;">ToTal</h4>
               			</div>
-              			<div  class="col-sm-6 col-md-6 col-xs-6" >
-	                   			<input class="textbox"  type="text" placeholder="" /> 
+              			<div  class="col-sm-5 col-md-5 col-xs-5" style="margin: 0;padding: 0;" >
+	                   			<input class="textbox2"  type="text" placeholder="" /> 
 	                   </div>  
 	              </div>
               			</div>
@@ -405,7 +429,7 @@ margin: 0 0 0 0 ;
 	    
           </div>
         </div>
-        <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        <div class="col-xs-1 col-md-1 col-sm-1"></div>
         </div>
         
 
@@ -417,9 +441,9 @@ margin: 0 0 0 0 ;
 </body>
 <script type="text/javascript">
 	  function addp() {
-       document.getElementById("test1").innerHTML = document.getElementById("test1").innerHTML + ('<div id="test1"><input class="textbox"  type="text" placeholder="" /><br><br> </div');
+       document.getElementById("test1").innerHTML = document.getElementById("test1").innerHTML + ('<div id="test1"><input class="textbox2"  type="text" placeholder="" /><br><br> </div');
 
-       document.getElementById("test2").innerHTML = document.getElementById("test2").innerHTML + ('<div id="test2"><input class="textbox"  type="text" placeholder="" /><br><br> </div>');
+       document.getElementById("test2").innerHTML = document.getElementById("test2").innerHTML + ('<div id="test2"><input class="textbox2"  type="text" placeholder="" /><br><br> </div>');
                 }
 </script>
 </html>

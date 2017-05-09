@@ -23,6 +23,7 @@ from quick_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^map', views.map, name='map'),
+    url(r'^brows', views.brows, name='brows'),
     url(r'^formbill', views.formbill, name='formbill'),
     url(r'^contact', views.contact, name='contact'),
     url(r'^bill', views.bill, name='bill'),

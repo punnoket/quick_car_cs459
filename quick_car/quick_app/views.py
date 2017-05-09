@@ -18,6 +18,9 @@ class NotificationViewSet(viewsets.ModelViewSet):
 
 def map(request):
     return render(request, 'map.html')
+def brows(request):
+    return render(request, 'brows.html')
+
 def formbill(request):
     return render(request, 'formbill.html')
 
@@ -176,7 +179,7 @@ def select_mechanic(request):
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     request.session['match_mechanic'] = json_data
     print(request.session['match_mechanic'])
-    noti_json = json.dumps(request.session['single_noti'])
+    noti_json = json.dumps( request.session['match_mechanic'])
     return HttpResponse(noti_json, content_type='application/json')
 
 @csrf_exempt
