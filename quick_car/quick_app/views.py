@@ -26,6 +26,10 @@ class NotificationViewSet(viewsets.ModelViewSet):
 
 def map(request):
     return render(request, 'map.html')
+
+def minihistory(request):
+    return render(request,'minihistory.html')
+    
 def brows(request):
     return render(request, 'brows.html')
 
