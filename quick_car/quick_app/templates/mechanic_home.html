@@ -26,7 +26,7 @@
                   </div>
                   <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
                    <img style="text-align: left; width: 5%; margin:2% 5% 2% 5%;" src="{%static 'Urgent/Garage/2G-Home/3.png'%}">
-                        
+
                   </div>
              </div>
                <div class="col-xs-1 col-md-1 col-sm-1"> </div>
@@ -45,8 +45,8 @@
 
 
                     </div>
-                         
-     
+
+
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -68,7 +68,7 @@
            }
            }
         var map, infoWindow, infowindow
-        var pos_mechanic, mechanic_name, pos_user, detail, user_data
+        var pos_mechanic, mechanic_name, pos_user, detail, user_data, place
         var phone
 
           function initMap() {
@@ -107,8 +107,17 @@
 
                   }
               })
-
-
+              console.log(pos_mechanic.lat);
+              $.ajax({
+                  type: "GET",
+                  url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+pos_mechanic.lat+","+pos_mechanic.lng+"&sensor=true",
+                  success: function(data){
+                      place = data.results[0].formatted_address
+                      console.log(place);
+                    },
+                  failure: function(errMsg) {
+                  }
+                });
 
               $.ajax({
                   type: "POST",
@@ -298,7 +307,6 @@
         var markers = [{ "position": "128.3657142857143", "markerPosition": "7" },
                { "position": "235.1944023323615", "markerPosition": "19" },
                { "position": "42.5978231292517", "markerPosition": "-3" }];
-
 
 
         </script>

@@ -56,3 +56,5 @@ class Job(models.Model):
     detail = models.CharField(max_length=50)
     mechanic = models.CharField(max_length=50)
     user = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    place = models.CharField(max_length=50)

@@ -20,6 +20,7 @@ GLOBAL_JOB = None
 GOLBAL_DETAIL_FROM_USER = None
 is_match = None
 single_history = None
+place_user = None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -135,6 +136,8 @@ def create_job(request):
     job.detail = json_data["detail"]
     job.mechanic = GLOBAL_MECHANIC
     job.user = json_data["user_data"]["user"]
+    job.place = place_user
+    job.price ="500"
     print(job.topics)
     job.save()
     user = {'user': "null", 'type': 'null'}
@@ -256,7 +259,10 @@ def select_mechanic(request):
     global GLOBAL_MECHANIC
     global GLOBAL_MECHANIC_OBJECT
     global GOLBAL_DETAIL_FROM_USER
+    global place_user
     json_data = json.loads(request.body)
+    place_user = json.loads(request.body)["place"]
+    print(place_user)
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     GLOBAL_MECHANIC_OBJECT = json.loads(request.body)["mechanic_object"]
     GOLBAL_DETAIL_FROM_USER = json.loads(request.body)["detail"]
