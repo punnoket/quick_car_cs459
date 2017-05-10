@@ -14,6 +14,8 @@ GLOBAL_MECHANIC = None
 GLOBAL_MECHANIC_OBJECT = None
 GLOBAL_MECHANIC_LOGIN = None
 GLOBAL_USER_LOGIN = None
+GLOBAL_USER_JSON = None
+GLOBAL_MECHANIC_JSON = None
 GLOBAL_JOB = None
 GOLBAL_DETAIL_FROM_USER = None
 is_match = None
@@ -138,6 +140,8 @@ def get_history(request):
 def auth_login(request):
     global GLOBAL_USER_LOGIN
     global GLOBAL_MECHANIC_LOGIN
+    global GLOBAL_USER_JSON
+    global GLOBAL_MECHANIC_JSON
     json_data = json.loads(request.body)
     username = json_data['username']
     password = json_data['password']
@@ -151,8 +155,9 @@ def auth_login(request):
                 request.session['username_location'] = i.locations
                 user = {'user': i.username, 'email': i.email, 'phone': i.phone, 'locations': i.locations}
                 GLOBAL_USER_LOGIN = json.dumps(user)
-                print(GLOBAL_USER_LOGIN)
+                GLOBAL_USER_JSON = json.loads(GLOBAL_USER_LOGIN)
                 check = 1
+
 
     mechanic_all = Mechanic.objects.all()
     for i in mechanic_all:
@@ -161,15 +166,19 @@ def auth_login(request):
                 request.session['username_mechanic'] = i.owner_name
                 request.session['location_mechanic'] = i.locations
                 #request.session['mechanic_object'] = i
-                GLOBAL_MECHANIC_LOGIN = i
+
+                username_mechanic = {'username': i.owner_name, 'citizen_id': i.citizen_id, 'commercial_registration_no': i.commercial_registration_no, 'locations': i.locations, 'account': i.account}
+                GLOBAL_MECHANIC_LOGIN = json.dumps(username_mechanic)
+                GLOBAL_MECHANIC_JSON = json.loads(GLOBAL_MECHANIC_LOGIN)
+
                 check = 2
 
     if(check == 1):
-        user = {'user': request.session['username'], 'type': 'user'}
+        user = {'user': GLOBAL_USER_JSON["user"], 'type': 'user'}
         user_json = json.dumps(user)
         print(user_json)
     elif(check == 2):
-        user = {'user': request.session['username_mechanic'], 'type': 'mechanic'}
+        user = {'user': GLOBAL_MECHANIC_JSON["username"], 'type': 'mechanic'}
         user_json = json.dumps(user)
         print(user_json)
     else:
@@ -242,6 +251,8 @@ def is_match_complete(request):
 @csrf_exempt
 def get_user_match(request):
     global GLOBAL_MECHANIC
+    global GLOBAL_USER_LOGIN
+    global GLOBAL_USER_JSON
 
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
@@ -251,7 +262,7 @@ def get_user_match(request):
     print('**********************')
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN}
+        user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 
