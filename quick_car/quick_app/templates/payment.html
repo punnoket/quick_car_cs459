@@ -11,10 +11,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-  <!-- <meta name="viewport" content="initial-scale=1.0, width=device-width" /> -->
 
   <style>
    #iconbell{
@@ -62,10 +60,6 @@
   .selectbox{ 
     border: 1px solid #848484; 
     background-color: white;
-    /*-webkit-border-radius: 30px; */
-    /*-moz-border-radius: 30px; */
-    /*border-radius: 30px; */
-    /*outline:0; */
     height:30px; 
     width: 300px; 
     padding-left:10px; 
@@ -192,6 +186,9 @@ h3{
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
+    #imgbuton{
+      width: 60%;
+    }
   #iconbell{
         width: 40%;
         height: 30%
@@ -236,9 +233,52 @@ body {
          no-repeat center center fixed;
         background-size: cover;
     }
+    #contactt {
+    position:fixed;
+ position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+    z-index: 3;
+}
 </style>
+
+
+        
 </head>
 <body>
+      
+                    
+           <div id = "contactt" style=" width: 80%; ">
+           <img src="{%static 'Urgent/Client/12C-Payment Success/7.png' %}" style="position: relative;  width: 6%; z-index: -1; left: 2%;">
+
+            <div>
+              <div  style="float: left; width: 39%; text-align: center; " >
+                          <img src="{%static 'Urgent/Client/12C-Payment Success/8.png' %}" style="width: 60%; margin: 10% 5% 5% 5%; padding: 0;">
+                     </div>
+                    <div  id="div" style="width: 60%;display: inline-block; text-align: center; padding: 4%;"  >
+                       <h3 style="font-size: 100%; color: black; "><b>Your payment successfully!</b></h3>
+                       <a href=""><img id="imgbuton" src="{%static 'Urgent/Client/12C-Payment Success/11.png' %}"></a>
+                    </div>
+            </div>
+                   
+                    </div>
+<script type="text/javascript"> 
+      var x = document.getElementById('contactt');
+        // x.style.display = 'none';
+  function show_success()
+        {
+        // var y = document.getElementById('show');
+       if (x.style.display === 'none') {
+          x.style.display = 'block';
+       } else {
+         x.style.display = 'none';
+           }
+           }
+      
+</script>
     <div id="container" >
         <header id="header">
             <div class="row">
@@ -324,17 +364,10 @@ body {
                         </div>
                       </div>
 
-                <button href="#" id="show" class="button">Submit</button>
-                <script>
-                  $(document).ready(function(){
-                     $("#hide").click(function(){
-                       $("p").hide();
-                      });
-                    $("#show").click(function(){
-                        $("p").show();
-                      });
-                  });
-                </script>
+                <button onclick="show_success()
+;" id="show" class="button">Submit</button>
+        
+              
         </div>
         </div>
         <div class="col-xs-2 col-md-2 col-sm-2"></div>

@@ -29,9 +29,7 @@
         width: 3%;
         height: 3%;
       }
-      h1{
-        font-size: 100%;
-      }
+      
       /* ----------- iPhone 5 and 5S ----------- */
 
 /* Portrait and Landscape */
@@ -43,9 +41,7 @@
         width: 10%;
         height: 10%;
       }
-      h1{
-        font-size: 100%;
-      }
+     
 }
 
 
@@ -60,9 +56,7 @@
         width: 10%;
         height: 10%;
       }
-      h1{
-        font-size: 100%;
-      }
+     
 }
     </style>
     <script type="text/javascript">
@@ -79,7 +73,7 @@
    <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
       <div id="divbill" ng-repeat="i in billist"  ng-click="listener($index)">
-        <h1> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.time]] [[i.fields.detail]] <h1>
+        <h1 style="font-size: 100%; padding: 0;margin:2%;"> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.time]] [[i.fields.detail]] </h1>
       </div>
 
    </div>
