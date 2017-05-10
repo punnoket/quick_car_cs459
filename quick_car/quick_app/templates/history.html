@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
@@ -79,16 +82,16 @@
             .sidenav a {font-size: 18px;}
         }
         /* Portrait and Landscape */
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
    #imgbackinheader{
@@ -110,31 +113,31 @@
 }
 /* ----------- iPad 1 and 2 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
       #imgprofile{
-        width:55%; 
+        width:55%;
         height:23%;
     }
-   
+
 }
 /*--------*/
 
 /* ----------- iPhone 6 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
      #imgbackinheader{
         width: 15%;
         height: 15%;
         margin: 0 0 0 15px;
       }
     #imgprofile{
-        width:50%; 
+        width:50%;
         height:30%;
     }
 
@@ -165,11 +168,19 @@ body{
     </style>
 </head>
 <body>
+<body>
 
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
+<<<<<<< HEAD
         
+=======
+        // document.getElementById("mySidenav").style.border-radius="30px";
+        // document.getElementById("mySidenav").style.-webkit-border-radius="30px";
+        // document.getElementById("mySidenav").style.-moz-border-radius="30px";
+
+>>>>>>> 5c9092a40b93dc3dcaa221510c9f988ee2d16f70
     }
 
     function closeNav() {
@@ -198,7 +209,7 @@ body{
                     <div class="col-xs-3 col-md-3">
                         <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
                     </div>
-                    <div class="col-xs-6 col-md-6" style="text-align: center;"> 
+                    <div class="col-xs-6 col-md-6" style="text-align: center;">
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">HISTORY</span>
                         
                     </div>
@@ -217,6 +228,57 @@ body{
 
 </footer>
 
+   <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
+
+      <div id="historylist" ng-repeat="i in historylist"  ng-click="listener($index)">
+        <h1 style="font-size: 100%; padding: 0;margin:2%;">[[i.fields.date]] [[i.fields.time]] 500 Bath</h1>
+      </div>
+
+   </div>
 
 </body>
+<script>
+
+  var app = angular.module('myApp', []);
+
+  app.config(function($httpProvider) {
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+  });
+  app.config(function($interpolateProvider) {
+      $interpolateProvider.startSymbol('[[');
+      $interpolateProvider.endSymbol(']]');
+  });
+  app.controller('myCtrl', function($scope, $http ,$location, $window) {
+    $scope.myFunc = function() {
+
+          $http.get("{% url 'get_history' %}")
+          .then(function(response) {
+
+            console.log(response.data);
+            $scope.historylist = response.data;
+             $scope.listener = function(i) {
+
+               var history = response.data[i];
+               var parameter = JSON.stringify({history:history});
+               console.log(parameter);
+               $http.post("{% url 'click' %}", parameter)
+               .then(function(response) {
+                   $window.location.href = "/single_history"
+
+                   console.log(55555555555555555555);
+               }, function(response) {
+
+               });
+
+             }
+
+          }, function(response) {
+
+          });
+
+      };
+
+  });
+</script>
 </html>

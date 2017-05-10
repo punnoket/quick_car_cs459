@@ -19,6 +19,7 @@ GLOBAL_MECHANIC_JSON = None
 GLOBAL_JOB = None
 GOLBAL_DETAIL_FROM_USER = None
 is_match = None
+single_history = None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -70,6 +71,9 @@ def signup(request):
 
 def history(request):
 	return render(request,'history.html')
+
+def single_history(request):
+	return render(request,'single_history.html')
 
 def signgarage(request):
 	return render(request,'signgarage.html')
@@ -215,10 +219,34 @@ def get_noti_from_click(request):
     return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
+def get_history_from_click(request):
+    print(request)
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def click(request):
+    global single_history
+    print(request)
+    json_data = json.loads(request.body)
+    single_history = json_data["history"]
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
 def res_noti_to_bill(request):
     print(type(request.session['single_noti']))
     noti_json = json.dumps(request.session['single_noti'])
     return HttpResponse(noti_json, content_type='application/json')
+
+@csrf_exempt
+def res_history_to_single(request):
+    global single_history
+    single_history_json = json.dumps(single_history)
+    print(single_history_json)
+    return HttpResponse(single_history_json, content_type='application/json')
 
 @csrf_exempt
 def select_mechanic(request):

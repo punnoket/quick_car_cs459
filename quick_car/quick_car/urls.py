@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^logout', views.logout, name='logout'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
+    url(r'^single_history',views.single_history,name='single_history'),
     url(r'^send_notification',views.send_notification,name='send_notification'),
     url(r'^get_notification',views.get_notification,name='get_notification'),
     url(r'^show_notification',views.show_notification,name='show_notification'),
@@ -56,6 +57,9 @@ urlpatterns = [
     url(r'^is_match_complete',views.is_match_complete,name='is_match_complete'),
     url(r'^get_user_match',views.get_user_match,name='get_user_match'),
     url(r'^get_history',views.get_history,name='get_history'),
+    url(r'^get_history_from_click',views.get_history_from_click,name='get_history_from_click'),
+    url(r'^res_history_to_single',views.res_history_to_single,name='res_history_to_single'),
+    url(r'^click',views.click,name='click'),
 
 
 
