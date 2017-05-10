@@ -54,6 +54,11 @@ def match_fail(request):
 def login(request):
 	return render(request,'login.html')
 
+def logout(request):
+    for key in list(request.session.keys()):
+        del request.session[key]
+	return render(request,'login.html')
+
 def signup(request):
 	return render(request,'signup.html')
 
@@ -106,16 +111,33 @@ def send_job(request):
 
 @csrf_exempt
 def create_job(request):
+    global GLOBAL_MECHANIC
+    json_data = json.loads(request.body)
+    print(json_data)
+    job = Job.objects.create()
+    job.topics = json_data["detail"]
+    job.date = json_data["date"]
+    job.time = json_data["time"]
+    job.locations = json_data["user_data"]["locations"]
+    job.detail = json_data["detail"]
+    job.mechanic = GLOBAL_MECHANIC
+    job.user = json_data["user_data"]["user"]
+    print(job.topics)
+    job.save()
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
-    
-
     return HttpResponse(user_json, content_type='application/json')
 
+@csrf_exempt
+def get_history(request):
+    jobs = Job.objects.filter(user='pun')
+    jobs_json = serializers.serialize('json', jobs)
+    return HttpResponse(jobs_json, content_type='application/json')
 
 @csrf_exempt
 def auth_login(request):
-
+    global GLOBAL_USER_LOGIN
+    global GLOBAL_MECHANIC_LOGIN
     json_data = json.loads(request.body)
     username = json_data['username']
     password = json_data['password']
@@ -127,7 +149,9 @@ def auth_login(request):
             if(password == i.password):
                 request.session['username'] = i.username
                 request.session['username_location'] = i.locations
-                GLOBAL_USER_LOGIN = i
+                user = {'user': i.username, 'email': i.email, 'phone': i.phone, 'locations': i.locations}
+                GLOBAL_USER_LOGIN = json.dumps(user)
+                print(GLOBAL_USER_LOGIN)
                 check = 1
 
     mechanic_all = Mechanic.objects.all()
@@ -192,8 +216,9 @@ def select_mechanic(request):
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     GLOBAL_MECHANIC_OBJECT = json.loads(request.body)["mechanic_object"]
     GOLBAL_DETAIL_FROM_USER = json.loads(request.body)["detail"]
-    noti_json = json.dumps(request.session['match_mechanic'])
-    return HttpResponse(noti_json, content_type='application/json')
+    user = {'user': "null", 'locations': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
 def is_match_complete(request):
@@ -204,26 +229,29 @@ def is_match_complete(request):
         json_data = json.loads(request.body)
         is_match = json.loads(request.body)["answer"]
         print(is_match)
-        is_match = ""
+
     elif(request.method == 'GET'):
-        res = {'user': "null", 'answer': is_match}
+        math = is_match
+        res = {'user': "null", 'answer': math}
         res_json = json.dumps(res)
         print(is_match)
-        is_match = ""
-
+        is_match=""
 
     return HttpResponse(res_json, content_type='application/json')
 
 @csrf_exempt
 def get_user_match(request):
     global GLOBAL_MECHANIC
+
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
     # print(request.session['username_location'])
     detail = "sdss"
+    print(GLOBAL_USER_LOGIN)
+    print('**********************')
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER}
+        user = {'user': request.session['username'], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 

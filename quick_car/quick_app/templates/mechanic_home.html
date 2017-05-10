@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 
         <style>
            #map {
@@ -9,18 +10,51 @@
            }
         </style>
 
+
+        <meta http-equiv="refresh" content="300">
       <div id = "map" ></div>
+      <div id = "contact" style=" width: 100%;">
+                            <div  style="float: left; width: 50%; text-align: center;" >
+                                <img src="{%static 'Urgent/Garage/5G-Client info/7.png' %}" style="width: 30%; margin: 2% 0 0 0; padding: 0;">
+                            </div>
+                            <div  style="width: 40%; display: inline-block;"  >
+                                 <h3 id="title" style="font-size: 100%;">Name: [[]] <br>Client: [[]]<br>Phone: [[]]<br></h3>
+                                 <a href="#" id="cell_phone"><img style="width: 40%;" src="{%static 'Urgent/Garage/5G-Client info/8.png'%}"></a>
+                            </div>
+
+
+                    </div>
 
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script>
+      var x = document.getElementById('contact');
+        x.style.display = 'none';
 
-        var map, infoWindow
-        var pos_mechanic, mechanic_name, pos_user, detail
 
+        function show_profile()
+        {
+        var element = document.getElementById('map');
+        element.style.height = '350px';
+        var x = document.getElementById('contact');
+       if (x.style.display === 'none') {
+          x.style.display = 'block';
+       } else {
+         x.style.display = 'none';
+           }
+
+
+           }
+        var map, infoWindow, infowindow
+        var pos_mechanic, mechanic_name, pos_user, detail, user_data
+        var phone
 
           function initMap() {
+
+            setInterval(function() {
+                    window.location.reload();
+                  }, 20000);
 
             var csrftoken = getCookie('csrftoken');
             function csrfSafeMethod(method) {
@@ -53,6 +87,8 @@
                   }
               })
 
+
+
               $.ajax({
                   type: "POST",
                   async:false,
@@ -67,6 +103,13 @@
                     location_user = data.locations
                     var cut = location_user.split(",")
                     detail = data.topic
+
+                    json_data = JSON.parse(data.user_object)
+                    user_data = json_data
+                    console.log(json_data);
+                    document.getElementById("title").innerHTML = "Name:" +json_data.user +"<br>Client: "+json_data.user+"<br>Phone: "+json_data.phone
+                    phone = json_data.phone
+                    document.getElementById("cell_phone").href="tel:"+phone;
                     pos_user = {
                       lat: parseFloat(cut[0]),
                       lng: parseFloat(cut[1])
@@ -82,7 +125,7 @@
           //init map
           map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: -34.397, lng: 150.644},
-            zoom: 14
+            zoom: 13
           });
           infoWindow = new google.maps.InfoWindow({
             content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
@@ -98,26 +141,34 @@
 
             var myLatLng = {lat: -25.363, lng: 131.044};
 
+
+
+            var content = '<div id=\"contain\" style=\"overflow: hidden; background-color: #E75E55; border-radius: 5px; width: 250px; border: 2px solid #DC4F46;\"><h3 style=\" font-size: 100%; color: white;  left: 15%; position: relative;\">Someone need your help!!</h3><h3 style=\"font-size: 100%; color: white; left: 16%;position: relative;\">'+detail+'</h3><div style=\"display: inline-block; text-align: center;\"><a id=\"containn\" onclick=\"decline()\"><img src=\"https://www.mx7.com/i/177/7DvR6J.png\" style=\"width: 30%; margin-left: 2%;margin-bottom: 2%;\"></a><a  onclick=\"accept()\"><img src=\"https://www.mx7.com/i/103/ZbFS45.png\" style=\"margin-bottom: 2%; width: 30%;\"></a></div></div>'
+
+            infowindow = new google.maps.InfoWindow({
+              content: content,
+
+            });
+
+
             var marker = new google.maps.Marker({
               position: pos_user,
               map: map,
-              title: 'Hello World!'
+              animation: google.maps.Animation.DROP
             });
-
-            var infowindow = new google.maps.InfoWindow({
-              content: '<h3>'+detail+'</h3>'+'<button onclick="accept()">acept</button><button onclick="decline()">decline</button><a href="tel:1234567">Call 123-4567</a>'
-            });
-
+            marker.setAnimation(google.maps.Animation.BOUNCE)
             marker.addListener('click', function() {
               infowindow.open(map, marker);
+              marker.setAnimation(google.maps.Animation.BOUNCE);
             });
 
 
 
         }
-
+        //infowindow.open(map, marker);
         function accept() {
-
+          console.log(555);
+          infowindow.close();
           $.ajax({
               type: "POST",
               async:false,
@@ -127,6 +178,7 @@
               dataType: "json",
               success: function(data){
                console.log(data);
+               show_profile()
                create_job()
               },
               failure: function(errMsg) {
@@ -136,6 +188,7 @@
         }
 
         function decline() {
+          infowindow.close();
 
           $.ajax({
               type: "POST",
@@ -156,11 +209,16 @@
         }
 
         function create_job() {
+          var time = new Date().toLocaleTimeString();
+          var date = new Date().toLocaleDateString();
+          console.log(time);
+          console.log(detail);
+          console.log(user_data);
           $.ajax({
               type: "POST",
               async:false,
               url: "/create_job",
-              data: JSON.stringify({ mechanic_name: "mechanic_name" ,answer : "decline"}),
+              data: JSON.stringify({ user_data: user_data ,detail: detail, date: date, time: time}),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
               success: function(data){

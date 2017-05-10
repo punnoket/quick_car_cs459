@@ -14,18 +14,22 @@
      <style type="text/css">
        body{
     background-image: url('{%static 'Urgent/Client/5C-Waiting/wait.gif' %}');
-    /*background-size: cover;*/ 
-    
+    /*background-size: cover;*/
+
     background-size: cover;
 }
      </style>
-
+       <meta http-equiv="refresh" content="300">
 
       <body >
         <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">d</div>
       </body>
 
       <script>
+      setInterval(function() {
+              window.location.reload();
+            }, 5000);
+
       var app = angular.module('myApp', []);
 
       app.config(function($httpProvider) {

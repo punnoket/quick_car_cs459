@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^bill', views.bill, name='bill'),
     url(r'^mechanic_home', views.mechanic_home, name='mechanic_home'),
     url(r'^login', views.login, name='login'),
+    url(r'^logout', views.logout, name='logout'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
     url(r'^send_notification',views.send_notification,name='send_notification'),
@@ -53,6 +54,7 @@ urlpatterns = [
     url(r'^select_mechanic',views.select_mechanic,name='select_mechanic'),
     url(r'^is_match_complete',views.is_match_complete,name='is_match_complete'),
     url(r'^get_user_match',views.get_user_match,name='get_user_match'),
+    url(r'^get_history',views.get_history,name='get_history'),
 
 
 
