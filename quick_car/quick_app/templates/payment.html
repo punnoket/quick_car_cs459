@@ -251,9 +251,8 @@ body {
 <body>
       
                     
-           <div id = "contactt" style=" width: 80%; ">
-           <img src="{%static 'Urgent/Client/12C-Payment Success/7.png' %}" style="position: relative;  width: 6%; z-index: -1; left: 2%;">
-
+           <div id = "contactt" style=" width: 80%; border-radius: 10px;">
+           <a onclick="show_success();" style="cursor: pointer;"><img  onclick="show_success();" src="{%static 'Urgent/Client/12C-Payment Success/7.png' %}" style="position: relative;  width: 6%; z-index: -1; left: 2%;"></a>
             <div>
               <div  style="float: left; width: 39%; text-align: center; " >
                           <img src="{%static 'Urgent/Client/12C-Payment Success/8.png' %}" style="width: 60%; margin: 10% 5% 5% 5%; padding: 0;">
@@ -267,16 +266,17 @@ body {
                     </div>
 <script type="text/javascript"> 
       var x = document.getElementById('contactt');
-        // x.style.display = 'none';
+        x.style.display = 'none';
+         
   function show_success()
         {
-        // var y = document.getElementById('show');
        if (x.style.display === 'none') {
           x.style.display = 'block';
+         
        } else {
          x.style.display = 'none';
            }
-           }
+      }
       
 </script>
     <div id="container" >
@@ -364,9 +364,8 @@ body {
                         </div>
                       </div>
 
-                <button onclick="show_success()
-;" id="show" class="button">Submit</button>
-        
+                <button onclick="show_success()" id="show" class="button">Submit</button>
+      
               
         </div>
         </div>

@@ -3,7 +3,7 @@
 <html>
 {% load static %}
 <head>
-    <title>history</title>
+    <title>History</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <style>
      #imgbackinheader{
-        width: 5%;
-        height: 5%;
+        width: 8%;
+        height: 8%;
         margin: 0 0 0 15px;
       }
         body {
@@ -132,9 +132,9 @@
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
      #imgbackinheader{
-        width: 15%;
-        height: 15%;
-        margin: 0 0 0 15px;
+        width: 20%;
+        height: 20%;
+        margin: 2px 0 0 7px;
       }
     #imgprofile{
         width:50%;
@@ -162,9 +162,24 @@
     border-style: solid;
     border-color: #000 #F5CB0D #000 #F5CB0D;
 }
-body{
-  b
-}
+ #historylist{
+      width: 100%;
+      /*height: 50px;*/
+        border-style: solid;
+        border-color: #0c1c3e ;
+        background-color: white;
+        padding: 5% 0 8% 0;
+    }
+ body {
+        background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
+        background-size: cover;
+    }header{
+        width: 100%;
+       background-color: #0f1933;
+       /*padding: 15px 0 15px 0;*/
+       border-style: solid;
+       border-color: #0f1933 #0f1933 #fff #0f1933;
+      }
     </style>
 </head>
 <body>
@@ -173,9 +188,6 @@ body{
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
-        // document.getElementById("mySidenav").style.border-radius="30px";
-        // document.getElementById("mySidenav").style.-webkit-border-radius="30px";
-        // document.getElementById("mySidenav").style.-moz-border-radius="30px";
 
     }
 
@@ -200,24 +212,19 @@ body{
 
 
             <div class="container-fluid" style="width: 100%; background-color: #0f1933;" >
-            <!-- <div class="navbar-header" style="width: 100%;"> -->
 
                 <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
                     <div class="col-xs-3 col-md-3">
-                        <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                        <a href="/map"><img  id="imgbackinheader"  src="{%static 'Urgent/Icon/Close.png' %}"></a>
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;">
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">HISTORY</span>
-                         <!-- <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}"> -->
+                        
                     </div>
                     <div class="col-xs-3 col-md-3">
-                        <!-- <img  id="iconbell" style=" float: right;" src="{%static 'Urgent/Icon/Bell.png' %}"> -->
-
-                     <!--    <i   style="font-size: 30px; float: right;" class="fa fa-bell" aria-hidden="true"></i> -->
 
                     </div>
                 </div>
-            <!-- </div> -->
             </div>
 </nav>
 
@@ -231,11 +238,24 @@ body{
 
    <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
-      <div id="historylist" ng-repeat="i in historylist"  ng-click="listener($index)">
-        <h1 style="font-size: 100%; padding: 0;margin:2%;">[[i.fields.date]] [[i.fields.time]] 500 Bath</h1>
-      </div>
+      <div id="historylist" ng-repeat="i in historylist"  ng-click="listener($index)" style="">
+           <div class="col-xs-3 col-md-3 col-sm-3">
+             <h1 style="padding: 0;margin:2%;font-size: 100%; text-align: center;">[[i.fields.date]]</h1>
+           </div>
+           <div class="col-xs-3 col-md-3 col-sm-3">
+             <h1 style="padding: 0;margin:2%; font-size: 100%; text-align: center;">[[i.fields.time]]</h1>
+           </div>
+           <div class="col-xs-3 col-md-3 col-sm-3">
+             <h1 style="padding: 0;margin:2%; font-size: 100%; text-align: center;">500  <img  style="width: 20%;" src="{%static 'Urgent/Garage/11G-History/2.png'%}"></h1>
+           </div>
 
+
+
+        
+      </div>
+      
    </div>
+
 
 </body>
 <script>

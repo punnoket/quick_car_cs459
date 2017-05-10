@@ -69,18 +69,15 @@
 
 <body >
 
-<header>
-   <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
+
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
       <div id="divbill" ng-repeat="i in billist"  ng-click="listener($index)">
         <h1 style="font-size: 100%; padding: 0;margin:2%;"> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.time]] [[i.fields.detail]] </h1>
       </div>
 
    </div>
-</header>
-
-
-
 
   <script>
 
