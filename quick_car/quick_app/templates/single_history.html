@@ -2,7 +2,7 @@
 <html>
 {% load static %}
 <head>
-  <title>PAY MENT</title>
+  <title>Single History</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -18,12 +18,6 @@
   <!-- <meta name="viewport" content="initial-scale=1.0, width=device-width" /> -->
 
   <style>
-
-     #map {
-      height: 400px;
-      width: 100%;
-     }
-
    #iconbell{
         width: 10%;
         height: 10%
@@ -44,7 +38,7 @@
         height: 5%;
         margin: 0 0 0 15px;
       }
-
+ 
       html, body {
   height: 100%;
   width: 100%;
@@ -56,24 +50,24 @@
   margin-top: 10%;
 }
 
-
+  
 
   .button {
-  border: 1px solid #000;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    outline:0;
-    height:30px;
-    width: 200px;
-    margin : 30px 0 0 0 ;
+  border: 1px solid #000; 
+    -webkit-border-radius: 30px; 
+    -moz-border-radius: 30px; 
+    border-radius: 30px; 
+    outline:0; 
+    height:30px; 
+    width: 200px; 
+    margin : 30px 0 0 0 ; 
     padding: 3px 0 0 0;
     background-color: #000;
     color: #fff;
-    display:inline-block;
+    display:inline-block; 
 
   }
-
+     
 
 h3{
   color: #65C6BB;
@@ -100,21 +94,21 @@ h3{
 
 #phone{
   width: 150px;
-
+   
 }
 
 
  /* Portrait and Landscape */
-  @media only screen
-  and (min-device-width: 320px)
+  @media only screen 
+  and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 320px)
+@media only screen 
+  and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
@@ -133,18 +127,18 @@ h3{
     h3{
       font-size: 50%;
     }
-    .textbox,.selectbox {
+    .textbox,.selectbox { 
     outline:0; */
-    height:50%;
-    width: 90%;
+    height:50%; 
+    width: 90%; 
     margin :5px 0 0 0;
   }
 
   .button {
-    outline:0;
-    height:50%;
-    width: 70%;
-    margin-top: :5%;
+    outline:0; 
+    height:50%; 
+    width: 70%; 
+    margin-top: :5%; 
     padding: 7px 0 7px 0;
   }
  #iconbell{
@@ -158,14 +152,14 @@ h3{
 }
 /* ----------- iPad 1 and 2 ----------- */
 /* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
   and (-webkit-min-device-pixel-ratio: 1) {
     #form{
       margin-top: 30%;
     }
-
+ 
    #phone{
       width: 43%;
   }
@@ -174,10 +168,10 @@ h3{
 
 /* ----------- iPhone 6 ----------- */
 /* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) {
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) { 
   #iconbell{
         width: 40%;
         height: 30%
@@ -197,17 +191,17 @@ h3{
   h3{
       font-size: 70%;
     }
-    .textbox ,.selectbox{
+    .textbox ,.selectbox{ 
     outline:0; */
-    height:80%;
-    width: 90%;
+    height:80%; 
+    width: 90%; 
     margin: 5px 0 0 0 ;
   }
-
+ 
   .button {
-    outline:0;
-    height: 80%;
-    width: 70%;
+    outline:0; 
+    height: 80%; 
+    width: 70%; 
     padding: 7px 0 7px 0;
 
   }
@@ -223,22 +217,64 @@ body {
         background-size: cover;
     }
     #form{
-    	border:solid 2px red;
-    	background-color: white;
-    	/*width: 400px;*/
-    	/*height: 500px;*/
+      border:solid 2px red;
+      background-color: white;
+      /*width: 400px;*/
+      /*height: 500px;*/
     }
 </style>
 </head>
 <body>
+<div  ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
+    <div id="container" >
+        <header id="header">
+            <div class="row">
+                <div class="col-xs-3 col-md-3" style="text-align: left;">
+                       <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                    </div>
+                    <div class="col-xs-6 col-md-6" style="text-align: center;"> 
+                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">[[onebill.fields.time]]</span>
+                    </div>
+                    <div class="col-xs-3 col-md-3" style="padding-right: 30px">
+                        
+                    </div>
+            </div>
+        </header>
 
 
-      <div id="map"></div>
+    </div>
+    <div id="content" style="margin-top: 4%;">
+            <div class="row" style="background-color:#0c1c3e; ">
+                <div class="col-xs-2 col-md-2"></div>   
+                <div class="col-xs-8 col-md-8" style="height: 400px; margin: 2% 0 0 0; ">
+                        <div>
+                            <div style="background-color: #F5C00D; text-align: center; ">
+                            <h3 style="padding: 1% 0 0 0;font-size:100%; color: black;">URGENT Delivery</h3>
+                            <div id="map" style="height: 200px;">
+                              ดหสเสากาส
+                            </div>
+                            </div>
+                            
+                        </div>
+                   <br>
+                    <div style="background-color: white; border-radius: 5px; text-align: center;">
+                        <p > 139 Thonglor Klongton Wattana, Bangkpok 10110, Thailand</p>
+                    </div>
+                    <div style="background-color: #1FB089; border-radius: 5px; text-align: center;">
+                        <p > 097-134-7084</p>
+                    </div>
+                    
 
+
+                </div>
+
+
+                <div class="col-xs-2 col-md-2"></div>             
+             </div>
+
+        </div>
+   
 </div>
-
-
-
 <script>
 
   var history
@@ -280,5 +316,5 @@ body {
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
 </script>
 
-  </body>
+</body>
 </html>
