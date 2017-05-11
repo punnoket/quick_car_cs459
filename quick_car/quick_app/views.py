@@ -20,6 +20,7 @@ GLOBAL_JOB = None
 GOLBAL_DETAIL_FROM_USER = None
 is_match = None
 single_history = None
+place_user = None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -99,20 +100,32 @@ def show_notification(request):
 
 @csrf_exempt
 def send_notification(request):
+    global GLOBAL_USER_JSON
+    global GLOBAL_MECHANIC_JSON
+    global GOLBAL_DETAIL_FROM_USER
     json_data = json.loads(request.body)
     print(json_data)
     notification = Notification.objects.create()
-    notification.topics = json_data['detail']
-    notification.detail = json_data['detail']
-    notification.to_user = request.session['username']
+    notification.garage_name = GLOBAL_MECHANIC_JSON["username"]
+    notification.mechanic_name = "somchai"
+    notification.client_name = GLOBAL_USER_JSON["user"]
+    notification.license_plae_number = "15489-9859-98"
+    notification.telephone = "098-2586547"
+    notification.detail = GOLBAL_DETAIL_FROM_USER
+    notification.to_user = GLOBAL_USER_JSON["user"]
     notification.is_read = 'false'
     notification.time = json_data['time']
+    notification.date = json_data['date']
+    notification.list_detail = json_data['detail']
     notification.save()
-    return redirect('login.html')
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
 
 @csrf_exempt
 def get_notification(request):
-    notification = Notification.objects.filter(to_user=request.session['username'])
+    notification = Notification.objects.filter(to_user=request.session['username']).order_by('is_read')
     notification_json = serializers.serialize('json', notification)
     #print(notification_json)
     return HttpResponse(notification_json, content_type='application/json')
@@ -135,6 +148,8 @@ def create_job(request):
     job.detail = json_data["detail"]
     job.mechanic = GLOBAL_MECHANIC
     job.user = json_data["user_data"]["user"]
+    job.place = place_user
+    job.price ="500"
     print(job.topics)
     job.save()
     user = {'user': "null", 'type': 'null'}
@@ -143,7 +158,8 @@ def create_job(request):
 
 @csrf_exempt
 def get_history(request):
-    jobs = Job.objects.filter(user='pun')
+    global GLOBAL_USER_JSON
+    jobs = Job.objects.filter(user=GLOBAL_USER_JSON["user"])
     jobs_json = serializers.serialize('json', jobs)
     return HttpResponse(jobs_json, content_type='application/json')
 
@@ -256,7 +272,10 @@ def select_mechanic(request):
     global GLOBAL_MECHANIC
     global GLOBAL_MECHANIC_OBJECT
     global GOLBAL_DETAIL_FROM_USER
+    global place_user
     json_data = json.loads(request.body)
+    place_user = json.loads(request.body)["place"]
+    print(place_user)
     GLOBAL_MECHANIC = json.loads(request.body)["mechanic"]
     GLOBAL_MECHANIC_OBJECT = json.loads(request.body)["mechanic_object"]
     GOLBAL_DETAIL_FROM_USER = json.loads(request.body)["detail"]

@@ -11,14 +11,14 @@ class Notification(models.Model):
     cilent_name = models.CharField(max_length=50)
     license_plae_number = models.CharField(max_length=50)
     telephone = models.CharField(max_length=50)
-    topics = models.CharField(max_length=50)
     detail = models.CharField(max_length=50)
     to_user = models.CharField(max_length=50)
     is_read = models.CharField(max_length=100)
     time = models.CharField(max_length=100)
     date = models.CharField(max_length=50)
+    list_detail = models.CharField(max_length=50)
     def __unicode__(self):
-		return "topics: %s to: %s"%(self.topics, self.to_user)
+		return "topics: %s to: %s"%(self.detail, self.to_user)
 
 class NotificationSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -56,3 +56,5 @@ class Job(models.Model):
     detail = models.CharField(max_length=50)
     mechanic = models.CharField(max_length=50)
     user = models.CharField(max_length=50)
+    price = models.CharField(max_length=50)
+    place = models.CharField(max_length=50)

@@ -42,6 +42,7 @@
 
 
           var map, infoWindow;
+          var place
           var locations = new Array()
           var mechanic_object = new Array;
             var data,len
@@ -85,6 +86,16 @@
                 //marker
                 var marker, i,
                 infoCradle = new google.maps.InfoWindow();
+                $.ajax({
+                    type: "GET",
+                    url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+14.065574699999999+","+100.6057261+"&sensor=true",
+                    success: function(data){
+                        place = data.results[0].formatted_address
+                      },
+                    failure: function(errMsg) {
+                    }
+                  });
+
                 $.ajax({
                       url: '/get_garage',
                       async:false,
@@ -183,7 +194,7 @@
                   console.log(detail.value);
 
                   console.log(locations[i][0]);
-                  var mechanic = { "mechanic":locations[i][0],"mechanic_object": mechanic_object[i],"detail":detail.value};
+                  var mechanic = { "mechanic":locations[i][0],"mechanic_object": mechanic_object[i],"detail":detail.value,"place":place};
                   console.log(mechanic_object[i]);
 
             $.ajax({
@@ -199,6 +210,9 @@
                 }
               });
             }
+
+
+
             </script>
             <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
             <script async defer
