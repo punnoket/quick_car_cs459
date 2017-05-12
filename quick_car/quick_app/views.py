@@ -94,6 +94,19 @@ def test(request):
 def sest(request):
     return render(request,'ttest.html')
 
+def sing_up_new_user(request):
+    json_data = json.loads(request.body)
+    new_user = User.objects.create()
+    new_user.username = json_data["username"]
+    new_user.email = json_data["email"]
+    new_user.password = json_data["password"]
+    new_user.phone = json_data["phone"]
+    new_user.locations = "14.065574699999999,100.6057261"
+    new_user.save()
+    new_user = serializers.serialize('json', notification)
+    return HttpResponse(new_user, content_type='application/json')
+
+
 @csrf_exempt
 def show_notification(request):
 	return render(request,'show_notification.html')
@@ -125,7 +138,7 @@ def send_notification(request):
 
 @csrf_exempt
 def get_notification(request):
-    notification = Notification.objects.filter(to_user=request.session['username']).order_by('is_read')
+    notification = Notification.objects.filter(to_user=request.session['username'])
     notification_json = serializers.serialize('json', notification)
     #print(notification_json)
     return HttpResponse(notification_json, content_type='application/json')
