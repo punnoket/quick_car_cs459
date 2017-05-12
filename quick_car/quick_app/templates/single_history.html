@@ -230,7 +230,7 @@ body {
         <header id="header">
             <div class="row">
                 <div class="col-xs-3 col-md-3" style="text-align: left;">
-                       <a href=""><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                       <a href="/history"><img  id="imgbackinheader"  src="https://lh4.googleusercontent.com/TrbB5EaJdCQi3fSLWFDJLqNik97urMrwj-6gtiEoGz2mHNAz190yaOgKCE9mOHKZgZVAgvRNcFf5Auo=w1366-h638"></a>
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;">
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   "><p id="time"> </span>
@@ -301,6 +301,25 @@ body {
             console.log(data.responseJSON.fields);
         }
       });
+
+      var history = { "history":history_data};
+
+
+      $.ajax({
+          type: "POST",
+          url: "/read_history_to_single",
+          data: JSON.stringify(history),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(data){
+            
+            ;},
+          failure: function(errMsg) {
+          }
+        });
+
+
+
 
     var uluru = {lat: -25.363, lng: 131.044};
     var map = new google.maps.Map(document.getElementById('map'), {

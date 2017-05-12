@@ -145,6 +145,7 @@ def send_notification(request):
     notification.time = json_data['time']
     notification.date = json_data['date']
     notification.list_detail = json_data['detail']
+    notification.car_detail = json_data['Client']
     notification.save()
     price = json_data['sum']
     user = {'user': "null", 'type': 'null'}
@@ -321,6 +322,12 @@ def res_history_to_single(request):
     single_history_json = json.dumps(single_history)
     print(single_history_json)
     return HttpResponse(single_history_json, content_type='application/json')
+
+@csrf_exempt
+def read_history_to_single(request):
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
 def select_mechanic(request):
