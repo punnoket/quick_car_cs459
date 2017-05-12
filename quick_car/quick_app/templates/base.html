@@ -266,7 +266,7 @@
                     </div>
                     <div class="col-xs-4 col-md-4">
                         <a href="/show_notification">
-                             <img  id="iconbell"   style=" float: right;  cursor:pointer;" src="{%static 'Urgent/Icon/Bell.png' %}">
+                             <img  id="iconbell"   style=" float: right;  cursor:pointer;" src="">
                         </a>
                     </div>
                 </div>
@@ -286,7 +286,65 @@
 <footer id="contact">
 
 </footer>
+<script>
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = jQuery.trim(cookies[i]);
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getCookie('csrftoken');
+        function csrfSafeMethod(method) {
+            // these HTTP methods do not require CSRF protection
+            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+        }
+        $.ajaxSetup({
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            }
+        });
+        var check_read = false
+        $.ajax({
+            type: "GET",
+            url: "/get_notification",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
 
+              for(i in data) {
+                if(data[i].fields.is_read == 'true'){
+                  check_read = true
+                } else {
+                  check_read = false
+                }
+              }
+
+              if(check_read == true) {
+                //เซตภาพ
+                document.getElementById("iconbell").src = "{%static 'Urgent/Icon/Bell.png' %}"
+
+              } else {
+                //เซตภาพ
+                document.getElementById("iconbell").src = "{%static 'Urgent/Icon/Bell_Red.png' %}"
+              }
+              ;},
+            failure: function(errMsg) {
+            }
+          });
+
+
+</script>
 
 </body>
 </html>
