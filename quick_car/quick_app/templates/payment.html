@@ -15,6 +15,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 
   <style>
+  #imgstar{
+    width: 40%;
+  }
+  #imgbuton{
+     width:40%;
+   }
+   #contactt{
+     width:30%;
+  }
    #iconbell{
         width: 10%;
         height: 10%
@@ -186,8 +195,19 @@ h3{
   and (min-device-width: 375px) 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
+    #contactt{
+      height: 20%;
+      width: 70%;
+    }
     #imgbuton{
       width: 60%;
+      position: relative;
+      left: 45px;
+    }
+    #imgstar{
+       position: relative;
+      left: 25px;
+      width: 80%;
     }
   #iconbell{
         width: 40%;
@@ -251,16 +271,18 @@ body {
 <body>
       
                     
-           <div id = "contactt" style=" width: 80%; border-radius: 10px;">
-           <a onclick="show_success();" style="cursor: pointer;"><img  onclick="show_success();" src="{%static 'Urgent/Client/12C-Payment Success/7.png' %}" style="position: relative;  width: 6%; z-index: -1; left: 2%;"></a>
+           <div id = "contactt" style=" border-radius: 10px;">
+           
             <div>
-              <div  style="float: left; width: 39%; text-align: center; " >
+              <div  style="float: left; width: 39%; text-align: center;" >
+              <!-- <a onclick="show_success();" style="cursor: pointer;"><img  onclick="show_success();" src="{%static 'Urgent/Client/12C-Payment Success/7.png' %}" style="position: relative;  width: 6%; z-index: -1; left: 2%;"></a> -->
                           <img src="{%static 'Urgent/Client/12C-Payment Success/8.png' %}" style="width: 60%; margin: 10% 5% 5% 5%; padding: 0;">
                      </div>
-                    <div  id="div" style="width: 60%;display: inline-block; text-align: center; padding: 0 4% 4% 4%;"  >
-                       <h3 style="font-size: 100%; color: black; "><b>Your payment successfully!</b></h3>
-                       <img id="imgstar" style="width: 70%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
-                       <a href=""><img id="imgbuton" src="{%static 'Urgent/Client/12C-Payment Success/11.png' %}"></a>
+                    <div  id="div" style="width: 50%;display: inline-block; text-align: left; padding: 0 4% 0 4%; "  >
+                       <h6 style="font-size: 100%; color: black; "><b>Your payment successfully!</b></h6>
+                       <img id="imgstar" style=" margin: 0 0 5% 0;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
+                       <a href="/map"><img id="imgbuton"  src="{%static 'Urgent/Client/12C-Payment Success/11.png' %}"></a>
+
                     </div>
             </div>
                    

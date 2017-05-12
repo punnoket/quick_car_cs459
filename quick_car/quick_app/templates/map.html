@@ -49,7 +49,7 @@
                 <div  style="width: 40%; display: inline-block;"  >
                      <h2 id="name" style="font-size:100%";></h2>
                     <h2 id="time" style="font-size:100%";></h2>
-                       <img id="imgstar" style="width: 70%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
+                       <img id="imgstar" style="width: 70%; padding-bottom: 2%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
                  <a onclick="myFunction()"><img id="imgselect" style="width: 70%;" src="{%static 'Urgent/Client/4C-Location Select/10.png' %}"></a>
                 </div>
                 </div>
@@ -59,8 +59,10 @@
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
           <script>
 
+
           var x = document.getElementById('contact');
             x.style.display = 'none';
+
           var map, infoWindow;
           var place
           var locations = new Array()
