@@ -29,10 +29,10 @@
                           <img id="mud"  src="{%static 'Urgent/Client/2C-Home/2.png'%}">
                        </div>
                         <div class="col-xs-9 col-md-9 col-sm-9">
-                           <b><p id="locatclient" style=" font-size: 100%; padding-top: 4%;">gmineminieiei</p> </b>
+                           <b><p id="locatclient" style=" font-size: 100%; padding-top: 4%;"></p> </b>
                         </div>
                     </div>
-                
+
                   <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
                         <input id="detail" type="text"  name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%; display: inline-block; float: right; padding: 2%;">
                   </div>
@@ -59,7 +59,8 @@
           <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
           <script>
 
-
+          var x = document.getElementById('contact');
+            x.style.display = 'none';
           var map, infoWindow;
           var place
           var locations = new Array()
@@ -150,8 +151,7 @@
                             index = i
                             showInfoMechanic(i)
                             function showInfoMechanic(i) {
-                              var x = document.getElementById('contact');
-                                x.style.display = 'none';
+
                                 var element = document.getElementById('map');
                                 element.style.height = '350px';
                                 var x = document.getElementById('contact');
@@ -221,14 +221,13 @@
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
               posFix = {lat: 14.065574699999999, lng: 100.6057261};
               //infoWindow.setPosition(posFix);
-              infoWindow.setContent(browserHasGeolocation ?
-                                    'Error: The Geolocation service failed.' :
-                                    'Error: Your browser doesn\'t support geolocation.');
-              infoWindow.setContent("You here")
-              infoWindow.open(map);
-              map.setCenter(posFix);
-              infoWindow.setPosition(posFix);
-              infoWindow.setContent("You here")
+              var marker = new google.maps.Marker({
+                position: posFix,
+                map: map,
+
+              });
+              marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+              marker.setAnimation(google.maps.Animation.BOUNCE)
 
             }
 
@@ -261,7 +260,7 @@
             });
 
             var detail = document.getElementById("detail")
-             
+
 
 
 

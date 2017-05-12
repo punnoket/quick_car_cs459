@@ -530,11 +530,26 @@ var sum
                      contentType: "application/json; charset=utf-8",
                      dataType: "json",
                      success: function(data){
-                       document.location.href = "/wait"
+                       //document.location.href = "/mechanic_home"
                        ;},
                      failure: function(errMsg) {
                      }
                    });
+
+                   var bill = { "detail":detail,"time": time,"date": date,"sum" :sum};
+
+                   $.ajax({
+                       type: "POST",
+                       url: "/get_job_with_price",
+                       data: JSON.stringify(bill),
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       success: function(data){
+                         //document.location.href = "/mechanic_home"
+                         ;},
+                       failure: function(errMsg) {
+                       }
+                     });
 
       }
 

@@ -62,6 +62,8 @@ urlpatterns = [
     url(r'^res_history_to_single',views.res_history_to_single,name='res_history_to_single'),
     url(r'^click',views.click,name='click'),
     url(r'^sing_up_new_user',views.sing_up_new_user,name='sing_up_new_user'),
+    url(r'^get_job_with_price',views.get_job_with_price,name='get_job_with_price'),
+
 
 ]
 
