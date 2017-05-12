@@ -312,7 +312,7 @@ margin: 0 0 0 0 ;
                            <br>
                         </div>
                       </div>
-                      <a href="/map"><button  class="button">Submit</button></a>
+                      <a onclick="singup()"><button  class="button">Submit</button></a>
                  <h3>By registering, I have read and agreed to the agreement and the Private Policy</h3>
         </div>
         </div>
@@ -321,6 +321,23 @@ margin: 0 0 0 0 ;
     </div>
 
     <script>
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
       var csrftoken = getCookie('csrftoken');
       function csrfSafeMethod(method) {
           // these HTTP methods do not require CSRF protection
@@ -343,7 +360,7 @@ margin: 0 0 0 0 ;
         $.ajax({
             type: "POST",
             async:false,
-            url: "/is_match_complete",
+            url: "/sing_up_new_user",
             data: JSON.stringify({ username: username ,password : password ,email: email, phone: phone}),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -351,7 +368,7 @@ margin: 0 0 0 0 ;
               document.location.href = "/login"
             },
             failure: function(errMsg) {
-
+              console.log(errMsg);
             }
         });
       }

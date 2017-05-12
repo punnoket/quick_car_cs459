@@ -44,7 +44,6 @@ class User(models.Model):
     password = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
     locations = models.CharField(max_length=100)
-    notification = models.ForeignKey(Notification, on_delete=models.CASCADE,null=True)
     def __unicode__(self):
 		return "name: %s "%(self.username)
 

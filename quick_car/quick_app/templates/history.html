@@ -219,7 +219,7 @@
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;">
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">HISTORY</span>
-                        
+
                     </div>
                     <div class="col-xs-3 col-md-3">
 
@@ -246,14 +246,14 @@
              <h1 style="padding: 0;margin:2%; font-size: 100%; text-align: center;">[[i.fields.time]]</h1>
            </div>
            <div class="col-xs-3 col-md-3 col-sm-3">
-             <h1 style="padding: 0;margin:2%; font-size: 100%; text-align: center;">500  <img  style="width: 20%;" src="{%static 'Urgent/Garage/11G-History/2.png'%}"></h1>
+             <h1 id="price" style="padding: 0;margin:2%; font-size: 100%; text-align: center;">[[i.fields.price]]  <img  style="width: 20%;" src="{%static 'Urgent/Garage/11G-History/2.png'%}"></h1>
            </div>
 
 
 
-        
+
       </div>
-      
+
    </div>
 
 
@@ -273,30 +273,66 @@
   app.controller('myCtrl', function($scope, $http ,$location, $window) {
     $scope.myFunc = function() {
 
-          $http.get("{% url 'get_history' %}")
-          .then(function(response) {
+      $http.get("{% url 'check_type' %}")
+      .then(function(response) {
+          if(response.data.type == 'user') {
+            console.log(response.data.type);
+            $http.get("{% url 'get_history' %}")
+            .then(function(response) {
 
-            console.log(response.data);
-            $scope.historylist = response.data;
-             $scope.listener = function(i) {
+              console.log(response.data);
+              $scope.historylist = response.data;
+               $scope.listener = function(i) {
 
-               var history = response.data[i];
-               var parameter = JSON.stringify({history:history});
-               console.log(parameter);
-               $http.post("{% url 'click' %}", parameter)
-               .then(function(response) {
-                   $window.location.href = "/single_history"
+                 var history = response.data[i];
+                 var parameter = JSON.stringify({history:history});
+                 console.log(parameter);
+                 $http.post("{% url 'click' %}", parameter)
+                 .then(function(response) {
+                     $window.location.href = "/single_history"
 
-                   console.log(55555555555555555555);
-               }, function(response) {
+                 }, function(response) {
 
-               });
+                 });
 
-             }
+               }
 
-          }, function(response) {
+            }, function(response) {
 
-          });
+            });
+          } else {
+            console.log(response.data.type);
+            $http.get("{% url 'get_history_mechanic' %}")
+            .then(function(response) {
+
+              console.log(response.data);
+              $scope.historylist = response.data;
+               $scope.listener = function(i) {
+
+                 var history = response.data[i];
+                 var parameter = JSON.stringify({history:history});
+                 console.log(parameter);
+                 $http.post("{% url 'click' %}", parameter)
+                 .then(function(response) {
+                     $window.location.href = "/single_history"
+
+                 }, function(response) {
+
+                 });
+
+               }
+
+            }, function(response) {
+
+            });
+
+          }
+
+      }, function(response) {
+
+      });
+
+
 
       };
 

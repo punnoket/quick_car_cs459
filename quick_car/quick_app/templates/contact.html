@@ -79,16 +79,16 @@
             .sidenav a {font-size: 18px;}
         }
         /* Portrait and Landscape */
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
     #imgbackinheader{
@@ -110,31 +110,31 @@
 }
 /* ----------- iPad 1 and 2 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
       #imgprofile{
-        width:55%; 
+        width:55%;
         height:23%;
     }
-   
+
 }
 /*--------*/
 
 /* ----------- iPhone 6 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
     #imgbackinheader{
         width: 15%;
         height: 15%;
         margin: 0 0 0 15px;
       }
     #imgprofile{
-        width:50%; 
+        width:50%;
         height:30%;
     }
 
@@ -168,7 +168,7 @@ header{
 <body style="background-color: #0c1c3e">
 
 <header>
-         
+
 
 
             <div class="container-fluid" style="width: 100%; background-color: #0f1933;" >
@@ -176,7 +176,7 @@ header{
                     <div class="col-xs-3 col-md-3">
                         <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
                     </div>
-                    <div class="col-xs-6 col-md-6" style="text-align: center;"> 
+                    <div class="col-xs-6 col-md-6" style="text-align: center;">
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">CONTACT</span>
                     </div>
                     <div class="col-xs-3 col-md-3">
@@ -188,16 +188,16 @@ header{
 </header>
         <div id="content">
             <div class="row" style="background-color:#0c1c3e; ">
-                <div class="col-xs-2 col-md-2"></div>   
+                <div class="col-xs-2 col-md-2"></div>
                 <div class="col-xs-8 col-md-8" style="height: 400px; margin: 2% 0 0 0; ">
                         <div>
                             <div style="background-color: #F5C00D; text-align: center; border-radius: 5px;">
                             <h3 style="padding: 1% 0 1% 0 ">URGENT Delivery</h3>
                             <div id="map" style="height: 200px;">
-                                
+
                             </div>
                             </div>
-                            
+
                         </div>
                    <br>
                     <div style="background-color: white; border-radius: 5px; text-align: center;">
@@ -206,43 +206,24 @@ header{
                     <div style="background-color: #1FB089; border-radius: 5px; text-align: center;">
                         <p > 097-134-7084</p>
                     </div>
-                    
+
 
 
                 </div>
 
 
-                <div class="col-xs-2 col-md-2"></div>             
+                <div class="col-xs-2 col-md-2"></div>
              </div>
 
         </div>
 <script>
 
-  var history
-  var position
-
   function initMap() {
 
-    var history_data
 
-    $.ajax({
-          url: '/res_history_to_single',
-          async:false,
-          complete: function(data, err) {
-            console.log(data);
-            var cut = data.responseJSON.fields.locations.split(",")
-            var lat = cut[0]
-            var lon = cut[1]
-            position = {lat: parseFloat(lat), lng: parseFloat(lon)};
-            console.log(position);
-            history_data = data.responseJSON.fields
-            console.log(data.responseJSON.fields);
-        }
-      });
-
-    var uluru = {lat: -25.363, lng: 131.044};
+    var position = {lat: 13.7324992, lng: 100.5803639};
     var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
+      zoom: 16,
       center: position
     });
     var marker = new google.maps.Marker({

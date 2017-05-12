@@ -21,6 +21,9 @@ GOLBAL_DETAIL_FROM_USER = None
 is_match = None
 single_history = None
 place_user = None
+price = None
+JOB_OBJECT = None
+type_user =None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -96,6 +99,7 @@ def test(request):
 def sest(request):
     return render(request,'ttest.html')
 
+@csrf_exempt
 def sing_up_new_user(request):
     json_data = json.loads(request.body)
     new_user = User.objects.create()
@@ -105,8 +109,16 @@ def sing_up_new_user(request):
     new_user.phone = json_data["phone"]
     new_user.locations = "14.065574699999999,100.6057261"
     new_user.save()
-    new_user = serializers.serialize('json', notification)
-    return HttpResponse(new_user, content_type='application/json')
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def sing_up_new_garage(request):
+
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
 
 
 @csrf_exempt
@@ -118,6 +130,7 @@ def send_notification(request):
     global GLOBAL_USER_JSON
     global GLOBAL_MECHANIC_JSON
     global GOLBAL_DETAIL_FROM_USER
+    global price
     json_data = json.loads(request.body)
     print(json_data)
     notification = Notification.objects.create()
@@ -133,6 +146,7 @@ def send_notification(request):
     notification.date = json_data['date']
     notification.list_detail = json_data['detail']
     notification.save()
+    price = json_data['sum']
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
@@ -149,25 +163,42 @@ def get_notification(request):
 def send_job(request):
     return render(request,'create_job.html')
 
-
 @csrf_exempt
-def create_job(request):
+def get_job_with_price(request):
     global GLOBAL_MECHANIC
+    global JOB_OBJECT
     json_data = json.loads(request.body)
     print(json_data)
     job = Job.objects.create()
-    job.topics = json_data["detail"]
-    job.date = json_data["date"]
-    job.time = json_data["time"]
-    job.locations = json_data["user_data"]["locations"]
-    job.detail = json_data["detail"]
+    job.topics = JOB_OBJECT["detail"]
+    job.date = JOB_OBJECT["date"]
+    job.time = JOB_OBJECT["time"]
+    job.locations = JOB_OBJECT["user_data"]["locations"]
+    job.detail = JOB_OBJECT["detail"]
     job.mechanic = GLOBAL_MECHANIC
-    job.user = json_data["user_data"]["user"]
+    job.user = JOB_OBJECT["user_data"]["user"]
     job.place = place_user
-    job.price ="500"
-    print(job.topics)
+    job.price = json_data["sum"]
     job.save()
+    print("-----------------------------------")
+    print(job)
     user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def create_job(request):
+    global JOB_OBJECT
+    JOB_OBJECT = json.loads(request.body)
+    print("=================================")
+    print(JOB_OBJECT)
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+def check_type(request):
+    global type_user
+    user = {'user': "null", 'type': type_user}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
 
@@ -179,11 +210,19 @@ def get_history(request):
     return HttpResponse(jobs_json, content_type='application/json')
 
 @csrf_exempt
+def get_history_mechanic(request):
+    global GLOBAL_MECHANIC_JSON
+    jobs = Job.objects.filter(mechanic=GLOBAL_MECHANIC_JSON["username"])
+    jobs_json = serializers.serialize('json', jobs)
+    return HttpResponse(jobs_json, content_type='application/json')
+
+@csrf_exempt
 def auth_login(request):
     global GLOBAL_USER_LOGIN
     global GLOBAL_MECHANIC_LOGIN
     global GLOBAL_USER_JSON
     global GLOBAL_MECHANIC_JSON
+    global type_user
     json_data = json.loads(request.body)
     username = json_data['username']
     password = json_data['password']
@@ -199,6 +238,7 @@ def auth_login(request):
                 GLOBAL_USER_LOGIN = json.dumps(user)
                 GLOBAL_USER_JSON = json.loads(GLOBAL_USER_LOGIN)
                 check = 1
+                type_user = 'user'
 
 
     mechanic_all = Mechanic.objects.all()
@@ -212,7 +252,7 @@ def auth_login(request):
                 username_mechanic = {'username': i.owner_name, 'citizen_id': i.citizen_id, 'commercial_registration_no': i.commercial_registration_no, 'locations': i.locations, 'account': i.account}
                 GLOBAL_MECHANIC_LOGIN = json.dumps(username_mechanic)
                 GLOBAL_MECHANIC_JSON = json.loads(GLOBAL_MECHANIC_LOGIN)
-
+                type_user = 'mechanic'
                 check = 2
 
     if(check == 1):
@@ -322,6 +362,7 @@ def get_user_match(request):
     global GLOBAL_MECHANIC
     global GLOBAL_USER_LOGIN
     global GLOBAL_USER_JSON
+    global place_user
 
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
@@ -331,7 +372,7 @@ def get_user_match(request):
     print('**********************')
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN}
+        user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 

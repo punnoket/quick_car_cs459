@@ -2,14 +2,19 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-     
+
 	 <style type="text/css">
        body{
     background-image: url('{%static 'Urgent/Client/7C-Matching fail/3.png' %}');
     background-size: cover;
 }
      </style>
+     <script>
+     setInterval(function() {
+             window.location.href = '/map'
+           }, 7000);
+      </script>
 
-     
+
       <body></body>
 {% endblock %}

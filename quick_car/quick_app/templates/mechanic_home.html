@@ -30,7 +30,7 @@
                            <b><p id="place_user" style=" font-size: 100%; padding-top: 4%;"></p> </b>
                         </div>
                     </div>
-                  
+
                   <div style="border-style: solid; border-color: black white white white">
                   <div class="row">
                        <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
@@ -53,7 +53,7 @@
       </div>
       <div  style="width: 40%; display: inline-block;"  >
            <h3 id="title" style="font-size: 100%;">Name: [[]] <br>Client: [[]]<br>Phone: [[]]<br></h3>
-             <a href="#" id="cell_phone"><img style="width: 40%;" src="{%static 'Urgent/Garage/5G-Client info/8.png'%}"></a>
+             <a href="#" id="cell_phone"><img onclick="hide_profile()" style="width: 40%;" src="{%static 'Urgent/Garage/5G-Client info/8.png'%}"></a>
       </div>
       </div>
 
@@ -70,7 +70,7 @@
         function show_profile()
         {
         var element = document.getElementById('map');
-        element.style.height = '350px';
+        element.style.height = '600px';
         var x = document.getElementById('contact');
        if (x.style.display === 'none') {
           x.style.display = 'block';
@@ -78,6 +78,18 @@
          x.style.display = 'none';
            }
            }
+
+           function hide_profile()
+           {
+           var element = document.getElementById('map');
+           element.style.height = '350px';
+           var x = document.getElementById('contact');
+          if (x.style.display === 'none') {
+             x.style.display = 'block';
+          } else {
+            x.style.display = 'none';
+              }
+              }
         var map, infoWindow, infowindow
         var pos_mechanic, mechanic_name, pos_user, detail, user_data, place
         var phone
@@ -125,6 +137,7 @@
                   success: function(data){
                       place = data.results[0].formatted_address
                       console.log(place);
+                      document.getElementById('place') = place
                     },
                   failure: function(errMsg) {
                   }
@@ -144,6 +157,11 @@
                     location_user = data.locations
                     var cut = location_user.split(",")
                     detail = data.topic
+                    if(typeof(data.place_user) != "undefined"){
+                      document.getElementById('place_user').innerHTML = data.place_user
+                    } else {
+                      document.getElementById('place_user').innerHTML = ""
+                    }
 
                     json_data = JSON.parse(data.user_object)
                     user_data = json_data
@@ -172,9 +190,14 @@
             content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
           });
 
-        infoWindow.setPosition(pos_mechanic);
-        infoWindow.setContent(mechanic_name)
-        infoWindow.open(map);
+          var marker = new google.maps.Marker({
+            position: pos_mechanic,
+            map: map,
+
+          });
+          marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+          marker.setAnimation(google.maps.Animation.BOUNCE)
+
         map.setCenter(pos_mechanic);
             //marker
             var marker, i;
@@ -208,6 +231,7 @@
         }
         //infowindow.open(map, marker);
         function accept() {
+
           console.log(555);
           infowindow.close();
           $.ajax({
