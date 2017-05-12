@@ -23,7 +23,7 @@ from quick_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^map', views.map, name='map'),
-     url(r'^sh2', views.sh2, name='sh2'),
+    url(r'^sh2', views.sh2, name='sh2'),
     url(r'^minihistory', views.minihistory, name='minihistory'),
     url(r'^editprofile', views.editprofile, name='editprofile'),
     url(r'^brows', views.brows, name='brows'),
@@ -61,8 +61,7 @@ urlpatterns = [
     url(r'^get_history_from_click',views.get_history_from_click,name='get_history_from_click'),
     url(r'^res_history_to_single',views.res_history_to_single,name='res_history_to_single'),
     url(r'^click',views.click,name='click'),
-
-
+    url(r'^sing_up_new_user',views.sing_up_new_user,name='sing_up_new_user'),
 
 ]
 

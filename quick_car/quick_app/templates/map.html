@@ -42,6 +42,17 @@
 
 
           <div id = "map" ></div>
+          <div id = "contact" style=" width: 100%;">
+                  <div  style="float: left; width: 50%; text-align: center; " >
+                     <img src='https://www.mx7.com/i/1bc/4oKxKp.png' style="width: 50%; margin: 6% 0 0 0; padding: 0;">
+                </div>
+                <div  style="width: 40%; display: inline-block;"  >
+                     <h2 id="name" style="font-size:100%";></h2>
+                    <h2 id="time" style="font-size:100%";></h2>
+                       <img id="imgstar" style="width: 70%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
+                 <a onclick="myFunction()"><img id="imgselect" style="width: 70%;" src="{%static 'Urgent/Client/4C-Location Select/10.png' %}"></a>
+                </div>
+                </div>
 
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -53,6 +64,7 @@
           var place
           var locations = new Array()
           var mechanic_object = new Array;
+          var index
             var data,len
             var successHandler = function(position) {
             alert(position.coords.latitude);
@@ -73,6 +85,7 @@
 
                 content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
               });
+
               // get current location
               if (navigator.geolocation) {
                  navigator.geolocation.getCurrentPosition(function(position) {
@@ -80,9 +93,14 @@
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                       };
-                      infoWindow.setPosition(pos);
-                      infoWindow.setContent("You here")
-                      infoWindow.open(map);
+
+                      var marker = new google.maps.Marker({
+                        position: pos,
+                        map: map,
+
+                      });
+                      marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+                      marker.setAnimation(google.maps.Animation.BOUNCE)
                       map.setCenter(pos);
                     }, function() {
                         handleLocationError(true, infoWindow, map.getCenter());
@@ -128,22 +146,44 @@
                         marker.setAnimation(google.maps.Animation.DROP);
                         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                           return function() {
+                            index = i
+                            showInfoMechanic(i)
+                            function showInfoMechanic(i) {
+                              var x = document.getElementById('contact');
+                                x.style.display = 'none';
+                                var element = document.getElementById('map');
+                                element.style.height = '350px';
+                                var x = document.getElementById('contact');
+                               if (x.style.display === 'none') {
+                                  x.style.display = 'block';
+                               } else {
+                                 x.style.display = 'none';
+                               }
 
-                            infoCradle.setContent(
-                          "<div style=\"width: 80%; \">"+
-                          "<div style=\"width: 39%; text-align:center;    float:left;\">"+
-                            "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
-                                                    "</div>"+
-                                                    "<div style=\"width: 40%; display: inline-block\">"+
-                                                        "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
-                                                    "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
+                               document.getElementById("name").innerHTML = "name : " + locations[i][0]
+                               document.getElementById("time").innerHTML =  "time : " + new Date().toLocaleTimeString()
+
+                            }
 
 
-
-
-                            infoCradle.open(map, marker);
+                          //
+                          //   infoCradle.setContent(
+                          // "<div style=\"width: 80%; \">"+
+                          // "<div style=\"width: 39%; text-align:center;    float:left;\">"+
+                          //   "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
+                          //                           "</div>"+
+                          //                           "<div style=\"width: 40%; display: inline-block\">"+
+                          //                               "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
+                          //                           "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
+                          //
+                          //
+                          //
+                          //
+                          //   infoCradle.open(map, marker);
                           }
                         })(marker, i));
+
+
                       }
                     }
                   });
@@ -151,6 +191,30 @@
 
 
             }
+
+            function myFunction() {
+
+                  console.log(detail.value);
+
+                  console.log(locations[index][0]);
+                  var mechanic = { "mechanic":locations[index][0],"mechanic_object": mechanic_object[index],"detail":detail.value,"place":place};
+                  console.log(mechanic_object[index]);
+
+            $.ajax({
+                type: "POST",
+                url: "/select_mechanic",
+                data: JSON.stringify(mechanic),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(data){
+                  document.location.href = "/wait"
+                  ;},
+                failure: function(errMsg) {
+                }
+              });
+            }
+
+
 
 
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -197,27 +261,7 @@
 
             var detail = document.getElementById("detail")
 
-            function myFunction(i) {
 
-                  console.log(detail.value);
-
-                  console.log(locations[i][0]);
-                  var mechanic = { "mechanic":locations[i][0],"mechanic_object": mechanic_object[i],"detail":detail.value,"place":place};
-                  console.log(mechanic_object[i]);
-
-            $.ajax({
-                type: "POST",
-                url: "/select_mechanic",
-                data: JSON.stringify(mechanic),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(data){
-                  document.location.href = "/wait"
-                  ;},
-                failure: function(errMsg) {
-                }
-              });
-            }
 
 
 
