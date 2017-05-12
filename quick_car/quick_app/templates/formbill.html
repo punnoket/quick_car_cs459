@@ -468,10 +468,13 @@ var sum
 
       }
 
+      var License
+      var Client
+
       function send_bill() {
         var date = document.getElementById("date").value
-        var License = document.getElementById("License").value
-        var Client = document.getElementById("Client").value
+        License = document.getElementById("License").value
+        Client = document.getElementById("Client").value
         var d1 = document.getElementById("d1").value
         var d2 = document.getElementById("d2").value
         var d3 = document.getElementById("d3").value
@@ -523,7 +526,7 @@ var sum
                  var time = new Date()
                  time = time.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
                  var date = new Date().toLocaleDateString();
-                 var bill = { "detail":detail,"time": time,"date": date,"sum" :sum};
+                 var bill = { "detail":detail,"time": time,"date": date,"sum" :sum,"License": License,"Client": Client};
                  $.ajax({
                      type: "POST",
                      url: "/send_notification",

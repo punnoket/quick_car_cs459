@@ -17,6 +17,7 @@ class Notification(models.Model):
     time = models.CharField(max_length=100)
     date = models.CharField(max_length=50)
     list_detail = models.CharField(max_length=50)
+    car_detail = models.CharField(max_length=50)
     def __unicode__(self):
 		return "topics: %s to: %s"%(self.detail, self.to_user)
 
