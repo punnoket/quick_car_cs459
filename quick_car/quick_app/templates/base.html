@@ -11,6 +11,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <style>
+    #mud{
+      width: 20%;
+      /*margin: 20px;*/
+    }
         body {
             font-family: "Lato", sans-serif;
         }
@@ -86,6 +90,10 @@
   and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #mud{
+      width: 45%;
+      /*margin: 100px;*/
+    }
      #imginheader{
         padding-top: 6px;
         width: 70%;
@@ -118,6 +126,16 @@
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #mud{
+      width: 50%;
+
+    }
+    #phoneimg{
+      width: 3%;
+    }
+    #phoneno{
+      font-size: 20%;
+    }
     #imgprofile{
         width:50%;
         height:30%;
@@ -159,10 +177,6 @@
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";
-        // document.getElementById("mySidenav").style.border-radius="30px";
-        // document.getElementById("mySidenav").style.-webkit-border-radius="30px";
-        // document.getElementById("mySidenav").style.-moz-border-radius="30px";
-
     }
     function rendershownoti(){
 
@@ -186,8 +200,9 @@
                  <div class="col-xs-8 col-md-8" style="height: 250px; text-align: center;">
                  <img id="imgprofile"  style="width: 65%; height: 50%;" src="{%static 'Urgent/Client/13C-Profile/2.png'%}"> 
                          <div style="background-color: #0c1c3e; text-align: center; border-radius: 1em;">
-                            <h3 style="padding: 5% 0 0 0 ;color:white; font-size: 100%;"> name </h3>
-                            <h3 style="padding: 0 0 1% 0 ;color:white; font-size: 100%;">0971347084 &nbsp;<img style="width: 12%;" src="{%static 'Urgent/Client/13C-Profile/6.png' %}"></h3>
+                            <h3 style=" color:white;padding: 2%;margin: 0; font-size: 100%;"> name </h3>
+                            <h3 id="phoneno" style="padding: 2%;margin: 0;color:white; font-size: 100%;">gmineminieiei &nbsp;<img id="phoneimg"  style="width: 12%;" src="{%static 'Urgent/Client/13C-Profile/6.png' %}"></h3>
+                           
                             <div id="mail" style="background-color: white; border-bottom-right-radius:1em;border-bottom-left-radius: 1em;">mineine#fmskfdkz;.cpm
                             </div>
                             </div>

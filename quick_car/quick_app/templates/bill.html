@@ -42,7 +42,7 @@
       html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  /*overflow: hidden;*/
   padding: 0;
   margin: 0;
 }
@@ -230,33 +230,45 @@ body {
         <header id="header">
             <div class="row">
                 <div class="col-xs-3 col-md-3" style="text-align: left;">
-                       <a href=""><img  id="imgbackinheader"  src="{%static 'Urgent/Icon/Close.png' %}"></a>
+                       <a href="/show_notification"><img  id="imgbackinheader"  src="{%static 'Urgent/Icon/Close.png' %}"></a>
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;"> 
-                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">[[onebill.fields.time]]</span>
+                     <span style="font-size:100%; color: #fff;">[[onebill.fields.time]]</span>
                     </div>
-                    <div class="col-xs-3 col-md-3" style="padding-right: 30px">
-                        <!-- <a href="/show_notification.html">
-                             <img  id="iconbell"   style=" float: right;  cursor:pointer;" src="{%static 'Urgent/Icon/Bell.png' %}">
-
-                        </a> -->
+                    <div class="col-xs-3 col-md-3" >
                     </div>
             </div>
         </header>
 
 
     </div>
-    <div class="row">
-        <div class="col-xs-3 col-md-3 col-sm-3"></div>
-        <div class="col-xs-6 col-md-6 col-sm-6">
-          <div id="form" style="text-align: center;">
-           <!-- <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()"> -->
-             <!-- <div id="divbill" ng-repeat="i in onebill"  ng-click="listener($index)"> -->
-            <h1> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[onebill.fields.time]] [[onebill.fields.detail]] <h1>
-            <!-- </div> -->
+     <div class="col-xs-8 col-md-8" style=" margin: 2% 0 0 0; ">
+           <div style="background-color: #F5C00D;  border-radius: 5px;">
+                            <h3 style="padding: 1% 0 1% 0 ;text-align: center;color: white; font-size: 100%;"><b>URGent Bill</b> <br>[[onebill.fields.time]]</h3>
+                            <div id="contentbill" style="padding:1%; background-color: white;">
+                            <div id="contentbill2" style="border: 2px solid #B2AFAF;">
+                                  <h1>[[onebill.fields.garage_name]]</h1>
+                                  <h1>[[onebill.fields.mechanic_name]]</h1>
+                                  <h1>[[onebill.fields.to_user]]</h1>
+                                  <h1>[[onebill.fields.detail]]</h1>
+                                  <h1>[[onebill.fields.telephone]]</h1>
 
-   <!-- </div> -->
-              <button ng-click="login()" class="button">Cash</button>
+                                </div><br>
+                                <div id="contentbill3" style="border: 2px solid #B2AFAF;">
+                                  <h1>[[onebill.fields.detail]]</h1>
+
+                                </div>
+                                <a ng-click="login()" style="cursor: pointer; "> <img style="margin: 1%; width: 20%;" src="{%static 'Urgent/Client/10C-Bill/3.png' %}"></a>
+                                 <a ng-click="login()" style="cursor: pointer; "> <img style="margin: 1%; width: 20%;" src="{%static 'Urgent/Client/10C-Bill/4.png' %}"></a>
+                            </div>
+          </div>
+      </div>
+    <div class="row">
+        <div class="col-xs-2 col-md-2 col-sm-2"></div>
+        <div class="col-xs-8 col-md-8 col-sm-8">
+          <div id="form" style="text-align: center;">
+            <h1 style="font-size: 100%;"> Bill [[onebill.fields.time]] [[onebill.fields.detail]] <h1>
+            <a ng-click="login()" style="cursor: pointer;"> <img src="{%static 'Urgent/Client/10C-Bill/3.png' %}"></a>
               <a href="/payment">  <button ng-click="login()"  class="button">Credit Card</button></a>
             
         </div>
