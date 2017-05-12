@@ -63,6 +63,8 @@ urlpatterns = [
     url(r'^click',views.click,name='click'),
     url(r'^sing_up_new_user',views.sing_up_new_user,name='sing_up_new_user'),
     url(r'^get_job_with_price',views.get_job_with_price,name='get_job_with_price'),
+    url(r'^check_type',views.check_type,name='check_type'),
+    url(r'^get_history_mechanic',views.get_history_mechanic,name='get_history_mechanic'),
 
 
 ]

@@ -23,6 +23,7 @@ single_history = None
 place_user = None
 price = None
 JOB_OBJECT = None
+type_user =None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -193,10 +194,23 @@ def create_job(request):
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
 
+def check_type(request):
+    global type_user
+    user = {'user': "null", 'type': type_user}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
 @csrf_exempt
 def get_history(request):
     global GLOBAL_USER_JSON
     jobs = Job.objects.filter(user=GLOBAL_USER_JSON["user"])
+    jobs_json = serializers.serialize('json', jobs)
+    return HttpResponse(jobs_json, content_type='application/json')
+
+@csrf_exempt
+def get_history_mechanic(request):
+    global GLOBAL_MECHANIC_JSON
+    jobs = Job.objects.filter(mechanic=GLOBAL_MECHANIC_JSON["username"])
     jobs_json = serializers.serialize('json', jobs)
     return HttpResponse(jobs_json, content_type='application/json')
 
@@ -206,6 +220,7 @@ def auth_login(request):
     global GLOBAL_MECHANIC_LOGIN
     global GLOBAL_USER_JSON
     global GLOBAL_MECHANIC_JSON
+    global type_user
     json_data = json.loads(request.body)
     username = json_data['username']
     password = json_data['password']
@@ -221,6 +236,7 @@ def auth_login(request):
                 GLOBAL_USER_LOGIN = json.dumps(user)
                 GLOBAL_USER_JSON = json.loads(GLOBAL_USER_LOGIN)
                 check = 1
+                type_user = 'user'
 
 
     mechanic_all = Mechanic.objects.all()
@@ -234,7 +250,7 @@ def auth_login(request):
                 username_mechanic = {'username': i.owner_name, 'citizen_id': i.citizen_id, 'commercial_registration_no': i.commercial_registration_no, 'locations': i.locations, 'account': i.account}
                 GLOBAL_MECHANIC_LOGIN = json.dumps(username_mechanic)
                 GLOBAL_MECHANIC_JSON = json.loads(GLOBAL_MECHANIC_LOGIN)
-
+                type_user = 'mechanic'
                 check = 2
 
     if(check == 1):
