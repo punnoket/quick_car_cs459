@@ -21,6 +21,7 @@ GOLBAL_DETAIL_FROM_USER = None
 is_match = None
 single_history = None
 place_user = None
+price = None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -116,6 +117,7 @@ def send_notification(request):
     global GLOBAL_USER_JSON
     global GLOBAL_MECHANIC_JSON
     global GOLBAL_DETAIL_FROM_USER
+    global price
     json_data = json.loads(request.body)
     print(json_data)
     notification = Notification.objects.create()
@@ -131,6 +133,7 @@ def send_notification(request):
     notification.date = json_data['date']
     notification.list_detail = json_data['detail']
     notification.save()
+    price = json_data['sum']
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
@@ -151,6 +154,7 @@ def send_job(request):
 @csrf_exempt
 def create_job(request):
     global GLOBAL_MECHANIC
+    global price
     json_data = json.loads(request.body)
     print(json_data)
     job = Job.objects.create()
@@ -162,7 +166,7 @@ def create_job(request):
     job.mechanic = GLOBAL_MECHANIC
     job.user = json_data["user_data"]["user"]
     job.place = place_user
-    job.price ="500"
+    job.price = price
     print(job.topics)
     job.save()
     user = {'user': "null", 'type': 'null'}
@@ -320,6 +324,7 @@ def get_user_match(request):
     global GLOBAL_MECHANIC
     global GLOBAL_USER_LOGIN
     global GLOBAL_USER_JSON
+    global place_user
 
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
@@ -329,7 +334,7 @@ def get_user_match(request):
     print('**********************')
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN}
+        user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 

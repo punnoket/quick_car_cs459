@@ -522,7 +522,7 @@ var sum
 
                  var time = new Date().toLocaleTimeString();
                  var date = new Date().toLocaleDateString();
-                 var bill = { "detail":detail,"time": time,"date": date};
+                 var bill = { "detail":detail,"time": time,"date": date,"sum" :sum};
                  $.ajax({
                      type: "POST",
                      url: "/send_notification",

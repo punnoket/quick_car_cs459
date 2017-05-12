@@ -112,6 +112,7 @@
                   success: function(data){
                       place = data.results[0].formatted_address
                       console.log(place);
+                      document.getElementById('place') = place
                     },
                   failure: function(errMsg) {
                   }
@@ -131,7 +132,7 @@
                     location_user = data.locations
                     var cut = location_user.split(",")
                     detail = data.topic
-
+                    document.getElementById('place_user').innerHTML = data.place_user
                     json_data = JSON.parse(data.user_object)
                     user_data = json_data
                     console.log(json_data);
