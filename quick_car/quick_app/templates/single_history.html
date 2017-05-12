@@ -18,6 +18,10 @@
   <!-- <meta name="viewport" content="initial-scale=1.0, width=device-width" /> -->
 
   <style>
+#mud{
+      margin:2% 0 2% 0;
+      width: 15%;
+    }
    #iconbell{
         width: 10%;
         height: 10%
@@ -42,7 +46,6 @@
       html, body {
   height: 100%;
   width: 100%;
-  overflow: hidden;
   padding: 0;
   margin: 0;
 }
@@ -111,6 +114,10 @@ h3{
   and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #mud{
+      margin:20% 0 0 20%;
+      width: 80%;
+    }
 
      #form{
       margin-top: 30%;
@@ -172,6 +179,10 @@ h3{
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #mud{
+      margin-top: 10%;
+      width: 50%;
+    }
   #iconbell{
         width: 40%;
         height: 30%
@@ -188,9 +199,7 @@ h3{
         height: 15%;
         margin: 0 0 0 15px;
       }
-  h3{
-      font-size: 70%;
-    }
+  
     .textbox ,.selectbox{
     outline:0; */
     height:80%;
@@ -210,7 +219,10 @@ h3{
       width: 45%;
   }
 }
-
+h3{
+      font-size: 100%;
+      color: black;
+    }
 body {
         background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
          /*no-repeat center center fixed;*/
@@ -230,14 +242,12 @@ body {
         <header id="header">
             <div class="row">
                 <div class="col-xs-3 col-md-3" style="text-align: left;">
-<<<<<<< HEAD
-                       <a href="/history"><img  id="imgbackinheader"  src="https://lh4.googleusercontent.com/TrbB5EaJdCQi3fSLWFDJLqNik97urMrwj-6gtiEoGz2mHNAz190yaOgKCE9mOHKZgZVAgvRNcFf5Auo=w1366-h638"></a>
-=======
+
+                       <!-- <a href="/history"><img  id="imgbackinheader"  src="https://lh4.googleusercontent.com/TrbB5EaJdCQi3fSLWFDJLqNik97urMrwj-6gtiEoGz2mHNAz190yaOgKCE9mOHKZgZVAgvRNcFf5Auo=w1366-h638"></a> -->
                        <a href="/history"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
->>>>>>> ab643d5b6b235954a8b563cc3b79ffa94f490e65
                     </div>
                     <div class="col-xs-6 col-md-6" style="text-align: center;">
-                    <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   "><p id="time"> </span>
+                     <span style="font-size:20px; color: #fff;   "><p id="date"> </span>
                     </div>
                     <div class="col-xs-3 col-md-3" style="padding-right: 30px">
 
@@ -253,7 +263,18 @@ body {
                 <div class="col-xs-8 col-md-8" style="height: 400px; margin: 2% 0 0 0; ">
                         <div>
                             <div style="background-color: #F5C00D; text-align: center; ">
-                            <h3 style="padding: 1% 0 0 0;font-size:100%; color: black;">URGENT Delivery</h3>
+                            <div class="row" >
+                        <div class="col-xs-6 col-md-6" style="text-align: center; margin-left: 2%;">
+                          <h3 id="date2" style="padding: 1% 0 0 0;"></h3>
+                        </div>
+                        <!-- <div class="col-xs-4 col-md-4" style="text-align: center; margin-left: 4%;">
+                          <h3 id="time" style="padding: 1% 0 0 0;"></h3>
+                        </div> -->
+                        <div class="col-xs-5 col-md-5" style="text-align: center;">
+                         <h3 id="price">Cash </h3>
+                        </div>
+                      </div>
+                            
                             <div id="map" style="height: 200px;">
 
                             </div>
@@ -261,14 +282,34 @@ body {
 
                         </div>
                    <br>
-                    <div style="background-color: white; border-radius: 5px; text-align: center;">
-                        <p id="place"> </p>
+                    <div style="background-color: white; border-radius: 5px; margin-bottom: 5%;">
+                      <div class="row" >
+                        <div class="col-xs-3 col-md-3" style="text-align: center;">
+                          <img id="mud" src="{%static 'Urgent/Garage/10G-History info/6.png'%}">
+                        </div>
+                        <div class="col-xs-9 col-md-9" style="text-align: left;">
+                          <h3 id="place"> </h3>
+                        </div>
+                      </div>
+                    
+                        
+                        
                     </div>
-                    <div style="background-color: #FFF; border-radius: 5px; text-align: center;">
-                        <p id="detail"> </p>
+                    <div style="background-color: #FFF; border-radius: 5px; ">
+                        <h3 id="detail" style="margin: 5% 0 5% 5%;"> </h3>
                     </div>
 
+              <div  id="contact" style=" width: 100%;">
+                            <div  style="float: left; width: 50%; text-align: center;" >
+                                <img src="{%static 'Urgent/Garage/10G-History info/7.png'%}" style="width: 50%; margin: 7% 0 0 0; padding: 0;">
+                            </div>
+                            <div  style="width: 40%; display: inline-block;"  >
+                                 <h3 id="user" style="font-size: 100%; color: white;">Name: </h3>
+                                 
+                            </div>
 
+
+                    </div>
 
                 </div>
 
@@ -299,9 +340,13 @@ body {
             position = {lat: parseFloat(lat), lng: parseFloat(lon)};
             console.log(position);
             history_data = data.responseJSON.fields
-            document.getElementById('time').innerHTML = history_data.time
+            document.getElementById('date').innerHTML = history_data.date
+            document.getElementById('date2').innerHTML = history_data.date
+            // document.getElementById('time').innerHTML = history_data.time
+            document.getElementById('price').innerHTML =document.getElementById('price').innerHTML+ history_data.price
             document.getElementById('place').innerHTML = history_data.place
             document.getElementById('detail').innerHTML = history_data.detail
+             document.getElementById('user').innerHTML = document.getElementById('user').innerHTML+history_data.user
             console.log(data.responseJSON.fields);
         }
       });
