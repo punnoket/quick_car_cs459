@@ -47,10 +47,10 @@
                      <img src='https://www.mx7.com/i/1bc/4oKxKp.png' style="width: 50%; margin: 6% 0 0 0; padding: 0;">
                 </div>
                 <div  style="width: 40%; display: inline-block;"  >
-                     <h2 id="name" style="font-size:100%";></h2>
-                    <h2 id="time" style="font-size:100%";></h2>
-                       <img id="imgstar" style="width: 70%; padding-bottom: 2%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
-                 <a onclick="myFunction()"><img id="imgselect" style="width: 70%;" src="{%static 'Urgent/Client/4C-Location Select/10.png' %}"></a>
+                     <h2 id="name" style="font-size:100%;"></h2>
+                    <h2 id="time" style="font-size:100%; margin: 0 0 5%;"></h2>
+                       <img id="imgstar" style=" ; padding-bottom: 5%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
+                 <a onclick="myFunction()"><img id="imgselect" style="" src="{%static 'Urgent/Client/4C-Location Select/10.png' %}"></a>
                 </div>
                 </div>
 
@@ -230,8 +230,7 @@
               });
               marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
               marker.setAnimation(google.maps.Animation.BOUNCE)
-              map.setCenter(pos);
-
+              map.setCenter(posFix)
             }
 
             function getCookie(name) {
