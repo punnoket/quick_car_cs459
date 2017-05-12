@@ -29,7 +29,7 @@
         width: 3%;
         height: 3%;
       }
-      
+
       /* ----------- iPhone 5 and 5S ----------- */
 
 /* Portrait and Landscape */
@@ -41,7 +41,7 @@
         width: 10%;
         height: 10%;
       }
-     
+
 }
 
 
@@ -56,7 +56,7 @@
         width: 10%;
         height: 10%;
       }
-     
+
 }
     </style>
     <script type="text/javascript">
@@ -75,6 +75,11 @@
 
       <div id="divbill" ng-repeat="i in billist"  ng-click="listener($index)">
         <h1 style="font-size: 100%; padding: 0;margin:2%;"> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.time]] [[i.fields.detail]] </h1>
+
+        <div ng-if="i.fields.is_read == 'false' ">
+        <p id='read'>ยังไม่ได้อ่าน</p>
+        </div>
+
       </div>
 
    </div>

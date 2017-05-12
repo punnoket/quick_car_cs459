@@ -42,7 +42,7 @@
         height: 5%;
         margin: 0 0 0 15px;
       }
- 
+
       html, body {
   height: 100%;
   width: 100%;
@@ -54,24 +54,24 @@
   margin-top: 10%;
 }
 
-  
+
 
   .button {
-  border: 1px solid #000; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
-    outline:0; 
-    height:30px; 
-    width: 200px; 
-    margin : 30px 0 0 0 ; 
+  border: 1px solid #000;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    outline:0;
+    height:30px;
+    width: 200px;
+    margin : 30px 0 0 0 ;
     padding: 3px 0 0 0;
     background-color: #000;
     color: #fff;
-    display:inline-block; 
+    display:inline-block;
 
   }
-     
+
 
 h3{
   color: #65C6BB;
@@ -98,21 +98,21 @@ h3{
 
 #phone{
   width: 150px;
-   
+
 }
 
 
  /* Portrait and Landscape */
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
      #cash,#creditcard{
@@ -135,18 +135,18 @@ h3{
     h3{
       font-size: 50%;
     }
-    .textbox,.selectbox { 
+    .textbox,.selectbox {
     outline:0; */
-    height:50%; 
-    width: 90%; 
+    height:50%;
+    width: 90%;
     margin :5px 0 0 0;
   }
 
   .button {
-    outline:0; 
-    height:50%; 
-    width: 70%; 
-    margin-top: :5%; 
+    outline:0;
+    height:50%;
+    width: 70%;
+    margin-top: :5%;
     padding: 7px 0 7px 0;
   }
  #iconbell{
@@ -160,9 +160,9 @@ h3{
 }
 /* ----------- iPad 1 and 2 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
      #cash,#creditcard{
       width: 70%;
@@ -171,7 +171,7 @@ h3{
     #form{
       margin-top: 30%;
     }
- 
+
    #phone{
       width: 43%;
   }
@@ -180,10 +180,10 @@ h3{
 
 /* ----------- iPhone 6 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
     #cash,#creditcard{
       width: 80%;
       margin: 10% 0 10% 0;
@@ -207,17 +207,17 @@ h3{
   h3{
       font-size: 70%;
     }
-    .textbox ,.selectbox{ 
+    .textbox ,.selectbox{
     outline:0; */
-    height:80%; 
-    width: 90%; 
+    height:80%;
+    width: 90%;
     margin: 5px 0 0 0 ;
   }
- 
+
   .button {
-    outline:0; 
-    height: 80%; 
-    width: 70%; 
+    outline:0;
+    height: 80%;
+    width: 70%;
     padding: 7px 0 7px 0;
 
   }
@@ -248,7 +248,7 @@ body {
                 <div class="col-xs-3 col-md-3" style="text-align: left;">
                        <a href="/show_notification"><img  id="imgbackinheader"  src="{%static 'Urgent/Icon/Close.png' %}"></a>
                     </div>
-                    <div class="col-xs-6 col-md-6" style="text-align: center;"> 
+                    <div class="col-xs-6 col-md-6" style="text-align: center;">
                      <span style="font-size:100%; color: #fff;">[[onebill.fields.time]]</span>
                     </div>
                     <div class="col-xs-3 col-md-3" >
@@ -258,7 +258,7 @@ body {
 
 
     </div>
-     
+
     <div class="row">
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
         <div class="col-xs-8 col-md-8" style=" margin: 2% 0 0 0; ">
@@ -267,10 +267,10 @@ body {
                             <div id="contentbill" style="padding:1%; background-color: white;">
                             <div id="contentbill2" style="border: 2px solid #B2AFAF; margin-bottom: 2%; padding-left: 2%;">
                                   <h1 style="font-size: 100%;"><b>Gatage name:</b>  [[onebill.fields.garage_name]]</h1>
-                                  <h1 style="font-size: 100%;""><b>Mechanic name:</b>  [[onebill.fields.mechanic_name]]</h1>
+                                  <h1 style="font-size: 100%;"><b>Mechanic name:</b>  [[onebill.fields.mechanic_name]]</h1>
                                   <h1 style="font-size: 100%;"><b>Client name:</b>  [[onebill.fields.to_user]]</h1>
                                   <h1 style="font-size: 100%;"><b>License plate number:</b>  [[onebill.fields.license_plae_number]]</h1>
-                                  <h1 style="font-size: 100%;"><b>Car's detail:</b>  [[onebill.fields.detail]]</h1>
+                                  <h1 style="font-size: 100%;"><b>Car's detail:</b>  [[onebill.fields.car_detail]]</h1>
                                   <h1 style="font-size: 100%;"><b>Telephone number:</b>  [[onebill.fields.telephone]]</h1>
 
                                 </div>
@@ -290,8 +290,8 @@ body {
                                 </div>
 
 
-                                
-                                 
+
+
                             </div>
           </div>
       </div>

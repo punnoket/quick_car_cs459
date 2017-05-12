@@ -155,7 +155,7 @@ def send_notification(request):
 
 @csrf_exempt
 def get_notification(request):
-    notification = Notification.objects.filter(to_user=request.session['username'])
+    notification = Notification.objects.filter(to_user=request.session['username']).order_by('-id')
     notification_json = serializers.serialize('json', notification)
     #print(notification_json)
     return HttpResponse(notification_json, content_type='application/json')
@@ -313,6 +313,13 @@ def click(request):
 @csrf_exempt
 def res_noti_to_bill(request):
     print(type(request.session['single_noti']))
+    noti = request.session['single_noti']
+    print(noti['pk'])
+    noti_all = Notification.objects.all()
+    for i in noti_all:
+        if(i.id == noti['pk']):
+            noti_set_read = Notification.objects.filter(id=i.id).update(is_read = 'true')
+
     noti_json = json.dumps(request.session['single_noti'])
     return HttpResponse(noti_json, content_type='application/json')
 
@@ -325,6 +332,12 @@ def res_history_to_single(request):
 
 @csrf_exempt
 def read_history_to_single(request):
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def read_noti(request):
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
