@@ -11,6 +11,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <style>
+    #imgselect{
+      width: 50%;
+    }
+     #imgstar{
+      position: relative;
+      /*left: 20px;*/
+      width: 40%;
+    }
     #mud{
       width: 20%;
       margin: 20px;
@@ -127,6 +135,14 @@
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #imgselect{
+      width: 100%;
+    }
+    #imgstar{
+      /*position: relative;*/
+      /*right: 100%;*/
+      width: 70%;
+    }
     #mud{
       width: 60%;
       /*padding: 50% 0 %; 0;*/
@@ -165,10 +181,16 @@
 #border{
     border-style: solid;
     border-color: #000 #F5CB0D #F5CB0D #F5CB0D;
+    height: 8%;
+    text-align: center;
+  
 }
+
 #border2{
     border-style: solid;
     border-color: #000 #F5CB0D #000 #F5CB0D;
+     height: 8%;
+    text-align: center;
 }header{
         width: 100%;
        background-color: #0f1933;
@@ -217,17 +239,17 @@
                 </div>
 
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <div id="border">
-                <a style="color:#0f1933" href="/map">HOME</a>
+                <div id="border" >
+                <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/map"><h4>HOME</h4></a>
                 </div>
                 <div id="border">
-                <a style="color:#0f1933" href="/history">HISTORY</a>
+                <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/history"><h4>HISTORY</h4></a>
                 </div>
                 <div id="border">
-                <a style="color:#0f1933" href="/contact">CONTACT US</a>
+                <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/contact"><h4>CONTACT US</h4></a>
                 </div>
                 <div id="border2">
-                <a style="color:#0f1933" href="/logout">LOG OUT</a>
+                <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/logout"><h4>LOG OUT</h4></a>
                 </div>
 
             </div>
