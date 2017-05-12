@@ -274,7 +274,8 @@
         }
 
         function create_job() {
-          var time = new Date().toLocaleTimeString();
+          var time = new Date()
+          time = time.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
           var date = new Date().toLocaleDateString();
           console.log(time);
           console.log(detail);
