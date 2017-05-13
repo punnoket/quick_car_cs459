@@ -319,7 +319,9 @@ margin: 0 0 0 0 ;
     max-height: 200px;
     display: block;
 }
-
+#d1,#d2,#d3,#d4{
+font-weight: bold;
+}
 .file-upload {
     display: none;
 }
@@ -382,11 +384,11 @@ margin: 0 0 0 0 ;
               			<div class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
               				<h4 style="color: white;"><b>Detail<b></h4>
               				<br>
-              				<h4 style="color: white; font-size: 100%;">Service Charge</h4>
+              				<h4  id="ser" style="color: white; font-size: 100%; " ><b>Service Charge</b></h4>
               			</div>
               			<div class="col-sm-5 col-md-5 col-xs-5" style="margin: 0;padding: 0;">
               				<h4 style="color: white; "><b>Price<b></h4><br>
-              				<input id="ser" class="textbox2"  type="text" placeholder="" />
+              				<input id="servar" class="textbox2"  type="text" placeholder="" value="200" />
               			</div>
               		</div>
               </div>
@@ -395,10 +397,10 @@ margin: 0 0 0 0 ;
               		<div class="row"  style="text-align: center;">
               			<div  class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
               				<div id="test1">
-              						<input id="d1" class="textbox2"  type="text" placeholder="" /><br><br>
-                          <input id="d2" class="textbox2"  type="text" placeholder="" /><br><br>
-                          <input id="d3" class="textbox2"  type="text" placeholder="" /><br><br>
-                          <input id="d4" class="textbox2"  type="text" placeholder="" /><br><br>
+              						<input id="d1"  class="textbox2"  type="text" placeholder="" /><br><br>
+                          <input id="d2"   class="textbox2"  type="text" placeholder="" /><br><br>
+                          <input id="d3"    class="textbox2"  type="text" placeholder="" /><br><br>
+                          <input id="d4"   class="textbox2"  type="text" placeholder="" /><br><br>
               				</div>
               			</div>
               			<div  class="col-sm-5 col-md-5 col-xs-5" style="margin: 0;padding: 0;">
@@ -481,6 +483,8 @@ var sum
         var date = document.getElementById("date").value
         License = document.getElementById("License").value
         Client = document.getElementById("Client").value
+        // var s1 = document.getElementById('ser').value
+        var s2 = document.getElementById('servar').value
         var d1 = document.getElementById("d1").value
         var d2 = document.getElementById("d2").value
         var d3 = document.getElementById("d3").value
@@ -492,11 +496,12 @@ var sum
         var p4 = document.getElementById("p4").value
         var ser = document.getElementById("ser").values
 
-        detail = d1+"\t"+p1+"\n"+
-                 d2+"\t"+p2+"\n"+
-                 d3+"\t"+p3+"\n"+
-                 d4+"\t"+p4+"\n"+
-                 "total"+"\t"+sum+" Bath."
+        detail = "Service Charge"+": "+"\t"+s2+"\n"+
+                 d1+": "+"\t"+p1+"\n"+
+                 d2+": "+"\t"+p2+"\n"+
+                 d3+": "+"\t"+p3+"\n"+
+                 d4+": "+"\t"+p4+"\n"+
+                "total"+": "+"\t"+sum+" Bath."
 
                  function getCookie(name) {
                      var cookieValue = null;
