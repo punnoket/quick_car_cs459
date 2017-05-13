@@ -249,7 +249,7 @@
                 <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/contact"><h4>CONTACT US</h4></a>
                 </div>
                 <div id="border2">
-                <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/logout"><h4>LOG OUT</h4></a>
+                <a style="color:#0f1933;padding: 0px;margin: 0px;" href="/logout_user"><h4>LOG OUT</h4></a>
                 </div>
 
             </div>
@@ -323,13 +323,15 @@
             success: function(data){
 
               for(i in data) {
+                console.log(data[i].fields.is_read);
                 if(data[i].fields.is_read == 'true'){
                   check_read = true
                 } else {
                   check_read = false
+                  break;
                 }
               }
-
+              console.log(check_read);
               if(check_read == true) {
                 //เซตภาพ
                 document.getElementById("iconbell").src = "{%static 'Urgent/Icon/Bell.png' %}"
