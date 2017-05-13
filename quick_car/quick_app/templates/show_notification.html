@@ -1,90 +1,221 @@
 <!DOCTYPE html>
-
-{% extends 'base.html' %}
-{% block content %}
-{% load static %}
 <html>
-
+<html>
+{% load static %}
 <head>
-    <title> noti</title>
+    <title>MAP</title>
+    <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <style type="text/css">
-      body {
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+    <style>
+    body {
         background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
         background-size: cover;
     }
+    #read{
+      margin-top: 10%;
+    }
     #divbill{
       width: 100%;
-      /*height: 100px;*/
+      height: 30%;
         border-style: solid;
         border-color: #0c1c3e ;
         background-color: white;
-        /*padding: 0 0 0 0;*/
+
     }
 
    #imgbill{
-        margin: 0 5% 0 5%;
-        width: 3%;
-        height: 3%;
+        width: 25%;
+        margin: 5% 0 5% 0;
       }
+     #imgbackinheader{
+        width: 5%;
+        height: 5%;
+        margin: 0 0 0 15px;
+      }
+    
+    
+        body {
+            font-family: "Lato", sans-serif;
+        }
+        
+ #imginheader{
+        width: 30%;
+        height: 30%;
+      }
+      #iconbell{
+        width: 10%;
+        height: 10%
+      }
+        
+        #content {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
 
-      /* ----------- iPhone 5 and 5S ----------- */
 
+        @media screen and (max-height: 450px) {
+            .sidenav {padding-top: 15px;}
+            .sidenav a {font-size: 18px;}
+        }
+        /* Portrait and Landscape */
+  @media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+/* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
 @media only screen
   and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
-      #imgbill{
-        width: 10%;
-        height: 10%;
+      #read{
+      width: 20%;
+      margin-top: 20%;
+    }
+    #imgbill{
+        width: 40%;
+        margin-top: 5%;
+      }
+     
+    #imgbackinheader{
+        width: 15%;
+        height: 15%;
+        margin: 0 0 0 15px;
+      }
+    
+     #imginheader{
+        padding-top: 6px;
+        width: 70%;
+        height: 70%;
       }
 
+      #iconbell{
+        padding-top: 4px;
+        width: 30%;
+        height: 30%
+      }
 }
+/* ----------- iPad 1 and 2 ----------- */
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
+  and (-webkit-min-device-pixel-ratio: 1) {
 
+    #imgbill{
+        width: 30%;
+        /*height: 10%;*/
+      }
+     
+
+}
+/*--------*/
 
 /* ----------- iPhone 6 ----------- */
-
 /* Portrait and Landscape */
 @media only screen
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
- #imgbill{
-        width: 10%;
-        height: 10%;
+   
+    #read{
+      width: 20%;
+      margin-top: 20%;
+    }
+    #imgbill{
+        width: 40%;
+        margin-top: 5%;
+      }
+    #imgbackinheader{
+        width: 15%;
+        height: 15%;
+        margin: 0 0 0 15px;
+      }
+    
+
+ #imginheader{
+        width: 70%;
+        height: 70%;
       }
 
+      #iconbell{
+        width: 30%;
+        height: 30%
+      }
 }
+header{
+        width: 100%;
+       background-color: #0f1933;
+       border-style: solid;
+       border-color: #0f1933 #0f1933 #fff #0f1933;
+      }
+
     </style>
-    <script type="text/javascript">
+<script type="text/javascript">
 
       function v(i){
           console.log(i);
       }
     </script>
 </head>
+<body>
 
-<body >
+<header>
+            <div class="container-fluid" style="width: 100%; background-color: #0f1933;" >
+                <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
+                    <div class="col-xs-4 col-md-4">
+                        <a href="/map"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
+                    </div>
+                    <div class="col-xs-4 col-md-4" style="text-align: center;">
+                         <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}">
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <a href="/show_notification">
+                             <img  id="iconbell"   style=" float: right;  cursor:pointer;" src="{%static 'Urgent/Icon/Bell.png' %}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+</header>
 
 
 
 <div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
 
       <div id="divbill" ng-repeat="i in billist"  ng-click="listener($index)">
-        <h1 style="font-size: 100%; padding: 0;margin:2%;"> <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">Bill [[i.fields.time]] [[i.fields.detail]] </h1>
-
-        <div ng-if="i.fields.is_read == 'false' ">
-        <p id='read'>ยังไม่ได้อ่าน</p>
+            <div class="row">
+                  <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+                    <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">
+                  </div>
+                  <div class="col-xs-6 col-md-6 col-sm-6" style="text-align: left;">
+                    <h4 style=""> Bill [[i.fields.date]]  </h4>
+                  </div>
+                  <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+                  <div ng-if="i.fields.is_read == 'false' ">
+          <img  id="read" src="{%static 'Urgent/Client/9C-Notification/3.png' %}">
+        
         </div>
+                    
+                  </div>
+
+            </div>
+
 
       </div>
 
    </div>
-
-  <script>
+<script>
 
     var app = angular.module('myApp', []);
 
@@ -126,7 +257,6 @@
 
     });
   </script>
-</body>
 
+</body>
 </html>
-{% endblock %}

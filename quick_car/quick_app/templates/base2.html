@@ -11,6 +11,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
     <style>
+    #photoclient{
+      width: 40%;
+    }
+    #callclient{
+      width: 40%;
+    }
     #mud{
       width: 20%;
       margin: 20px;
@@ -91,6 +97,7 @@
   and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #
     #mud{
       width: 45%;
       /*margin: 100px;*/
@@ -113,6 +120,14 @@
   and (min-device-width: 768px)
   and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
+   
+    #map{
+      height: 100%;
+    }
+    #photoclient{
+      width: 50%;
+      margin: 7%;
+    }
       #imgprofile{
         width:55%;
         height:23%;
@@ -127,6 +142,13 @@
   and (min-device-width: 375px)
   and (max-device-width: 667px)
   and (-webkit-min-device-pixel-ratio: 2) {
+    #photoclient{
+      width: 50%;
+      margin: 7%;
+    }
+    #callclient{
+      width: 70%;
+    }
      #mud{
       width: 60%;
       /*padding: 50% 0 %; 0;*/
@@ -159,18 +181,21 @@
     background-image: url({%static 'Urgent/Client/13C-Profile/1.png'%});
     background-size: cover;
 }
-
-
 #border{
     border-style: solid;
     border-color: #000 #F5CB0D #F5CB0D #F5CB0D;
-     height: 10%;
-     padding: 0;
-     margin: 0;
+    height: 8%;
+    text-align: center;
+
 }
+
 #border2{
     border-style: solid;
     border-color: #000 #F5CB0D #000 #F5CB0D;
+     height: 8%;
+    text-align: center;
+}
+
 }header{
         width: 100%;
        background-color: #0f1933;
@@ -219,20 +244,20 @@
                 </div>
 
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <div id="border" style="text-align: center;">
-                <a style="color:#0f1933" href="/map"><h4>HOME</h4></a>
+                <div id="border" >
+                <a style="color:#0f1933 ;padding: 0px;margin: 0px;" href="/map"><h4>HOME</h4></a>
                 </div>
-                <div id="border" style="text-align: center;">
-                <a style="color:#0f1933" href="/history"><h4>HISTORY</h4></a>
+                <div id="border">
+                <a style="color:#0f1933; padding: 0px;margin: 0px;" href="/history"><h4>HISTORY</h4></a>
                 </div>
-                <div id="border" style="text-align: center;"> 
-                <a style="color:#0f1933" href="/formbill"><h4>BILLING FORM</h4></a>
+                <div id="border" > 
+                <a style="color:#0f1933; padding: 0px;margin: 0px;" href="/formbill"><h4>BILLING FORM</h4></a>
                 </div>
-                <div id="border" style="text-align: center;">
-                <a style="color:#0f1933" href="/contact"><h4>CONTACT US</h4></a>
+                <div id="border" >
+                <a style="color:#0f1933; padding: 0px;margin: 0px;" href="/contact"><h4>CONTACT US</h4></a>
                 </div>
-                <div id="border2" style="text-align: center;">
-                <a style="color:#0f1933" href="/logout"><h4>LOG OUT</h4></a>
+                <div id="border2" >
+                <a style="color:#0f1933 ;padding: 0px;margin: 0px;" href="/logout"><h4>LOG OUT</h4></a>
                 </div>
 
             </div>
@@ -248,7 +273,7 @@
                          <img  id="imginheader"  src="{%static 'Urgent/Mainpage/Logo.png' %}">
                     </div>
                     <div class="col-xs-4 col-md-4">
-                        <a href="/show_notification">
+                        <a href="">
                              <img  id="iconbell"   style=" float: right;  cursor:pointer;" src="{%static 'Urgent/Icon/Bell.png' %}">
                         </a>
                     </div>

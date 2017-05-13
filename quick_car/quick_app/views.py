@@ -31,6 +31,7 @@ class NotificationViewSet(viewsets.ModelViewSet):
 
 def map(request):
     return render(request, 'map.html')
+
 def mecedit(request):
     return render(request, 'mecedit.html')
 

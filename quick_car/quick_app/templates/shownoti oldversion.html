@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<html>
+
+<head>
+    <title> noti</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <style type="text/css">
+      body {
+        background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
+        background-size: cover;
+    }
+    #divbill{
+      width: 100%;
+      /*height: 100px;*/
+        border-style: solid;
+        border-color: #0c1c3e ;
+        background-color: white;
+        /*padding: 0 0 0 0;*/
+    }
+
+   #imgbill{
+        margin: 0 5% 0 5%;
+        width: 3%;
+        height: 3%;
+      }
+
+      /* ----------- iPhone 5 and 5S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+      #imgbill{
+        width: 10%;
+        height: 10%;
+      }
+
+}
+
+
+/* ----------- iPhone 6 ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+ #imgbill{
+        width: 30%;
+        /*height: 10%;*/
+      }
+
+}
+    </style>
+    <script type="text/javascript">
+
+      function v(i){
+          console.log(i);
+      }
+    </script>
+</head>
+
+<body >
+
+  
+
+<div ng-app="myApp" ng-controller="myCtrl" ng-init="myFunc()">
+
+      <div id="divbill" ng-repeat="i in billist"  ng-click="listener($index)">
+            <div class="row">
+                  <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+                    <img id="imgbill" src="{%static 'Urgent/Client/9C-Notification/2.png'%}">
+                  </div>
+                  <div class="col-xs-6 col-md-6 col-sm-6" style="text-align: left;">
+                    <h1 style="font-size: 100%;"> Bill [[i.fields.time]]  </h1>
+                  </div>
+                  <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+                  <div ng-if="i.fields.is_read == 'false' ">
+          <img  id="read" src="{%static 'Urgent/Client/9C-Notification/3.png' %}">
+        
+        </div>
+                    
+                  </div>
+
+            </div>
+
+
+      </div>
+
+   </div>
+
+  <script>
+
+    var app = angular.module('myApp', []);
+
+    app.config(function($httpProvider) {
+        $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+        $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+    });
+    app.config(function($interpolateProvider) {
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+    });
+    app.controller('myCtrl', function($scope, $http ,$location, $window) {
+      $scope.myFunc = function() {
+
+            $http.get("{% url 'get_notification' %}")
+            .then(function(response) {
+
+              console.log(response.data);
+              $scope.billist = response.data;
+              $scope.listener = function(i) {
+                var noti = response.data[i];
+                console.log(noti);
+                var parameter = JSON.stringify({notification:noti});
+                $http.post("{% url 'get_noti_from_click' %}", parameter)
+                .then(function(response) {
+                    $window.location.href = "/bill"
+                    console.log(response.status);
+                }, function(response) {
+
+                });
+
+              }
+
+            }, function(response) {
+
+            });
+
+        };
+
+    });
+  </script>
+</body>
+
+</html>
+{% endblock %}
