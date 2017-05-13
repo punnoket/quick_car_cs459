@@ -71,10 +71,29 @@ def match_fail(request):
 def login(request):
 	return render(request,'login.html')
 
-def logout(request):
+def logout_user(request):
+    GLOBAL_USER_LOGIN = None
+    GLOBAL_USER_JSON = None
+    GLOBAL_JOB = None
+    is_match = None
+    place_user = None
+    price = None
+    type_user =None
     for key in list(request.session.keys()):
         del request.session[key]
-	return render(request,'login.html')
+	return redirect('login')
+
+def logout_mechanic(request):
+    GLOBAL_MECHANIC = None
+    GLOBAL_MECHANIC_OBJECT = None
+    GLOBAL_MECHANIC_LOGIN = None
+    GLOBAL_MECHANIC_JSON = None
+    GLOBAL_JOB = None
+    is_match = None
+    place_user = None
+    for key in list(request.session.keys()):
+        del request.session[key]
+	return redirect('login')
 
 def signup(request):
 	return render(request,'signup.html')
