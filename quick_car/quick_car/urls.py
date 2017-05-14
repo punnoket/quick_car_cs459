@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^logout_mechanic', views.logout_user, name='logout_mechanic'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
+    url(r'^history_mechanic',views.history_mechanic,name='history_mechanic'),
     url(r'^single_history',views.single_history,name='single_history'),
     url(r'^send_notification',views.send_notification,name='send_notification'),
     url(r'^get_notification',views.get_notification,name='get_notification'),

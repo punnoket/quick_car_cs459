@@ -102,6 +102,19 @@
                         map: map,
 
                       });
+                      $.ajax({
+                          type: "GET",
+                          url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.lat+","+pos.lng+"&sensor=true",
+
+                          success: function(data){
+                              place = data.results[0].formatted_address
+                              document.getElementById("locatclient").innerHTML = place;
+                            },
+                          failure: function(errMsg) {
+                          }
+                        });
+
+                      console.log(pos);
                       marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
                       marker.setAnimation(google.maps.Animation.BOUNCE)
                       map.setCenter(pos);
@@ -115,16 +128,6 @@
                 //marker
                 var marker, i,
                 infoCradle = new google.maps.InfoWindow();
-                $.ajax({
-                    type: "GET",
-                    url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+14.065574699999999+","+100.6057261+"&sensor=true",
-                    success: function(data){
-                        place = data.results[0].formatted_address
-                        document.getElementById("locatclient").innerHTML = place;
-                      },
-                    failure: function(errMsg) {
-                    }
-                  });
 
                 $.ajax({
                       url: '/get_garage',

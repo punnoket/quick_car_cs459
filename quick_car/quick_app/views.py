@@ -101,6 +101,9 @@ def signup(request):
 def history(request):
 	return render(request,'history.html')
 
+def history_mechanic(request):
+	return render(request,'history_mechanic.html')
+
 def single_history(request):
 	return render(request,'single_history.html')
 
