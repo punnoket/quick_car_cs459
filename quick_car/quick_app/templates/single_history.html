@@ -199,7 +199,7 @@ h3{
         height: 15%;
         margin: 0 0 0 15px;
       }
-  
+
     .textbox ,.selectbox{
     outline:0; */
     height:80%;
@@ -274,7 +274,7 @@ body {
                          <h3 id="price">Cash </h3>
                         </div>
                       </div>
-                            
+
                             <div id="map" style="height: 200px;">
 
                             </div>
@@ -291,9 +291,9 @@ body {
                           <h3 id="place"> </h3>
                         </div>
                       </div>
-                    
-                        
-                        
+
+
+
                     </div>
                     <div style="background-color: #FFF; border-radius: 5px; ">
                         <h3 id="detail" style="margin: 5% 0 5% 5%;"> </h3>
@@ -305,7 +305,7 @@ body {
                             </div>
                             <div  style="width: 40%; display: inline-block;"  >
                                  <h3 id="user" style="font-size: 100%; color: white;">Name: </h3>
-                                 
+
                             </div>
 
 
@@ -360,24 +360,6 @@ body {
             console.log(data.responseJSON.fields);
         }
       });
-
-      var history = { "history":history_data};
-
-
-      $.ajax({
-          type: "POST",
-          url: "/read_history_to_single",
-          data: JSON.stringify(history),
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          success: function(data){
-            
-            ;},
-          failure: function(errMsg) {
-          }
-        });
-
-
 
 
     var uluru = {lat: -25.363, lng: 131.044};
