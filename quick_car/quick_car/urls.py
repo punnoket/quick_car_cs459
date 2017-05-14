@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^logout_mechanic', views.logout_user, name='logout_mechanic'),
     url(r'^signup', views.signup, name='signup'),
     url(r'^history',views.history,name='history'),
-    url(r'^history_mechanic',views.history_mechanic,name='history_mechanic'),
+    url(r'^mechanic_his',views.mechanic_his,name='mechanic_his'),
     url(r'^single_history',views.single_history,name='single_history'),
     url(r'^send_notification',views.send_notification,name='send_notification'),
     url(r'^get_notification',views.get_notification,name='get_notification'),
@@ -67,7 +67,7 @@ urlpatterns = [
     url(r'^sing_up_new_user',views.sing_up_new_user,name='sing_up_new_user'),
     url(r'^get_job_with_price',views.get_job_with_price,name='get_job_with_price'),
     url(r'^check_type',views.check_type,name='check_type'),
-    url(r'^get_history_mechanic',views.get_history_mechanic,name='get_history_mechanic'),
+    url(r'^get_mechanic_his',views.get_mechanic_his,name='get_mechanic_his'),
     url(r'^read_history_to_single',views.read_history_to_single,name='read_history_to_single'),
 
 ]

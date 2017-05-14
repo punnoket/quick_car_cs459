@@ -69,7 +69,7 @@ def match_fail(request):
     return render(request, 'match_fail.html')
 
 def login(request):
-	return render(request,'login.html')
+    return render(request,'login.html')
 
 def logout_user(request):
     GLOBAL_USER_LOGIN = None
@@ -81,7 +81,7 @@ def logout_user(request):
     type_user =None
     for key in list(request.session.keys()):
         del request.session[key]
-	return redirect('login')
+    return redirect('login')
 
 def logout_mechanic(request):
     GLOBAL_MECHANIC = None
@@ -93,31 +93,31 @@ def logout_mechanic(request):
     place_user = None
     for key in list(request.session.keys()):
         del request.session[key]
-	return redirect('login')
+    return redirect('login')
 
 def signup(request):
-	return render(request,'signup.html')
+    return render(request,'signup.html')
 
 def history(request):
-	return render(request,'history.html')
+    return render(request,'history.html')
 
-def history_mechanic(request):
-	return render(request,'history_mechanic.html')
+def mechanic_his(request):
+    return render(request,'history_mechanic.html')
 
 def single_history(request):
-	return render(request,'single_history.html')
+    return render(request,'single_history.html')
 
 def signgarage(request):
-	return render(request,'signgarage.html')
+    return render(request,'signgarage.html')
 
 def open_send_bill(request):
     return render(request,'send_notification.html')
 
 def payment(request):
-	return render(request,'payment.html')
+    return render(request,'payment.html')
 
 def test(request):
-	return render(request,'test.html')
+    return render(request,'test.html')
 
 def sest(request):
     return render(request,'ttest.html')
@@ -137,7 +137,18 @@ def sing_up_new_user(request):
     return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
-def sing_up_new_garage(request):
+def new_garage(request):
+    json_data = json.loads(request.body)
+    new_mechanic = Mechanic.objects.create()
+    new_mechanic.owner_name
+    new_mechanic.username
+    new_mechanic.citizen_id
+    new_mechanic.email
+    new_mechanic.password
+    new_mechanic.address
+    new_mechanic.commercial_registration_no
+    new_mechanic.account
+    new_mechanic.locations
 
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
@@ -146,7 +157,7 @@ def sing_up_new_garage(request):
 
 @csrf_exempt
 def show_notification(request):
-	return render(request,'show_notification.html')
+    return render(request,'show_notification.html')
 
 @csrf_exempt
 def send_notification(request):
@@ -229,12 +240,14 @@ def check_type(request):
 @csrf_exempt
 def get_history(request):
     global GLOBAL_USER_JSON
+    print("++++++++++++++++++++++++")
     jobs = Job.objects.filter(user=GLOBAL_USER_JSON["user"])
     jobs_json = serializers.serialize('json', jobs)
     return HttpResponse(jobs_json, content_type='application/json')
 
 @csrf_exempt
-def get_history_mechanic(request):
+def get_mechanic_his(request):
+    print("------------------------")
     global GLOBAL_MECHANIC_JSON
     jobs = Job.objects.filter(mechanic=GLOBAL_MECHANIC_JSON["username"])
     jobs_json = serializers.serialize('json', jobs)
