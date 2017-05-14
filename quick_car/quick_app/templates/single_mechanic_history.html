@@ -301,7 +301,7 @@ body {
 
               <div  id="contact" style=" width: 100%;">
                             <div  style="float: left; width: 50%; text-align: center;" >
-                                <img id="picclimech" src="" style="width: 50%; margin: 7% 0 0 0; padding: 0;">
+                                <img id="picclimech" src="{%static 'Urgent/Garage/10G-History info/7.png'%}" style="width: 50%; margin: 7% 0 0 0; padding: 0;">
                             </div>
                             <div  style="width: 40%; display: inline-block;"  >
                                  <h3 id="user" style="font-size: 100%; color: white;">Name: </h3>
@@ -325,15 +325,7 @@ body {
   var history
   var position
 
-  if(type ==garage){
-   var pic= document.getElementById('picclimech');
-   pic.src = "{%static 'Urgent/Garage/10G-History info/7.png'%}";
-   document.getElementById('user').innerHTML = document.getElementById('user').innerHTML+history_data.user
-  }else{
-    var pic= document.getElementById('picclimech');
-     pic.src = "{%static 'Urgent/Client/16C-History info/7.png'%}";
-     document.getElementById('user').innerHTML = document.getElementById('user').innerHTML+history_data.mechanic
-  }
+
 
   function initMap() {
 
