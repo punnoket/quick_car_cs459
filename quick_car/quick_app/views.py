@@ -24,6 +24,7 @@ place_user = None
 price = None
 JOB_OBJECT = None
 type_user =None
+mechanic_single_history=None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -118,6 +119,9 @@ def payment(request):
 
 def test(request):
     return render(request,'test.html')
+
+def single_mechanic_history(request):
+    return render(request,'single_mechanic_history.html')
 
 def sest(request):
     return render(request,'ttest.html')
@@ -331,18 +335,22 @@ def get_noti_from_click(request):
     return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
-def get_history_from_click(request):
-    print(request)
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
-
-@csrf_exempt
 def click(request):
     global single_history
     print(request)
     json_data = json.loads(request.body)
     single_history = json_data["history"]
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def mechanic_click(request):
+    global mechanic_single_history
+    print(request)
+    json_data = json.loads(request.body)
+    mechanic_single_history = json_data["history"]
+
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
@@ -368,16 +376,22 @@ def res_history_to_single(request):
     return HttpResponse(single_history_json, content_type='application/json')
 
 @csrf_exempt
-def read_history_to_single(request):
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
+def test_his_mechanic(request):
+    global mechanic_single_history
+    print('//////////////')
+    print(mechanic_single_history)
+    print('/////////////')
+    single_history_json = json.dumps(mechanic_single_history)
 
-@csrf_exempt
-def read_noti(request):
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
+    return HttpResponse(single_history_json, content_type='application/json')
+
+def pannawat(request):
+    global mechanic_single_history
+    print('//////////////')
+    print(mechanic_single_history)
+    print('/////////////')
+    single_history_json = json.dumps(mechanic_single_history)
+    return HttpResponse(single_history_json, content_type='application/json')
 
 @csrf_exempt
 def select_mechanic(request):

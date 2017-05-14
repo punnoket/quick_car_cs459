@@ -283,9 +283,9 @@
                  var history = response.data[i];
                  var parameter = JSON.stringify({history:history});
                  console.log(parameter);
-                 $http.post("{% url 'click' %}", parameter)
+                 $http.post("{% url 'mechanic_click' %}", parameter)
                  .then(function(response) {
-                     $window.location.href = "/single_history"
+                     $window.location.href = "/single_mechanic_history"
 
                  }, function(response) {
 
