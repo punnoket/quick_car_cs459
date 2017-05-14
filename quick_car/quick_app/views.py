@@ -101,7 +101,7 @@ def signup(request):
 def history(request):
 	return render(request,'history.html')
 
-def history_mechanic(request):
+def mechanic_his(request):
 	return render(request,'history_mechanic.html')
 
 def single_history(request):
@@ -137,7 +137,20 @@ def sing_up_new_user(request):
     return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
-def sing_up_new_garage(request):
+def new_garage(request):
+    json_data = json.loads(request.body)
+    print(json_data)
+    new_mechanic = Mechanic.objects.create()
+    new_mechanic.owner_name = json_data["o_name"]
+    new_mechanic.username = json_data["username"]
+    new_mechanic.citizen_id = json_data["citizen_id"]
+    new_mechanic.email = json_data["email"]
+    new_mechanic.password = json_data["password"]
+    new_mechanic.address = json_data["address"]
+    new_mechanic.commercial_registration_no = json_data["com"]
+    new_mechanic.account = json_data["account"]
+    new_mechanic.locations = json_data["locations"]
+    new_mechanic.save()
 
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
@@ -229,12 +242,14 @@ def check_type(request):
 @csrf_exempt
 def get_history(request):
     global GLOBAL_USER_JSON
+    print("++++++++++++++++++++++++")
     jobs = Job.objects.filter(user=GLOBAL_USER_JSON["user"])
     jobs_json = serializers.serialize('json', jobs)
     return HttpResponse(jobs_json, content_type='application/json')
 
 @csrf_exempt
-def get_history_mechanic(request):
+def get_mechanic_his(request):
+    print("------------------------")
     global GLOBAL_MECHANIC_JSON
     jobs = Job.objects.filter(mechanic=GLOBAL_MECHANIC_JSON["username"])
     jobs_json = serializers.serialize('json', jobs)

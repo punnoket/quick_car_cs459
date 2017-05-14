@@ -273,7 +273,7 @@
   app.controller('myCtrl', function($scope, $http ,$location, $window) {
     $scope.myFunc = function() {
 
-            $http.get("{% url 'get_history_mechanic' %}")
+            $http.get("{% url 'get_mechanic_his' %}")
             .then(function(response) {
 
               console.log(response.data);

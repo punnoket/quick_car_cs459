@@ -4,7 +4,7 @@
 <head>
   <title>SignupGarage</title>
   <meta charset="utf-8">
-
+  <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
@@ -30,8 +30,8 @@
         height: 5%;
         margin: 0 0 0 15px;
       }
-     
-      
+
+
       html, body {
   height: auto;
   width: 100%;
@@ -42,32 +42,32 @@
 #form{
   margin-top: 10%;
 }
-.textbox { 
-    border: 1px solid #848484; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
-    outline:0; 
-    height:30px; 
-    width: 300px; 
-    padding-left:10px; 
-    padding-right:10px; 
+.textbox {
+    border: 1px solid #848484;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    outline:0;
+    height:30px;
+    width: 300px;
+    padding-left:10px;
+    padding-right:10px;
   }
   .button {
-  border: 1px solid #000; 
-    -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
-    border-radius: 30px; 
-    outline:0; 
-    height:30px; 
-    width: 200px; 
-    margin : 30px 0 0 0 ; 
+  border: 1px solid #000;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    outline:0;
+    height:30px;
+    width: 200px;
+    margin : 30px 0 0 0 ;
     padding: 3px 0 0 0;
     background-color: #000;
     color: #fff;
 
   }
-     
+
  #full-screen-background-image {
   z-index: -999;
   min-height: 100%;
@@ -104,42 +104,42 @@ h3{
 
 #phone{
   width: 240px;
-   
+
 }
-.fake-input { 
-  position: relative; 
+.fake-input {
+  position: relative;
   /*width:240px;*/
-  text-align: center; 
+  text-align: center;
 padding: 0 0 0 0;
 margin: 0 0 0 0 ;
 }
 
-.fake-input input { 
-  -webkit-border-radius: 30px; 
-    -moz-border-radius: 30px; 
+.fake-input input {
+  -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
     border-radius: 30px;
-     border:none: background:#fff; 
-    display:inline-block; 
-    width: 60px; 
+     border:none: background:#fff;
+    display:inline-block;
+    width: 60px;
     height: 30px;
     box-sizing: border-box ;
   }
-.fake-input img { 
+.fake-input img {
   position: absolute;
-   top: 2.25px; 
-   left: 32.25%; 
+   top: 2.25px;
+   left: 32.25%;
  }
  /* Portrait and Landscape */
-  @media only screen 
-  and (min-device-width: 320px) 
+  @media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
 }
 /* ----------- iPhone 5 and 5S ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 320px) 
+@media only screen
+  and (min-device-width: 320px)
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
 
@@ -158,27 +158,27 @@ margin: 0 0 0 0 ;
     h3{
       font-size: 50%;
     }
-    .textbox { 
+    .textbox {
     outline:0; */
-    height:50%; 
-    width: 90%; 
+    height:50%;
+    width: 90%;
     margin :5px 0 0 0;
   }
 
   .button {
-    outline:0; 
-    height:50%; 
-    width: 70%; 
-    margin-top: :5%; 
+    outline:0;
+    height:50%;
+    width: 70%;
+    margin-top: :5%;
     padding: 7px 0 7px 0;
   }
-  .fake-input input { 
-    width: 30%; 
+  .fake-input input {
+    width: 30%;
     height: 30px;
   }
-.fake-input img { 
-   top: 7px; 
-   left: 5%; 
+.fake-input img {
+   top: 7px;
+   left: 5%;
  }
    #phone{
       width: 60%;
@@ -186,20 +186,20 @@ margin: 0 0 0 0 ;
 }
 /* ----------- iPad 1 and 2 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+@media only screen
+  and (min-device-width: 768px)
+  and (max-device-width: 1024px)
   and (-webkit-min-device-pixel-ratio: 1) {
     #form{
       margin-top: 30%;
     }
-    .fake-input input { 
-    width: 15%; 
+    .fake-input input {
+    width: 15%;
     height: 30px;
   }
-.fake-input img { 
-   top: 2.25px; 
-   left: 21.25%; 
+.fake-input img {
+   top: 2.25px;
+   left: 21.25%;
  }
    #phone{
       width: 43%;
@@ -209,11 +209,11 @@ margin: 0 0 0 0 ;
 
 /* ----------- iPhone 6 ----------- */
 /* Portrait and Landscape */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px) 
-  and (-webkit-min-device-pixel-ratio: 2) { 
- 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
     #form{
       margin-top: 30%;
     }
@@ -229,27 +229,27 @@ margin: 0 0 0 0 ;
   h3{
       font-size: 70%;
     }
-    .textbox { 
+    .textbox {
     outline:0; */
-    height:80%; 
-    width: 90%; 
+    height:80%;
+    width: 90%;
     margin: 5px 0 0 0 ;
   }
- 
+
   .button {
-    outline:0; 
-    height: 80%; 
-    width: 70%; 
+    outline:0;
+    height: 80%;
+    width: 70%;
     padding: 7px 0 7px 0;
 
   }
-.fake-input input { 
-    width: 30%; 
+.fake-input input {
+    width: 30%;
     height: 30px;
   }
-.fake-input img { 
-   top: 6px; 
-   left: 5%; 
+.fake-input img {
+   top: 6px;
+   left: 5%;
  }
    #phone{
       width: 60%;
@@ -282,7 +282,7 @@ margin: 0 0 0 0 ;
 <script type="text/javascript">
 
     $(document).ready(function() {
-    
+
     var readURL = function(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -290,16 +290,16 @@ margin: 0 0 0 0 ;
             reader.onload = function (e) {
                 $('.profile-pic').attr('src', e.target.result);
             }
-    
+
             reader.readAsDataURL(input.files[0]);
         }
     }
-    
+
 
     $(".file-upload").on('change', function(){
         readURL(this);
     });
-    
+
     $(".profile-pic").on('click', function() {
        $(".file-upload").click();
     });
@@ -316,11 +316,11 @@ margin: 0 0 0 0 ;
                 <div class="col-xs-4 col-md-4" style="text-align: left;">
                        <a href="/login"><img  id="imgbackinheader"  src="{%static 'UrGent/Icon/Back.png' %}"></a>
                     </div>
-                    <div class="col-xs-4 col-md-4" style="text-align: center;"> 
+                    <div class="col-xs-4 col-md-4" style="text-align: center;">
                     <img id="imglogo" src=""> <span style="font-size:20px; color: #fff;   ">SIGN UP</span>
                     </div>
                     <div class="col-xs-4 col-md-4">
-                        
+
                     </div>
             </div>
         </header>
@@ -328,34 +328,34 @@ margin: 0 0 0 0 ;
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
         <div class="col-xs-8 col-md-8 col-sm-8" >
           <div id="form" style="text-align: center;">
-              <input class="textbox" type="text" placeholder="Garage name" style="margin-bottom: 3%;">  <br>
+              <input id="name"class="textbox" type="text" placeholder="Garage name" style="margin-bottom: 3%;">  <br>
 
-               <input class="textbox" type="text" placeholder="Owner name" style="margin-bottom: 3%;">  <br>
-                <input class="textbox" type="text" placeholder="Citizen ID" style="margin-bottom: 3%;">  <br>
-                 
-                <input class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 3%;"> 
+               <input id="o_name" class="textbox" type="text" placeholder="Owner name" style="margin-bottom: 3%;">  <br>
+                <input id="citizen_id"class="textbox" type="text" placeholder="Citizen ID" style="margin-bottom: 3%;">  <br>
+
+                <input id="email"class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 3%;">
                 <br>
-                <input class="textbox" type="text" placeholder="Password" style="margin-bottom: 3%;"> 
+                <input id="password" class="textbox" type="text" placeholder="Password" style="margin-bottom: 3%;">
                 <br>
-                <input class="textbox" type="text" placeholder="Confirm Password" style="margin-bottom: 3%;"> 
+                <input class="textbox" type="text" placeholder="Confirm Password" style="margin-bottom: 3%;">
                 <br>
-                <input class="textbox" type="text" placeholder="Address" style="margin-bottom: 3%;"> 
+                <input id="address" class="textbox" type="text" placeholder="Address" style="margin-bottom: 3%;">
                 <br>
-                <input class="textbox" type="text" placeholder="Commercial registration No." style="margin-bottom: 3%;"> 
+                <input id="com" class="textbox" type="text" placeholder="Commercial registration No." style="margin-bottom: 3%;">
                 <br>
-                <input class="textbox" type="text" placeholder="Account" style="margin-bottom: 3%;"> 
+                <input id="account" class="textbox" type="text" placeholder="Account" style="margin-bottom: 3%;">
                 <br>
 
                       <div style="text-align: center;">
                         <div  class="fake-input">
                           <input   type="text" placeholder="       +66" />
                           <img src="{%static 'Urgent/Client/1C-Sign up/5.png'%}" width=25 />
-                          <input   class="textbox" id="phone" type="text" placeholder="Phone number" style="margin-bottom: 3%; "> 
+                          <input   class="textbox" id="phone" type="text" placeholder="Phone number" style="margin-bottom: 3%; ">
                            <br>
                         </div>
                       </div>
                  <h4 style="font-size: 100%; color: white; margin-left: -25%;">Photo ID card <br><br></h4><img class="profile-pic" src="{%static 'Urgent/Garage/1G-Sign up/5.png' %}" />
-                      
+
               <div class="upload-button">Upload Image</div>
               <input class="file-upload" style="display: none;" type="file" id="piccard" accept="image/*"/> <br><br>
 
@@ -364,18 +364,145 @@ margin: 0 0 0 0 ;
 
 
 
-                <button href="/mechanic_home" class="button">Submit</button>
+                <button href="/login" class="button" onclick="initMap()">Submit</button>
                  <h3>By registering, I have read and agreed to the agreement and the Private Policy</h3>
         </div>
         </div>
         <div class="col-xs-2 col-md-2 col-sm-2"></div>
         </div>
-        
 
-       
-      
+
+
+
 
     </div>
+
+
+<!-- <script type="text/javascript">
+
+var geocoder = new google.maps.Geocoder();
+var address = "new york";
+
+geocoder.geocode( { 'address': address}, function(results, status) {
+
+  if (status == google.maps.GeocoderStatus.OK) {
+    var latitude = results[0].geometry.location.lat();
+    var longitude = results[0].geometry.location.lng();
+    alert(latitude);
+  }
+});
+
+
+
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+      var csrftoken = getCookie('csrftoken');
+      function csrfSafeMethod(method) {
+          // these HTTP methods do not require CSRF protection
+          return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $.ajaxSetup({
+          beforeSend: function(xhr, settings) {
+              if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                  xhr.setRequestHeader("X-CSRFToken", csrftoken);
+              }
+          }
+      });
+      function singup() {
+
+    $.ajax({
+        type: "POST",
+        async:false,
+        url: "/new_garage",
+        data: JSON.stringify({ username: username, password : password, email: email, phone: phone, o_name: o_name, citizen_id: citizen_id, address: address, com: com, account: account}),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+          document.location.href = "/login"
+        },
+        failure: function(errMsg) {
+          console.log(errMsg);
+        }
+    });
+  }
+
+    </script> -->
+
+    <div id="map"></div>
+        <script>
+        var address = document.getElementById("address").value
+        var map;
+        var latitude
+        var longitude
+
+        var check=false
+          function initMap() {
+            if(check) {
+              get_lo()
+            }
+            check = true
+          }
+          function get_lo() {
+            var geocoder = new google.maps.Geocoder();
+            var add = address
+            console.log(555);
+            geocoder.geocode( { 'address': add}, function(results, status) {
+              console.log(status);
+              if (status == google.maps.GeocoderStatus.OK) {
+                latitude = results[0].geometry.location.lat();
+                longitude = results[0].geometry.location.lng();
+                var username = document.getElementById("name").value
+                var o_name = document.getElementById("o_name").value
+                var citizen_id = document.getElementById("citizen_id").value
+                var password = document.getElementById("password").value
+
+                var com = document.getElementById("com").value
+                var account = document.getElementById("account").value
+                var phone = document.getElementById("phone").value
+                var email = document.getElementById("email").value
+                //alert(latitude);
+                $.ajax({
+                    type: "POST",
+                    async:false,
+                    url: "/new_garage",
+                    data: JSON.stringify({ username: username, password : password, email: email, phone: phone, o_name: o_name, citizen_id: citizen_id, locations: latitude+","+longitude, com: com, account: account, address:address}),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(data){
+                      document.location.href = "/login"
+                    },
+                    failure: function(errMsg) {
+                      console.log(errMsg);
+                    }
+                });
+              }
+            });
+          }
+
+
+
+
+
+
+</script>
+
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
+</script>
 
 </body>
 </html>
