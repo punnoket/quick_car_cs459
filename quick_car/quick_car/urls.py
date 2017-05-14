@@ -61,14 +61,17 @@ urlpatterns = [
     url(r'^is_match_complete',views.is_match_complete,name='is_match_complete'),
     url(r'^get_user_match',views.get_user_match,name='get_user_match'),
     url(r'^get_history',views.get_history,name='get_history'),
-    url(r'^get_history_from_click',views.get_history_from_click,name='get_history_from_click'),
     url(r'^res_history_to_single',views.res_history_to_single,name='res_history_to_single'),
     url(r'^click',views.click,name='click'),
     url(r'^sing_up_new_user',views.sing_up_new_user,name='sing_up_new_user'),
     url(r'^get_job_with_price',views.get_job_with_price,name='get_job_with_price'),
     url(r'^check_type',views.check_type,name='check_type'),
     url(r'^get_mechanic_his',views.get_mechanic_his,name='get_mechanic_his'),
-    url(r'^read_history_to_single',views.read_history_to_single,name='read_history_to_single'),
+    url(r'^new_garage',views.new_garage,name='new_garage'),
+    url(r'^test_his_mechanic',views.test_his_mechanic,name='test_his_mechanic'),
+    url(r'^mechanic_click',views.mechanic_click,name='mechanic_click'),
+    url(r'^single_mechanic_history',views.single_mechanic_history,name='single_mechanic_history'),
+    url(r'^pannawat',views.pannawat,name='pannawat'),
 
 ]
 

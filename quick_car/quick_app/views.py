@@ -24,6 +24,7 @@ place_user = None
 price = None
 JOB_OBJECT = None
 type_user =None
+mechanic_single_history=None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -102,7 +103,7 @@ def history(request):
     return render(request,'history.html')
 
 def mechanic_his(request):
-    return render(request,'history_mechanic.html')
+	return render(request,'history_mechanic.html')
 
 def single_history(request):
     return render(request,'single_history.html')
@@ -118,6 +119,9 @@ def payment(request):
 
 def test(request):
     return render(request,'test.html')
+
+def single_mechanic_history(request):
+    return render(request,'single_mechanic_history.html')
 
 def sest(request):
     return render(request,'ttest.html')
@@ -139,17 +143,18 @@ def sing_up_new_user(request):
 @csrf_exempt
 def new_garage(request):
     json_data = json.loads(request.body)
+    print(json_data)
     new_mechanic = Mechanic.objects.create()
-    new_mechanic.owner_name
-    new_mechanic.username
-    new_mechanic.citizen_id
-    new_mechanic.email
-    new_mechanic.password
-    new_mechanic.address
-    new_mechanic.commercial_registration_no
-    new_mechanic.account
-    new_mechanic.locations
-
+    new_mechanic.owner_name = json_data["o_name"]
+    new_mechanic.username = json_data["username"]
+    new_mechanic.citizen_id = json_data["citizen_id"]
+    new_mechanic.email = json_data["email"]
+    new_mechanic.password = json_data["password"]
+    new_mechanic.address = json_data["address"]
+    new_mechanic.commercial_registration_no = json_data["com"]
+    new_mechanic.account = json_data["account"]
+    new_mechanic.locations = json_data["locations"]
+    new_mechanic.save()
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
@@ -330,18 +335,22 @@ def get_noti_from_click(request):
     return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
-def get_history_from_click(request):
-    print(request)
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
-
-@csrf_exempt
 def click(request):
     global single_history
     print(request)
     json_data = json.loads(request.body)
     single_history = json_data["history"]
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
+
+@csrf_exempt
+def mechanic_click(request):
+    global mechanic_single_history
+    print(request)
+    json_data = json.loads(request.body)
+    mechanic_single_history = json_data["history"]
+
     user = {'user': "null", 'type': 'null'}
     user_json = json.dumps(user)
     return HttpResponse(user_json, content_type='application/json')
@@ -367,16 +376,22 @@ def res_history_to_single(request):
     return HttpResponse(single_history_json, content_type='application/json')
 
 @csrf_exempt
-def read_history_to_single(request):
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
+def test_his_mechanic(request):
+    global mechanic_single_history
+    print('//////////////')
+    print(mechanic_single_history)
+    print('/////////////')
+    single_history_json = json.dumps(mechanic_single_history)
 
-@csrf_exempt
-def read_noti(request):
-    user = {'user': "null", 'type': 'null'}
-    user_json = json.dumps(user)
-    return HttpResponse(user_json, content_type='application/json')
+    return HttpResponse(single_history_json, content_type='application/json')
+
+def pannawat(request):
+    global mechanic_single_history
+    print('//////////////')
+    print(mechanic_single_history)
+    print('/////////////')
+    single_history_json = json.dumps(mechanic_single_history)
+    return HttpResponse(single_history_json, content_type='application/json')
 
 @csrf_exempt
 def select_mechanic(request):
