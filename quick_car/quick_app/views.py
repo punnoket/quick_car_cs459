@@ -73,25 +73,36 @@ def login(request):
     return render(request,'login.html')
 
 def logout_user(request):
+    global GLOBAL_USER_LOGIN
+    global GLOBAL_USER_JSON
+    global place_user
+    global is_match
+
     GLOBAL_USER_LOGIN = None
-    GLOBAL_USER_JSON = None
-    GLOBAL_JOB = None
+    GLOBAL_USER_JSON = None 
     is_match = None
     place_user = None
-    price = None
-    type_user =None
+
     for key in list(request.session.keys()):
         del request.session[key]
     return redirect('login')
 
 def logout_mechanic(request):
+    global GLOBAL_MECHANIC
+    global GLOBAL_MECHANIC_OBJECT
+    global GLOBAL_MECHANIC_LOGIN
+    global GLOBAL_MECHANIC_JSON
+    global GOLBAL_DETAIL_FROM_USER
+    global is_match
+
+
     GLOBAL_MECHANIC = None
     GLOBAL_MECHANIC_OBJECT = None
     GLOBAL_MECHANIC_LOGIN = None
     GLOBAL_MECHANIC_JSON = None
-    GLOBAL_JOB = None
+    GOLBAL_DETAIL_FROM_USER = None
     is_match = None
-    place_user = None
+
     for key in list(request.session.keys()):
         del request.session[key]
     return redirect('login')
@@ -438,9 +449,8 @@ def get_user_match(request):
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
     # print(request.session['username_location'])
-    detail = "sdss"
+
     print(GLOBAL_USER_LOGIN)
-    print('**********************')
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
         user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user}
