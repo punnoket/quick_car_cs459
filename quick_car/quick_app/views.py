@@ -246,7 +246,7 @@ def check_type(request):
 def get_history(request):
     global GLOBAL_USER_JSON
     print("++++++++++++++++++++++++")
-    jobs = Job.objects.filter(user=GLOBAL_USER_JSON["user"])
+    jobs = Job.objects.filter(user=GLOBAL_USER_JSON["user"]).order_by('-id')
     jobs_json = serializers.serialize('json', jobs)
     return HttpResponse(jobs_json, content_type='application/json')
 
