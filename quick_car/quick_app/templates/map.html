@@ -109,6 +109,7 @@
                           success: function(data){
                               place = data.results[0].formatted_address
                               document.getElementById("locatclient").innerHTML = place;
+                              console.log(place +"ll")
                             },
                           failure: function(errMsg) {
                           }
@@ -235,17 +236,6 @@
               marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
               marker.setAnimation(google.maps.Animation.BOUNCE)
               map.setCenter(posFix)
-              $.ajax({
-                  type: "GET",
-                  url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+posFix.lat+","+posFix.lng+"&sensor=true",
-
-                  success: function(data){
-                      place = data.results[0].formatted_address
-                      document.getElementById("locatclient").innerHTML = place;
-                    },
-                  failure: function(errMsg) {
-                  }
-                });
 
             }
 
@@ -285,9 +275,7 @@
 
             </script>
      <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
-            </script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap"></script>
 
 
     {% endblock %}
