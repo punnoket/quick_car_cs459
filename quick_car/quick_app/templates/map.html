@@ -91,7 +91,7 @@
 
               // get current location
               if (navigator.geolocation) {
-                console.log(navigator.geolocation +"eiei");
+
                  navigator.geolocation.getCurrentPosition(function(position) {
                       var pos = {
                         lat: position.coords.latitude,
@@ -125,7 +125,7 @@
                       });
                 } else {
                   // Browser doesn't support Geolocation
-                  console.log("******");
+
                   handleLocationError(false, infoWindow, map.getCenter());
                 }
                 //marker
@@ -230,6 +230,8 @@
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
               posFix = {lat: 14.065574699999999, lng: 100.6057261};
               //infoWindow.setPosition(posFix);
+              console.log("******");
+              alert("location foul")
               var marker = new google.maps.Marker({
                 position: posFix,
                 map: map,
