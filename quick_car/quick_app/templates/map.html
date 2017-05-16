@@ -98,6 +98,23 @@
                         lng: position.coords.longitude
                       };
 
+                      var pos_json = { "location":pos.lat+","+pos.lng};
+
+
+                      $.ajax({
+                          type: "POST",
+                          url: "/location_user",
+                          data: JSON.stringify(pos_json),
+                          contentType: "application/json; charset=utf-8",
+                          dataType: "json",
+                          success: function(data){
+
+                            },
+                          failure: function(errMsg) {
+                          }
+                        });
+                      
+
                       var marker = new google.maps.Marker({
                         position: pos,
                         map: map,

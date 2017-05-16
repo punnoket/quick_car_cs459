@@ -72,8 +72,8 @@ urlpatterns = [
     url(r'^test_his_mechanic',views.test_his_mechanic,name='test_his_mechanic'),
     url(r'^mechanic_click',views.mechanic_click,name='mechanic_click'),
     url(r'^single_mechanic_history',views.single_mechanic_history,name='single_mechanic_history'),
-    url(r'^pannawat',views.pannawat,name='pannawat'),
-
+    url(r'^pannawat',views.pannawat,name='pannawat'),    
+    url(r'^location_user',views.location_user,name='location_user'),
 ]
 
 

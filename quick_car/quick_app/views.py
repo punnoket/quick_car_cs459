@@ -25,6 +25,7 @@ price = None
 JOB_OBJECT = None
 type_user =None
 mechanic_single_history=None
+location_user=None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -79,7 +80,7 @@ def logout_user(request):
     global is_match
 
     GLOBAL_USER_LOGIN = None
-    GLOBAL_USER_JSON = None 
+    GLOBAL_USER_JSON = None
     is_match = None
     place_user = None
 
@@ -136,6 +137,15 @@ def single_mechanic_history(request):
 
 def sest(request):
     return render(request,'ttest.html')
+
+def location_user(request):
+    global location_user
+    json_data = json.loads(request.body)
+    location_user = json_data["location"]
+    print(location_user)
+    user = {'user': "null", 'type': 'null'}
+    user_json = json.dumps(user)
+    return HttpResponse(user_json, content_type='application/json')
 
 @csrf_exempt
 def sing_up_new_user(request):
@@ -445,6 +455,7 @@ def get_user_match(request):
     global GLOBAL_USER_LOGIN
     global GLOBAL_USER_JSON
     global place_user
+    global location_user
 
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
@@ -453,7 +464,7 @@ def get_user_match(request):
     print(GLOBAL_USER_LOGIN)
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': GLOBAL_USER_JSON["user"], 'locations': "14.065574699999999,100.6057261", 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user}
+        user = {'user': GLOBAL_USER_JSON["user"], 'locations': location_user, 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 
