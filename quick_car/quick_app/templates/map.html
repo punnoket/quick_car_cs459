@@ -113,7 +113,7 @@
                           failure: function(errMsg) {
                           }
                         });
-                      
+
 
                       var marker = new google.maps.Marker({
                         position: pos,
@@ -246,6 +246,23 @@
 
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
               posFix = {lat: 14.065574699999999, lng: 100.6057261};
+
+              var pos_json = { "location":14.065574699999999+","+100.6057261};
+
+
+              $.ajax({
+                  type: "POST",
+                  url: "/location_user",
+                  data: JSON.stringify(pos_json),
+                  contentType: "application/json; charset=utf-8",
+                  dataType: "json",
+                  success: function(data){
+
+                    },
+                  failure: function(errMsg) {
+                  }
+                });
+
               //infoWindow.setPosition(posFix);
               console.log("******");
               alert("location foul")
