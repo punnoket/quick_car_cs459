@@ -235,6 +235,17 @@
               marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
               marker.setAnimation(google.maps.Animation.BOUNCE)
               map.setCenter(posFix)
+              $.ajax({
+                  type: "GET",
+                  url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+posFix.lat+","+posFix.lng+"&sensor=true",
+
+                  success: function(data){
+                      place = data.results[0].formatted_address
+                      document.getElementById("locatclient").innerHTML = place;
+                    },
+                  failure: function(errMsg) {
+                  }
+                });
 
             }
 
