@@ -279,17 +279,17 @@ body {
                                 </div>
                                 <div id="contentbill3" style="border: 2px solid #B2AFAF; padding-left: 2%;">
                                   <!-- <h1 > [[onebill.fields.list_detail]] -->
-                                        <ul ng-repeat="i in splitdetail">
-                                          
+                                        <ul ng-repeat="i in splitdetail track by $index">
+
                                             <div ng-if="i != '\t' ">
                                             <li >
                                               <h3 style="font-size: 100%; color: black;">[[i]]</h3>
                                                </li>
                                           </div>
-                                           
-                                         
+
+
                                         </ul>
-                                        
+
                                   </h1>
 
                                 </div>
@@ -335,7 +335,7 @@ body {
             $scope.onebill = response.data;
             $scope.splitdetail =  $scope.onebill.fields.list_detail.split('\n')
             console.log($scope.splitdetail)
-           
+
           }, function(response) {
             console.log(response.data);
           });

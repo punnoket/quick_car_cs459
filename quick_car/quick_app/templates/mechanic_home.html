@@ -93,6 +93,7 @@
         var map, infowindow
         var pos_mechanic, mechanic_name, pos_user, detail, user_data, place
         var phone
+        var check = 'true'
 
           function initMap() {
 
@@ -152,6 +153,7 @@
                   dataType: "json",
                   success: function(data){
                     console.log(data);
+                    check = data.check
                     location_user = data.locations
                     var cut = location_user.split(",")
                     location_user = data.locations
@@ -196,7 +198,7 @@
           marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
           marker.setAnimation(google.maps.Animation.BOUNCE)
 
-        map.setCenter(pos_mechanic);
+          map.setCenter(pos_mechanic);
             //marker
             var marker, i;
             infoCradle = new google.maps.InfoWindow();
@@ -207,13 +209,13 @@
 
             var content = '<div id=\"contain\" style=\"overflow: hidden; background-color: #E75E55; border-radius: 5px; width: 250px; border: 2px solid #DC4F46;\"><h3 style=\" font-size: 100%; color: white;  left: 15%; position: relative;\">Someone need your help!!</h3><h3 style=\"font-size: 100%; color: white; left: 16%;position: relative;\">'+detail+'</h3><div style=\"display: inline-block; text-align: center;\"><a id=\"containn\" onclick=\"decline()\"><img src=\"https://www.mx7.com/i/177/7DvR6J.png\" style=\"width: 30%; margin-left: 2%;margin-bottom: 2%;\"></a><a  onclick=\"accept()\"><img src=\"https://www.mx7.com/i/103/ZbFS45.png\" style=\"margin-bottom: 2%; width: 30%;\"></a></div></div>'
 
+            infowindow = new google.maps.InfoWindow({
+              content: content,
 
+            });
 
             if(pos_user!= undefined) {
-              infowindow = new google.maps.InfoWindow({
-                content: content,
 
-              });
               var marker = new google.maps.Marker({
                 position: pos_user,
                 map: map,
@@ -224,7 +226,11 @@
                 //infowindow.open(map, marker);
                 marker.setAnimation(google.maps.Animation.BOUNCE);
               });
-              infowindow.open(map, marker);
+
+                      infowindow.open(map, marker);
+               
+
+
             }
 
 
@@ -241,21 +247,26 @@
               type: "POST",
               async:false,
               url: "/is_match_complete",
-              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : "accept"}),
+              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : "accept",check: "false"}),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
               success: function(data){
+              pos_user = undefined
                console.log(data);
                show_profile()
                create_job()
+
               },
               failure: function(errMsg) {
                   alert(errMsg);
               }
           });
 
-          pos_user = ''
+
+
         }
+
+
 
         function decline() {
           infowindow.close();
@@ -276,7 +287,7 @@
                   alert(errMsg);
               }
           });
-          pos_user = ''
+          pos_user = undefined
         }
 
         function create_job() {

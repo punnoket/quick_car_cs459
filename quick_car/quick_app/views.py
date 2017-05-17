@@ -26,6 +26,7 @@ JOB_OBJECT = None
 type_user =None
 mechanic_single_history=None
 location_user=None
+check =None
 
 class NotificationViewSet(viewsets.ModelViewSet):
     queryset = Notification.objects.all()
@@ -433,11 +434,13 @@ def select_mechanic(request):
 @csrf_exempt
 def is_match_complete(request):
     global is_match
+    global check
     if(request.method == 'POST'):
         res = {'user': "null", 'type': 'null'}
         res_json = json.dumps(res)
         json_data = json.loads(request.body)
         is_match = json.loads(request.body)["answer"]
+        check = json_data["check"]
         print(is_match)
 
     elif(request.method == 'GET'):
@@ -456,6 +459,7 @@ def get_user_match(request):
     global GLOBAL_USER_JSON
     global place_user
     global location_user
+    global check
 
     print(GLOBAL_MECHANIC)
     json_data = json.loads(request.body)
@@ -464,7 +468,7 @@ def get_user_match(request):
     print(GLOBAL_USER_LOGIN)
 
     if(GLOBAL_MECHANIC == json_data["mechanic_name"]):
-        user = {'user': GLOBAL_USER_JSON["user"], 'locations': location_user, 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user}
+        user = {'user': GLOBAL_USER_JSON["user"], 'locations': location_user, 'topic' : GOLBAL_DETAIL_FROM_USER, 'user_object': GLOBAL_USER_LOGIN, 'place_user': place_user, 'check': check}
     else:
         user = {'user': "null", 'locations': 'null','topic' : detail}
 
