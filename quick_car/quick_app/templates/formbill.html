@@ -384,11 +384,11 @@ font-weight: bold;
               			<div class="col-sm-7 col-md-7 col-xs-7" style="margin: 0;padding: 0;">
               				<h4 style="color: white;"><b>Detail<b></h4>
               				<br>
-              				<h4  id="ser" style="color: white; font-size: 100%; " ><b>Service Charge</b></h4>
+              				<h4   style="color: white; font-size: 100%; " ><b>Service Charge</b></h4>
               			</div>
               			<div class="col-sm-5 col-md-5 col-xs-5" style="margin: 0;padding: 0;">
               				<h4 style="color: white; "><b>Price<b></h4><br>
-              				<input id="servar" class="textbox2"  type="text" placeholder="" value="200" />
+              				<input id="ser" class="textbox2"  type="text" placeholder="" value="200" />
               			</div>
               		</div>
               </div>
@@ -483,8 +483,8 @@ var sum
         var date = document.getElementById("date").value
         License = document.getElementById("License").value
         Client = document.getElementById("Client").value
-        // var s1 = document.getElementById('ser').value
-        var s2 = document.getElementById('servar').value
+        var s1 = document.getElementById('ser').value
+        // var s2 = document.getElementById('servar').value
         var d1 = document.getElementById("d1").value
         var d2 = document.getElementById("d2").value
         var d3 = document.getElementById("d3").value
@@ -496,12 +496,12 @@ var sum
         var p4 = document.getElementById("p4").value
         var ser = document.getElementById("ser").values
 
-        detail = "Service Charge"+": "+"\t"+s2+"\n"+
+        detail = "Service Charge"+":"+"\t"+s1+"\n"+
                  d1+"\t"+p1+"\n"+
                  d2+"\t"+p2+"\n"+
                  d3+"\t"+p3+"\n"+
                  d4+"\t"+p4+"\n"+
-                "total"+": "+"\t"+sum+" Bath."
+                "total"+":"+"\t"+sum+" Bath."
 
                  function getCookie(name) {
                      var cookieValue = null;
