@@ -139,6 +139,7 @@ def single_mechanic_history(request):
 def sest(request):
     return render(request,'ttest.html')
 
+@csrf_exempt
 def location_user(request):
     global location_user
     json_data = json.loads(request.body)
@@ -407,6 +408,7 @@ def test_his_mechanic(request):
 
     return HttpResponse(single_history_json, content_type='application/json')
 
+@csrf_exempt
 def pannawat(request):
     global mechanic_single_history
     print('//////////////')
