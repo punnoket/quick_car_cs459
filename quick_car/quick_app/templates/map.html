@@ -34,7 +34,8 @@
                     </div>
 
                   <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
-                        <input id="detail" type="text" value="please enter ....*"  name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%;color: red; display: inline-block; float: right; padding: 2%;">
+                        <input id="detail" type="text" placeholder="what is the problem?"  name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%;color: red; display: inline-block; float: right; padding: 2%;">
+                        <button id="search" onclick="show_mechanic()">search</button>
                   </div>
              </div>
                <div class="col-xs-1 col-md-1 col-sm-1"> </div>
@@ -60,8 +61,14 @@
           <script>
 
 
+
+
           var x = document.getElementById('contact');
             x.style.display = 'none';
+
+
+
+          var x = document.getElementById('detail');
 
           var map, infoWindow;
           var place
@@ -78,6 +85,8 @@
             alert("something wrong take this lat " + 26.0546106 );
             alert("something wrong take this lng " +-98.3939791);
             };
+
+
             function initMap() {
               //init map
               map = new google.maps.Map(document.getElementById('map'), {
@@ -149,75 +158,78 @@
                 var marker, i,
                 infoCradle = new google.maps.InfoWindow();
 
-                $.ajax({
-                      url: '/get_garage',
-                      async:false,
-                      complete: function(data, err) {
-                      data = data.responseJSON;
-                      len = Object.keys(data).length
-                      for(var i = 0 ; i< len ; i++) {
-                        //console.log(data[i].fields);
-                        var cut = data[i].fields.locations.split(",")
-                        mechanic_object.push(data[i])
-                        var lat,lon
-                        lat = cut[0]
-                        lon = cut[1]
-                        var locaion =[data[i].fields.owner_name, parseFloat(lat), parseFloat(lon), i]
-                        locations.push(locaion)
-                      }
-                      for (i = 0; i < locations.length; i++) {
+            }
 
-                          marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                          map: map
-                        });
-                        marker.setAnimation(google.maps.Animation.DROP);
-                        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                          return function() {
-                            index = i
-                            showInfoMechanic(i)
-                            function showInfoMechanic(i) {
 
-                                var element = document.getElementById('map');
-                                element.style.height = '350px';
+                         function show_mechanic(){
+                              console.log(55555);
+                              $.ajax({
+                                    url: '/get_garage',
+                                    async:false,
+                                    complete: function(data, err) {
+                                    data = data.responseJSON;
+                                    len = Object.keys(data).length
+                                    for(var i = 0 ; i< len ; i++) {
+                                      //console.log(data[i].fields);
+                                      var cut = data[i].fields.locations.split(",")
+                                      mechanic_object.push(data[i])
+                                      var lat,lon
+                                      lat = cut[0]
+                                      lon = cut[1]
+                                      var locaion =[data[i].fields.owner_name, parseFloat(lat), parseFloat(lon), i]
+                                      locations.push(locaion)
+                                    }
+                                    for (i = 0; i < locations.length; i++) {
 
-                                var x = document.getElementById('contact');
-                               if (x.style.display === 'none') {
-                                  x.style.display = 'block';
-                               } else {
-                                 x.style.display = 'none';
-                               }
+                                        marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                                        map: map
+                                      });
+                                      marker.setAnimation(google.maps.Animation.DROP);
+                                      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                                        return function() {
+                                          index = i
+                                          showInfoMechanic(i)
+                                          function showInfoMechanic(i) {
 
-                               document.getElementById("name").innerHTML = "name : " + locations[i][0]
-                               document.getElementById("time").innerHTML =  "time : " + new Date().toLocaleTimeString()
+                                              var element = document.getElementById('map');
+                                              element.style.height = '350px';
 
+                                              var x = document.getElementById('contact');
+                                             if (x.style.display === 'none') {
+                                                x.style.display = 'block';
+                                             } else {
+                                               x.style.display = 'none';
+                                             }
+
+                                             document.getElementById("name").innerHTML = "name : " + locations[i][0]
+                                             document.getElementById("time").innerHTML =  "time : " + new Date().toLocaleTimeString()
+
+                                          }
+
+
+                                        //
+                                        //   infoCradle.setContent(
+                                        // "<div style=\"width: 80%; \">"+
+                                        // "<div style=\"width: 39%; text-align:center;    float:left;\">"+
+                                        //   "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
+                                        //                           "</div>"+
+                                        //                           "<div style=\"width: 40%; display: inline-block\">"+
+                                        //                               "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
+                                        //                           "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
+                                        //
+                                        //
+                                        //
+                                        //
+                                        //   infoCradle.open(map, marker);
+                                        }
+                                      })(marker, i));
+
+
+                                    }
+                                  }
+                                });
                             }
 
-
-                          //
-                          //   infoCradle.setContent(
-                          // "<div style=\"width: 80%; \">"+
-                          // "<div style=\"width: 39%; text-align:center;    float:left;\">"+
-                          //   "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
-                          //                           "</div>"+
-                          //                           "<div style=\"width: 40%; display: inline-block\">"+
-                          //                               "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
-                          //                           "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
-                          //
-                          //
-                          //
-                          //
-                          //   infoCradle.open(map, marker);
-                          }
-                        })(marker, i));
-
-
-                      }
-                    }
-                  });
-
-
-
-            }
 
             function myFunction() {
 
@@ -262,6 +274,20 @@
                   failure: function(errMsg) {
                   }
                 });
+
+
+                $.ajax({
+                    type: "GET",
+                    url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+posFix.lat+","+posFix.lng+"&sensor=true",
+
+                    success: function(data){
+                        place = data.results[0].formatted_address
+                        document.getElementById("locatclient").innerHTML = place;
+                        console.log(place +"ll")
+                      },
+                    failure: function(errMsg) {
+                    }
+                  });
 
               //infoWindow.setPosition(posFix);
               console.log("******");
