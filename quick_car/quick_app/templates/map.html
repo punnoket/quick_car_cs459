@@ -17,6 +17,10 @@
               opacity: 0.6;
               filter: alpha(opacity=60); /* For IE8 and earlier */
             }
+ 
+
+
+
             </style>
 
 
@@ -32,11 +36,20 @@
                            <b><p id="locatclient" style=" font-size: 100%; padding-top: 4%;"></p> </b>
                         </div>
                     </div>
+                    
+  <div class="row" style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white;text-align: center;" >
+  
+        <div class="search">
+<input type="text"  id="detail" name="argarn" style="border: none;  width: 60%; margin: 2% 5% 2% 5%;color: red; display: inline-block;  padding: 2%;" class="form-control input-sm" maxlength="64" placeholder="what is the problem?" />
+ <button  id="search"  type="submit" class="btn btn-primary btn-sm" onclick="show_mechanic()">Search</button>
+</div>
+  </div>
 
-                  <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
-                        <input id="detail" type="text" placeholder="what is the problem?"  name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%;color: red; display: inline-block; float: right; padding: 2%;">
-                        <button id="search" onclick="show_mechanic()">search</button>
-                  </div>
+                  <!-- <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
+                        <input  type="text" placeholder="what is the problem?"  name="argarn" style="border: none;  width: 60%; margin: 2% 5% 2% 5%;color: red; display: inline-block;  padding: 2%;">
+
+                        <button style="border-color: #45606D; border-style: solid; width: 10%; margin: 2% 5% 2% 5%; color: red; display: inline-block; float: right; padding: 2%;" onclick="show_mechanic()">search</button>
+                  </div> -->
              </div>
                <div class="col-xs-1 col-md-1 col-sm-1"> </div>
             </div>
