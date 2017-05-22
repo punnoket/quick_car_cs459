@@ -277,7 +277,7 @@ def get_history(request):
 def get_mechanic_his(request):
     print("------------------------")
     global GLOBAL_MECHANIC_JSON
-    jobs = Job.objects.filter(mechanic=GLOBAL_MECHANIC_JSON["username"])
+    jobs = Job.objects.filter(mechanic=GLOBAL_MECHANIC_JSON["username"]).order_by('-id')
     jobs_json = serializers.serialize('json', jobs)
     return HttpResponse(jobs_json, content_type='application/json')
 
