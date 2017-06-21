@@ -1,371 +1,407 @@
-<!DOCTYPE html>
-{% extends 'base2.html' %}
-{% block content %}
-{% load static %}
+<!DOCTYPE html> {% extends 'base2.html' %} {% block content %} {% load static %}
 
-        <style>
-           #map {
-            height: 600px;
-            width: 100%;
-           }
-           #setz {
-             position: absolute;
-             z-index: 1;
-            }
-            #opac{
-              margin: 10px;
-              background-color: #ffffff;
-              opacity: 0.6;
-              filter: alpha(opacity=60); /* For IE8 and earlier */
-            }
-        </style>
- <div id="setz" class="row" style="width: 100%; padding: 0; margin: 0;">
-              <div class="col-xs-1 col-md-1 col-sm-1"></div>
-             <div class="col-xs-10 col-md-10 col-sm-10"  id="opac" style=" border-color: #45606D; border-style: solid; border-radius: 5px;   border-color:#14384B ;" >
-             <div class="row">
-                       <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
-                          <img id="mud"  src="{%static 'Urgent/Client/2C-Home/2.png'%}">
-                       </div>
-                        <div class="col-xs-9 col-md-9 col-sm-9">
-                           <b><p id="place" style=" font-size: 100%; padding-top: 4%;"></p> </b>
-                        </div>
-                    </div>
+<style>
+  #map {
+    height: 600px;
+    width: 100%;
+  }
 
-                  <div style="border-style: solid; border-color: black white white white">
-                  <div class="row">
-                       <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
-                          <img id="mud"  src="{%static 'Urgent/Garage/2G-Home/3.png'%}">
-                       </div>
-                        <div class="col-xs-9 col-md-9 col-sm-9">
-                           <b><p id="place_user" style=" font-size: 100%; padding-top: 4%;"></p> </b>
-                        </div>
-                    </div>
-                  </div>
-             </div>
-               <div class="col-xs-1 col-md-1 col-sm-1"> </div>
-            </div>
+  #setz {
+    position: absolute;
+    z-index: 1;
+  }
 
-        <meta http-equiv="refresh" content="300">
-      <div id = "map" ></div>
-      <div id = "contact" style=" width: 100%;">
-        <div  style="float: left; width: 50%; text-align: center;" >
-           <img id="photoclient" src="{%static 'Urgent/Garage/5G-Client info/7.png' %}">
+  #opac {
+    margin: 10px;
+    background-color: #ffffff;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    /* For IE8 and earlier */
+  }
+</style>
+<div id="setz" class="row" style="width: 100%; padding: 0; margin: 0;">
+  <div class="col-xs-1 col-md-1 col-sm-1"></div>
+  <div class="col-xs-10 col-md-10 col-sm-10" id="opac" style=" border-color: #45606D; border-style: solid; border-radius: 5px;   border-color:#14384B ;">
+    <div class="row">
+      <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+        <img id="mud" src="{%static 'Urgent/Client/2C-Home/2.png'%}">
       </div>
-      <div  style="width: 40%; display: inline-block;"  >
-           <h3 id="title" style="font-size: 100%;">Name: [[]] <br>Client: [[]]<br>Phone: [[]]<br></h3>
-             <a href="#" id="cell_phone"><img id="callclient" onclick="hide_profile()"  src="{%static 'Urgent/Garage/5G-Client info/8.png'%}"></a>
+      <div class="col-xs-9 col-md-9 col-sm-9">
+        <b><p id="place" style=" font-size: 100%; padding-top: 4%;"></p> </b>
       </div>
+    </div>
+
+    <div style="border-style: solid; border-color: black white white white">
+      <div class="row">
+        <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+          <img id="mud" src="{%static 'Urgent/Garage/2G-Home/3.png'%}">
+        </div>
+        <div class="col-xs-9 col-md-9 col-sm-9">
+          <b><p id="place_user" style=" font-size: 100%; padding-top: 4%;"></p> </b>
+        </div>
       </div>
+    </div>
+  </div>
+  <div class="col-xs-1 col-md-1 col-sm-1"> </div>
+</div>
+
+<meta http-equiv="refresh" content="300">
+<div id="map"></div>
+<div id="contact" style=" width: 100%;">
+  <div style="float: left; width: 50%; text-align: center;">
+    <img id="photoclient" src="{%static 'Urgent/Garage/5G-Client info/7.png' %}">
+  </div>
+  <div style="width: 40%; display: inline-block;">
+    <h3 id="title" style="font-size: 100%;">Name: [[]] <br>Client: [[]]<br>Phone: [[]]<br></h3>
+    <a href="#" id="cell_phone"><img id="callclient" onclick="hide_profile()"  src="{%static 'Urgent/Garage/5G-Client info/8.png'%}"></a>
+  </div>
+</div>
 
 
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-      <script>
-      var x = document.getElementById('contact');
-        x.style.display = 'none';
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+  var x = document.getElementById('contact');
+  x.style.display = 'none';
 
 
-        function show_profile()
-        {
-        var element = document.getElementById('map');
-        element.style.height = '380px';
-        var x = document.getElementById('contact');
-       if (x.style.display === 'none') {
-          x.style.display = 'block';
-       } else {
-         x.style.display = 'none';
-           }
-           }
+  function show_profile() {
+    var element = document.getElementById('map');
+    element.style.height = '380px';
+    var x = document.getElementById('contact');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  }
 
-           function hide_profile()
-           {
-           var element = document.getElementById('map');
-           element.style.height = '600px';
-           var x = document.getElementById('contact');
-          if (x.style.display === 'none') {
-             x.style.display = 'block';
-          } else {
-            x.style.display = 'none';
-              }
-              }
-        var map, infowindow
-        var pos_mechanic, mechanic_name, pos_user, detail, user_data, place
-        var phone
-        var check = 'true'
+  function hide_profile() {
+    var element = document.getElementById('map');
+    element.style.height = '600px';
+    var x = document.getElementById('contact');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  }
+  var map, infowindow
+  var pos_mechanic, mechanic_name, pos_user, detail, user_data, place
+  var phone
+  var check = 'true'
 
-          function initMap() {
+  function initMap() {
 
-            setInterval(function() {
-                    window.location.reload();
-                  }, 20000);
+    setInterval(function() {
+      window.location.reload();
+    }, 20000);
 
-            var csrftoken = getCookie('csrftoken');
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                    }
-                }
-            });
+    var csrftoken = getCookie('csrftoken');
 
-            $.ajax({
-                    url: '/get_location_garage',
-                    async:false,
-                    complete: function(data, err) {
-
-                    data = data.responseJSON;
-                    console.log(data);
-                    var cut = data.location.split(",");
-                    mechanic_name = data.username_mechanic
-
-                    pos_mechanic = {
-                      lat: parseFloat(cut[0]),
-                      lng: parseFloat(cut[1])
-                    };
-
-                  }
-              })
-              console.log(pos_mechanic.lat);
-              $.ajax({
-                  type: "GET",
-                  url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+pos_mechanic.lat+","+pos_mechanic.lng+"&sensor=true",
-                  success: function(data){
-                      place = data.results[0].formatted_address
-                      console.log(place);
-                      document.getElementById('place').innerHTML = place
-                    },
-                  failure: function(errMsg) {
-                  }
-                });
-
-              $.ajax({
-                  type: "POST",
-                  async:false,
-                  url: "/get_user_match",
-                  data: JSON.stringify({ mechanic_name: mechanic_name }),
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function(data){
-                    console.log(data);
-                    check = data.check
-                    location_user = data.locations
-                    var cut = location_user.split(",")
-                    location_user = data.locations
-                    var cut = location_user.split(",")
-                    detail = data.topic
-                    if(typeof(data.place_user) != "undefined"){
-                      document.getElementById('place_user').innerHTML = data.place_user
-                    } else {
-                      document.getElementById('place_user').innerHTML = ""
-                    }
-
-                    json_data = JSON.parse(data.user_object)
-                    user_data = json_data
-                    console.log(json_data);
-                    document.getElementById("title").innerHTML = "Name:" +json_data.user +"<br>Client: "+json_data.user+"<br>Phone: "+json_data.phone
-                    phone = json_data.phone
-                    document.getElementById("cell_phone").href="tel:"+phone;
-                    pos_user = {
-                      lat: parseFloat(cut[0]),
-                      lng: parseFloat(cut[1])
-                    };
-
-                  },
-                  failure: function(errMsg) {
-                      alert(errMsg);
-                  }
-              });
-
-
-          //init map
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 13
-          });
-
-
-          var marker = new google.maps.Marker({
-            position: pos_mechanic,
-            map: map,
-
-          });
-          marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-          marker.setAnimation(google.maps.Animation.BOUNCE)
-
-          map.setCenter(pos_mechanic);
-            //marker
-            var marker, i;
-            infoCradle = new google.maps.InfoWindow();
-
-            var myLatLng = {lat: -25.363, lng: 131.044};
-
-
-
-            var content = '<div id=\"contain\" style=\"overflow: hidden; background-color: #E75E55; border-radius: 5px; width: 250px; border: 2px solid #DC4F46;\"><h3 style=\" font-size: 100%; color: white;  left: 15%; position: relative;\">Someone need your help!!</h3><h3 style=\"font-size: 100%; color: white; left: 16%;position: relative;\">'+detail+'</h3><div style=\"display: inline-block; text-align: center;\"><a id=\"containn\" onclick=\"decline()\"><img src=\"https://www.mx7.com/i/177/7DvR6J.png\" style=\"width: 30%; margin-left: 2%;margin-bottom: 2%;\"></a><a  onclick=\"accept()\"><img src=\"https://www.mx7.com/i/103/ZbFS45.png\" style=\"margin-bottom: 2%; width: 30%;\"></a></div></div>'
-
-            infowindow = new google.maps.InfoWindow({
-              content: content,
-
-            });
-
-            if(pos_user!= undefined) {
-
-              var marker = new google.maps.Marker({
-                position: pos_user,
-                map: map,
-                animation: google.maps.Animation.DROP
-              });
-              marker.setAnimation(google.maps.Animation.BOUNCE)
-              marker.addListener('click', function() {
-                //infowindow.open(map, marker);
-                marker.setAnimation(google.maps.Animation.BOUNCE);
-              });
-
-                      infowindow.open(map, marker);
-               
-
-
-            }
-
-
-
-
-
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
+      }
+    });
+
+    $.ajax({
+      url: '/get_location_garage',
+      async: false,
+      complete: function(data, err) {
+
+        data = data.responseJSON;
+        console.log(data);
+        var cut = data.location.split(",");
+        mechanic_name = data.username_mechanic
+
+        pos_mechanic = {
+          lat: parseFloat(cut[0]),
+          lng: parseFloat(cut[1])
+        };
+
+      }
+    })
+    console.log(pos_mechanic.lat);
+    $.ajax({
+      type: "GET",
+      url: "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + pos_mechanic.lat + "," + pos_mechanic.lng + "&sensor=true",
+      success: function(data) {
+        place = data.results[0].formatted_address
+        console.log(place);
+        document.getElementById('place').innerHTML = place
+      },
+      failure: function(errMsg) {}
+    });
+
+    $.ajax({
+      type: "POST",
+      async: false,
+      url: "/get_user_match",
+      data: JSON.stringify({
+        mechanic_name: mechanic_name
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+        check = data.check
+        location_user = data.locations
+        var cut = location_user.split(",")
+        location_user = data.locations
+        var cut = location_user.split(",")
+        detail = data.topic
+        if (typeof(data.place_user) != "undefined") {
+          document.getElementById('place_user').innerHTML = data.place_user
+        } else {
+          document.getElementById('place_user').innerHTML = ""
+        }
+
+        json_data = JSON.parse(data.user_object)
+        user_data = json_data
+        console.log(json_data);
+        document.getElementById("title").innerHTML = "Name:" + json_data.user + "<br>Client: " + json_data.user + "<br>Phone: " + json_data.phone
+        phone = json_data.phone
+        document.getElementById("cell_phone").href = "tel:" + phone;
+        pos_user = {
+          lat: parseFloat(cut[0]),
+          lng: parseFloat(cut[1])
+        };
+
+      },
+      failure: function(errMsg) {
+        alert(errMsg);
+      }
+    });
+
+
+    //init map
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      zoom: 13
+    });
+
+
+    var marker = new google.maps.Marker({
+      position: pos_mechanic,
+      map: map,
+
+    });
+    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+    marker.setAnimation(google.maps.Animation.BOUNCE)
+
+    map.setCenter(pos_mechanic);
+    //marker
+    var marker, i;
+    infoCradle = new google.maps.InfoWindow();
+
+    var myLatLng = {
+      lat: -25.363,
+      lng: 131.044
+    };
+
+
+
+    var content =
+      '<div id=\"contain\" style=\"overflow: hidden; background-color: #E75E55; border-radius: 5px; width: 250px; border: 2px solid #DC4F46;\"><h3 style=\" font-size: 100%; color: white;  left: 15%; position: relative;\">Someone need your help!!</h3><h3 style=\"font-size: 100%; color: white; left: 16%;position: relative;\">' +
+      detail +
+      '</h3><div style=\"display: inline-block; text-align: center;\"><a id=\"containn\" onclick=\"decline()\"><img src=\"https://www.mx7.com/i/177/7DvR6J.png\" style=\"width: 30%; margin-left: 2%;margin-bottom: 2%;\"></a><a  onclick=\"accept()\"><img src=\"https://www.mx7.com/i/103/ZbFS45.png\" style=\"margin-bottom: 2%; width: 30%;\"></a></div></div>'
+
+    infowindow = new google.maps.InfoWindow({
+      content: content,
+
+    });
+
+    if (pos_user != undefined) {
+
+      var marker = new google.maps.Marker({
+        position: pos_user,
+        map: map,
+        animation: google.maps.Animation.DROP
+      });
+      marker.setAnimation(google.maps.Animation.BOUNCE)
+      marker.addListener('click', function() {
         //infowindow.open(map, marker);
-        function accept() {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      });
 
-          console.log(555);
-          infowindow.close();
-          $.ajax({
-              type: "POST",
-              async:false,
-              url: "/is_match_complete",
-              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : "accept",check: "false"}),
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function(data){
-              pos_user = undefined
-               console.log(data);
-               show_profile()
-               create_job()
-
-              },
-              failure: function(errMsg) {
-                  alert(errMsg);
-              }
-          });
+      infowindow.open(map, marker);
 
 
 
+    }
+
+
+
+
+
+  }
+  //infowindow.open(map, marker);
+  function accept() {
+
+    console.log(555);
+    infowindow.close();
+    $.ajax({
+      type: "POST",
+      async: false,
+      url: "/is_match_complete",
+      data: JSON.stringify({
+        mechanic_name: mechanic_name,
+        answer: "accept",
+        check: "false"
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        pos_user = undefined
+        console.log(data);
+        show_profile()
+        create_job()
+
+      },
+      failure: function(errMsg) {
+        alert(errMsg);
+      }
+    });
+
+
+
+  }
+
+
+
+  function decline() {
+    infowindow.close();
+
+    $.ajax({
+      type: "POST",
+      async: false,
+      url: "/is_match_complete",
+      data: JSON.stringify({
+        mechanic_name: mechanic_name,
+        answer: "decline"
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+
+
+      },
+      failure: function(errMsg) {
+        alert(errMsg);
+      }
+    });
+    pos_user = undefined
+  }
+
+  function create_job() {
+    var time = new Date()
+    time = time.toLocaleString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
+    var date = new Date().toLocaleDateString();
+    console.log(time);
+    console.log(detail);
+    console.log(user_data);
+    $.ajax({
+      type: "POST",
+      async: false,
+      url: "/create_job",
+      data: JSON.stringify({
+        user_data: user_data,
+        detail: detail,
+        date: date,
+        time: time
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+
+
+      },
+      failure: function(errMsg) {
+        alert(errMsg);
+      }
+    });
+  }
+
+
+
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    posFix = {
+      lat: 14.065574699999999,
+      lng: 100.6057261
+    };
+    //infoWindow.setPosition(posFix);
+
+    infoWindow.setContent(browserHasGeolocation ?
+      'Error: The Geolocation service failed.' :
+      'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.setContent("You here")
+    infoWindow.open(map);
+  }
+
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
         }
+      }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    }
+  });
 
 
-
-        function decline() {
-          infowindow.close();
-
-          $.ajax({
-              type: "POST",
-              async:false,
-              url: "/is_match_complete",
-              data: JSON.stringify({ mechanic_name: mechanic_name ,answer : "decline"}),
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function(data){
-               console.log(data);
-
-
-              },
-              failure: function(errMsg) {
-                  alert(errMsg);
-              }
-          });
-          pos_user = undefined
-        }
-
-        function create_job() {
-          var time = new Date()
-          time = time.toLocaleString('en-US', { hour: 'numeric',minute:'numeric', hour12: true });
-          var date = new Date().toLocaleDateString();
-          console.log(time);
-          console.log(detail);
-          console.log(user_data);
-          $.ajax({
-              type: "POST",
-              async:false,
-              url: "/create_job",
-              data: JSON.stringify({ user_data: user_data ,detail: detail, date: date, time: time}),
-              contentType: "application/json; charset=utf-8",
-              dataType: "json",
-              success: function(data){
-               console.log(data);
-
-
-              },
-              failure: function(errMsg) {
-                  alert(errMsg);
-              }
-          });
-        }
-
-
-
-        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-          posFix = {lat: 14.065574699999999, lng: 100.6057261};
-          //infoWindow.setPosition(posFix);
-
-          infoWindow.setContent(browserHasGeolocation ?
-                                'Error: The Geolocation service failed.' :
-                                'Error: Your browser doesn\'t support geolocation.');
-          infoWindow.setContent("You here")
-          infoWindow.open(map);
-        }
-
-        function getCookie(name) {
-            var cookieValue = null;
-            if (document.cookie && document.cookie != '') {
-                var cookies = document.cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = jQuery.trim(cookies[i]);
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-        var csrftoken = getCookie('csrftoken');
-        function csrfSafeMethod(method) {
-            // these HTTP methods do not require CSRF protection
-            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-        }
-        $.ajaxSetup({
-            beforeSend: function(xhr, settings) {
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                }
-            }
-        });
-
-
-        var markers = [{ "position": "128.3657142857143", "markerPosition": "7" },
-               { "position": "235.1944023323615", "markerPosition": "19" },
-               { "position": "42.5978231292517", "markerPosition": "-3" }];
-
-
-        </script>
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
-        </script>
+  var markers = [{
+      "position": "128.3657142857143",
+      "markerPosition": "7"
+    },
+    {
+      "position": "235.1944023323615",
+      "markerPosition": "19"
+    },
+    {
+      "position": "42.5978231292517",
+      "markerPosition": "-3"
+    }
+  ];
+</script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
+</script>
 
 {% endblock %}

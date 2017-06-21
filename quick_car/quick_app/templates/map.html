@@ -1,345 +1,349 @@
-<!DOCTYPE html>
-    {% extends 'base.html' %}
-    {% block content %}
-{%load static%}
-            <style>
-               #map {
-                height: 600px;
-                width: 100%;
-               }
-               #setz {
-             position: absolute;
-             z-index: 1;
-            }
-            #opac{
-              margin: 10px;
-              background-color: #ffffff;
-              opacity: 0.6;
-              filter: alpha(opacity=60); /* For IE8 and earlier */
-            }
-            </style>
+<!DOCTYPE html> {% extends 'base.html' %} {% block content %} {%load static%}
+<style>
+  #map {
+    height: 600px;
+    width: 100%;
+  }
+
+  #setz {
+    position: absolute;
+    z-index: 1;
+  }
+
+  #opac {
+    margin: 10px;
+    background-color: #ffffff;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    /* For IE8 and earlier */
+  }
+</style>
 
 
-            <div id="setz" class="row" style="width: 100%; padding: 0; margin: 0;">
-              <div class="col-xs-1 col-md-1 col-sm-1"></div>
-             <div class="col-xs-10 col-md-10 col-sm-10"  id="opac" style=" border-color: #45606D; border-style: solid; border-radius: 5px;   border-color:#14384B ;" >
+<div id="setz" class="row" style="width: 100%; padding: 0; margin: 0;">
+  <div class="col-xs-1 col-md-1 col-sm-1"></div>
+  <div class="col-xs-10 col-md-10 col-sm-10" id="opac" style=" border-color: #45606D; border-style: solid; border-radius: 5px;   border-color:#14384B ;">
 
-                    <div class="row">
-                       <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
-                          <img id="mud"  src="{%static 'Urgent/Client/2C-Home/2.png'%}">
-                       </div>
-                        <div class="col-xs-9 col-md-9 col-sm-9">
-                           <b><p id="locatclient" style=" font-size: 100%; padding-top: 4%;"></p> </b>
-                        </div>
-                    </div>
+    <div class="row">
+      <div class="col-xs-3 col-md-3 col-sm-3" style="text-align: center;">
+        <img id="mud" src="{%static 'Urgent/Client/2C-Home/2.png'%}">
+      </div>
+      <div class="col-xs-9 col-md-9 col-sm-9">
+        <b><p id="locatclient" style=" font-size: 100%; padding-top: 4%;"></p> </b>
+      </div>
+    </div>
 
-                  <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
-                        <input id="detail" type="text" placeholder="what is the problem?"  name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%;color: red; display: inline-block; float: right; padding: 2%;">
-                        <button id="search" onclick="show_mechanic()">search</button>
-                  </div>
-             </div>
-               <div class="col-xs-1 col-md-1 col-sm-1"> </div>
-            </div>
-
-
-          <div id = "map" ></div>
-          <div id = "contact" style=" width: 100%;">
-                  <div  style="float: left; width: 50%; text-align: center; " >
-                     <img src='https://www.mx7.com/i/1bc/4oKxKp.png' style="width: 50%; margin: 15% 0 0 0; padding: 0;">
-                </div>
-                <div  style="width: 40%; display: inline-block;"  >
-                     <h2 id="name" style="font-size:100%;"></h2>
-                    <h2 id="time" style="font-size:100%; margin: 0 0 5%;"></h2>
-                       <img id="imgstar" style=" ; padding-bottom: 5%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
-                 <a onclick="myFunction()"><img id="imgselect" style="" src="{%static 'Urgent/Client/4C-Location Select/10.png' %}"></a>
-                </div>
-                </div>
-
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-          <script>
+    <div style="position:relative; overflow:auto;  border-style: solid; border-color: black white white white">
+      <input id="detail" type="text" placeholder="what is the problem?" name="argarn" style="border: none;  width: 80%; margin: 2% 5% 2% 5%;color: red; display: inline-block; float: right; padding: 2%;">
+      <button id="search" onclick="show_mechanic()">search</button>
+    </div>
+  </div>
+  <div class="col-xs-1 col-md-1 col-sm-1"> </div>
+</div>
 
 
+<div id="map"></div>
+<div id="contact" style=" width: 100%;">
+  <div style="float: left; width: 50%; text-align: center; ">
+    <img src='https://www.mx7.com/i/1bc/4oKxKp.png' style="width: 50%; margin: 15% 0 0 0; padding: 0;">
+  </div>
+  <div style="width: 40%; display: inline-block;">
+    <h2 id="name" style="font-size:100%;"></h2>
+    <h2 id="time" style="font-size:100%; margin: 0 0 5%;"></h2>
+    <img id="imgstar" style=" ; padding-bottom: 5%;" src="{%static 'Urgent/Client/4C-Location Select/7.png' %}"><br>
+    <a onclick="myFunction()"><img id="imgselect" style="" src="{%static 'Urgent/Client/4C-Location Select/10.png' %}"></a>
+  </div>
+</div>
 
-
-          var x = document.getElementById('contact');
-            x.style.display = 'none';
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script>
+  var x = document.getElementById('contact');
+  x.style.display = 'none';
 
 
 
-          var x = document.getElementById('detail');
+  var x = document.getElementById('detail');
 
-          var map, infoWindow;
-          var place
-          var locations = new Array()
-          var mechanic_object = new Array;
-          var index
-            var data,len
-            var successHandler = function(position) {
-            alert(position.coords.latitude);
-            alert(position.coords.longitude);
-            };
-            var errorHandler = function (errorObj) {
-            alert(errorObj.code + ": " + errorObj.message);
-            alert("something wrong take this lat " + 26.0546106 );
-            alert("something wrong take this lng " +-98.3939791);
-            };
-
-
-            function initMap() {
-              //init map
-              map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 14
-              });
-              infoWindow = new google.maps.InfoWindow({
-
-                content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
-              });
-
-              // get current location
-              if (navigator.geolocation) {
-
-                 navigator.geolocation.getCurrentPosition(function(position) {
-                      var pos = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                      };
-
-                      var pos_json = { "location":pos.lat+","+pos.lng};
+  var map, infoWindow;
+  var place
+  var locations = new Array()
+  var mechanic_object = new Array;
+  var index
+  var data, len
+  var successHandler = function(position) {
+    alert(position.coords.latitude);
+    alert(position.coords.longitude);
+  };
+  var errorHandler = function(errorObj) {
+    alert(errorObj.code + ": " + errorObj.message);
+    alert("something wrong take this lat " + 26.0546106);
+    alert("something wrong take this lng " + -98.3939791);
+  };
 
 
-                      $.ajax({
-                          type: "POST",
-                          url: "/location_user",
-                          data: JSON.stringify(pos_json),
-                          contentType: "application/json; charset=utf-8",
-                          dataType: "json",
-                          success: function(data){
+  function initMap() {
+    //init map
+    map = new google.maps.Map(document.getElementById('map'), {
+      center: {
+        lat: -34.397,
+        lng: 150.644
+      },
+      zoom: 14
+    });
+    infoWindow = new google.maps.InfoWindow({
 
-                            },
-                          failure: function(errMsg) {
-                          }
-                        });
+      content: '<IMG BORDER="0" ALIGN="Left" SRC="http://cmtcarsupermarket.co.uk/wp-content/uploads/2016/09/12-Month-Breakdown.png">'
+    });
+
+    // get current location
+    if (navigator.geolocation) {
+
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+
+        var pos_json = {
+          "location": pos.lat + "," + pos.lng
+        };
 
 
-                      var marker = new google.maps.Marker({
-                        position: pos,
-                        map: map,
+        $.ajax({
+          type: "POST",
+          url: "/location_user",
+          data: JSON.stringify(pos_json),
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          success: function(data) {
 
-                      });
-                      $.ajax({
-                          type: "GET",
-                          url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+pos.lat+","+pos.lng+"&sensor=true",
+          },
+          failure: function(errMsg) {}
+        });
 
-                          success: function(data){
-                              place = data.results[0].formatted_address
-                              document.getElementById("locatclient").innerHTML = place;
-                              console.log(place +"ll")
-                            },
-                          failure: function(errMsg) {
-                          }
-                        });
 
-                      console.log(pos);
-                      marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-                      marker.setAnimation(google.maps.Animation.BOUNCE)
-                      map.setCenter(pos);
-                    }, function() {
-                        handleLocationError(true, infoWindow, map.getCenter());
-                      });
+        var marker = new google.maps.Marker({
+          position: pos,
+          map: map,
+
+        });
+        $.ajax({
+          type: "GET",
+          url: "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + pos.lat + "," + pos.lng + "&sensor=true",
+
+          success: function(data) {
+            place = data.results[0].formatted_address
+            document.getElementById("locatclient").innerHTML = place;
+            console.log(place + "ll")
+          },
+          failure: function(errMsg) {}
+        });
+
+        console.log(pos);
+        marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+        marker.setAnimation(google.maps.Animation.BOUNCE)
+        map.setCenter(pos);
+      }, function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      });
+    } else {
+      // Browser doesn't support Geolocation
+
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+    //marker
+    var marker, i,
+      infoCradle = new google.maps.InfoWindow();
+
+  }
+
+
+  function show_mechanic() {
+    console.log(55555);
+    $.ajax({
+      url: '/get_garage',
+      async: false,
+      complete: function(data, err) {
+        data = data.responseJSON;
+        len = Object.keys(data).length
+        for (var i = 0; i < len; i++) {
+          //console.log(data[i].fields);
+          var cut = data[i].fields.locations.split(",")
+          mechanic_object.push(data[i])
+          var lat, lon
+          lat = cut[0]
+          lon = cut[1]
+          var locaion = [data[i].fields.owner_name, parseFloat(lat), parseFloat(lon), i]
+          locations.push(locaion)
+        }
+        for (i = 0; i < locations.length; i++) {
+
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map
+          });
+          marker.setAnimation(google.maps.Animation.DROP);
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              index = i
+              showInfoMechanic(i)
+
+              function showInfoMechanic(i) {
+
+                var element = document.getElementById('map');
+                element.style.height = '350px';
+
+                var x = document.getElementById('contact');
+                if (x.style.display === 'none') {
+                  x.style.display = 'block';
                 } else {
-                  // Browser doesn't support Geolocation
-
-                  handleLocationError(false, infoWindow, map.getCenter());
+                  x.style.display = 'none';
                 }
-                //marker
-                var marker, i,
-                infoCradle = new google.maps.InfoWindow();
 
+                document.getElementById("name").innerHTML = "name : " + locations[i][0]
+                document.getElementById("time").innerHTML = "time : " + new Date().toLocaleTimeString()
+
+              }
+
+
+              //
+              //   infoCradle.setContent(
+              // "<div style=\"width: 80%; \">"+
+              // "<div style=\"width: 39%; text-align:center;    float:left;\">"+
+              //   "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
+              //                           "</div>"+
+              //                           "<div style=\"width: 40%; display: inline-block\">"+
+              //                               "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
+              //                           "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
+              //
+              //
+              //
+              //
+              //   infoCradle.open(map, marker);
             }
+          })(marker, i));
 
 
-                         function show_mechanic(){
-                              console.log(55555);
-                              $.ajax({
-                                    url: '/get_garage',
-                                    async:false,
-                                    complete: function(data, err) {
-                                    data = data.responseJSON;
-                                    len = Object.keys(data).length
-                                    for(var i = 0 ; i< len ; i++) {
-                                      //console.log(data[i].fields);
-                                      var cut = data[i].fields.locations.split(",")
-                                      mechanic_object.push(data[i])
-                                      var lat,lon
-                                      lat = cut[0]
-                                      lon = cut[1]
-                                      var locaion =[data[i].fields.owner_name, parseFloat(lat), parseFloat(lon), i]
-                                      locations.push(locaion)
-                                    }
-                                    for (i = 0; i < locations.length; i++) {
-
-                                        marker = new google.maps.Marker({position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                                        map: map
-                                      });
-                                      marker.setAnimation(google.maps.Animation.DROP);
-                                      google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                                        return function() {
-                                          index = i
-                                          showInfoMechanic(i)
-                                          function showInfoMechanic(i) {
-
-                                              var element = document.getElementById('map');
-                                              element.style.height = '350px';
-
-                                              var x = document.getElementById('contact');
-                                             if (x.style.display === 'none') {
-                                                x.style.display = 'block';
-                                             } else {
-                                               x.style.display = 'none';
-                                             }
-
-                                             document.getElementById("name").innerHTML = "name : " + locations[i][0]
-                                             document.getElementById("time").innerHTML =  "time : " + new Date().toLocaleTimeString()
-
-                                          }
+        }
+      }
+    });
+  }
 
 
-                                        //
-                                        //   infoCradle.setContent(
-                                        // "<div style=\"width: 80%; \">"+
-                                        // "<div style=\"width: 39%; text-align:center;    float:left;\">"+
-                                        //   "<img style=\"width: 50%;  margin: 12% 0 12% 0;\" src='https://www.mx7.com/i/1bc/4oKxKp.png'>"+
-                                        //                           "</div>"+
-                                        //                           "<div style=\"width: 40%; display: inline-block\">"+
-                                        //                               "<h2 style=\"font-size:100%\"; >name : "+locations[i][0]+"</h2>"+
-                                        //                           "</div>"+"</div>"+"<button onclick=\"myFunction("+i+")\">Click me</button>")
-                                        //
-                                        //
-                                        //
-                                        //
-                                        //   infoCradle.open(map, marker);
-                                        }
-                                      })(marker, i));
+  function myFunction() {
 
+    console.log(detail.value);
 
-                                    }
-                                  }
-                                });
-                            }
+    console.log(locations[index][0]);
+    var mechanic = {
+      "mechanic": locations[index][0],
+      "mechanic_object": mechanic_object[index],
+      "detail": detail.value,
+      "place": place
+    };
+    console.log(mechanic_object[index]);
 
-
-            function myFunction() {
-
-                  console.log(detail.value);
-
-                  console.log(locations[index][0]);
-                  var mechanic = { "mechanic":locations[index][0],"mechanic_object": mechanic_object[index],"detail":detail.value,"place":place};
-                  console.log(mechanic_object[index]);
-
-            $.ajax({
-                type: "POST",
-                url: "/select_mechanic",
-                data: JSON.stringify(mechanic),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(data){
-                  document.location.href = "/wait"
-                  ;},
-                failure: function(errMsg) {
-                }
-              });
-            }
+    $.ajax({
+      type: "POST",
+      url: "/select_mechanic",
+      data: JSON.stringify(mechanic),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
+        document.location.href = "/wait";
+      },
+      failure: function(errMsg) {}
+    });
+  }
 
 
 
 
-            function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-              posFix = {lat: 14.065574699999999, lng: 100.6057261};
+  function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+    posFix = {
+      lat: 14.065574699999999,
+      lng: 100.6057261
+    };
 
-              var pos_json = { "location":14.065574699999999+","+100.6057261};
-
-
-              $.ajax({
-                  type: "POST",
-                  url: "/location_user",
-                  data: JSON.stringify(pos_json),
-                  contentType: "application/json; charset=utf-8",
-                  dataType: "json",
-                  success: function(data){
-
-                    },
-                  failure: function(errMsg) {
-                  }
-                });
+    var pos_json = {
+      "location": 14.065574699999999 + "," + 100.6057261
+    };
 
 
-                $.ajax({
-                    type: "GET",
-                    url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+posFix.lat+","+posFix.lng+"&sensor=true",
+    $.ajax({
+      type: "POST",
+      url: "/location_user",
+      data: JSON.stringify(pos_json),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json",
+      success: function(data) {
 
-                    success: function(data){
-                        place = data.results[0].formatted_address
-                        document.getElementById("locatclient").innerHTML = place;
-                        console.log(place +"ll")
-                      },
-                    failure: function(errMsg) {
-                    }
-                  });
-
-              //infoWindow.setPosition(posFix);
-              console.log("******");
-              alert("location foul")
-              var marker = new google.maps.Marker({
-                position: posFix,
-                map: map,
-
-              });
-              marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
-              marker.setAnimation(google.maps.Animation.BOUNCE)
-              map.setCenter(posFix)
-
-            }
-
-            function getCookie(name) {
-                var cookieValue = null;
-                if (document.cookie && document.cookie != '') {
-                    var cookies = document.cookie.split(';');
-                    for (var i = 0; i < cookies.length; i++) {
-                        var cookie = jQuery.trim(cookies[i]);
-                        // Does this cookie string begin with the name we want?
-                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                            break;
-                        }
-                    }
-                }
-                return cookieValue;
-            }
-            var csrftoken = getCookie('csrftoken');
-            function csrfSafeMethod(method) {
-                // these HTTP methods do not require CSRF protection
-                return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-            }
-            $.ajaxSetup({
-                beforeSend: function(xhr, settings) {
-                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
-                    }
-                }
-            });
-
-            var detail = document.getElementById("detail")
+      },
+      failure: function(errMsg) {}
+    });
 
 
+    $.ajax({
+      type: "GET",
+      url: "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + posFix.lat + "," + posFix.lng + "&sensor=true",
 
+      success: function(data) {
+        place = data.results[0].formatted_address
+        document.getElementById("locatclient").innerHTML = place;
+        console.log(place + "ll")
+      },
+      failure: function(errMsg) {}
+    });
 
+    //infoWindow.setPosition(posFix);
+    console.log("******");
+    alert("location foul")
+    var marker = new google.maps.Marker({
+      position: posFix,
+      map: map,
 
-            </script>
-     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    });
+    marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png')
+    marker.setAnimation(google.maps.Animation.BOUNCE)
+    map.setCenter(posFix)
+
+  }
+
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = jQuery.trim(cookies[i]);
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+  $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+      if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+      }
+    }
+  });
+
+  var detail = document.getElementById("detail")
+</script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap"></script>
 
 
-    {% endblock %}
+{% endblock %}

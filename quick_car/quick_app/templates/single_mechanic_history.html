@@ -1,375 +1,381 @@
 <!DOCTYPE html>
 <html>
 {% load static %}
+
 <head>
   <title>Single History</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
   <!-- <meta name="viewport" content="initial-scale=1.0, width=device-width" /> -->
 
   <style>
-#mud{
-      margin:2% 0 2% 0;
+    #mud {
+      margin: 2% 0 2% 0;
       width: 15%;
     }
-   #iconbell{
-        width: 10%;
-        height: 10%
-      }
-      header{
-        width: 100%;
-       background-color: #0f1933;
-       padding: 15px 0 15px 0;
-       border-style: solid;
-       border-color: #0f1933 #0f1933 #fff #0f1933;
-      }
-      #imginheader{
-        width: 30%;
-        height: 30%;
-      }
-      #imgbackinheader{
-        width: 5%;
-        height: 5%;
-        margin: 0 0 0 15px;
-      }
 
-      html, body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-#form{
-  margin-top: 10%;
-}
-
-
-
-  .button {
-  border: 1px solid #000;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    outline:0;
-    height:30px;
-    width: 200px;
-    margin : 30px 0 0 0 ;
-    padding: 3px 0 0 0;
-    background-color: #000;
-    color: #fff;
-    display:inline-block;
-
-  }
-
-
-h3{
-  color: #65C6BB;
-  font-size: 175%;
-  font-weight: 400;
-  line-height: 155%;
-
-}
-*::-webkit-input-placeholder {
-    color: black;
-}
-*:-moz-placeholder {
-    /* FF 4-18 */
-    color: black;
-}
-*::-moz-placeholder {
-    /* FF 19+ */
-    color: black;
-}
-*:-ms-input-placeholder {
-    /* IE 10+ */
-    color: black;
-}
-
-#phone{
-  width: 150px;
-
-}
-
-
- /* Portrait and Landscape */
-  @media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-
-}
-/* ----------- iPhone 5 and 5S ----------- */
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    #mud{
-      margin:20% 0 0 20%;
-      width: 80%;
+    #iconbell {
+      width: 10%;
+      height: 10%
     }
 
-     #form{
-      margin-top: 30%;
+    header {
+      width: 100%;
+      background-color: #0f1933;
+      padding: 15px 0 15px 0;
+      border-style: solid;
+      border-color: #0f1933 #0f1933 #fff #0f1933;
     }
-    #imginheader{
+
+    #imginheader {
+      width: 30%;
+      height: 30%;
+    }
+
+    #imgbackinheader {
+      width: 5%;
+      height: 5%;
+      margin: 0 0 0 15px;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    #form {
+      margin-top: 10%;
+    }
+
+
+
+    .button {
+      border: 1px solid #000;
+      -webkit-border-radius: 30px;
+      -moz-border-radius: 30px;
+      border-radius: 30px;
+      outline: 0;
+      height: 30px;
+      width: 200px;
+      margin: 30px 0 0 0;
+      padding: 3px 0 0 0;
+      background-color: #000;
+      color: #fff;
+      display: inline-block;
+    }
+
+
+    h3 {
+      color: #65C6BB;
+      font-size: 175%;
+      font-weight: 400;
+      line-height: 155%;
+    }
+
+    *::-webkit-input-placeholder {
+      color: black;
+    }
+
+    *:-moz-placeholder {
+      /* FF 4-18 */
+      color: black;
+    }
+
+    *::-moz-placeholder {
+      /* FF 19+ */
+      color: black;
+    }
+
+    *:-ms-input-placeholder {
+      /* IE 10+ */
+      color: black;
+    }
+
+    #phone {
+      width: 150px;
+    }
+    /* Portrait and Landscape */
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {}
+    /* ----------- iPhone 5 and 5S ----------- */
+    /* Portrait and Landscape */
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+      #mud {
+        margin: 20% 0 0 20%;
+        width: 80%;
+      }
+
+      #form {
+        margin-top: 30%;
+      }
+      #imginheader {
         width: 50%;
         height: 50%;
       }
-      #imgbackinheader{
+      #imgbackinheader {
         width: 15%;
         height: 15%;
         margin: 0 0 0 15px;
       }
-    h3{
-      font-size: 50%;
-    }
-    .textbox,.selectbox {
-    outline:0; */
-    height:50%;
-    width: 90%;
-    margin :5px 0 0 0;
-  }
+      h3 {
+        font-size: 50%;
+      }
+      .textbox,
+      .selectbox {
+        outline: 0;
+        */ height: 50%;
+        width: 90%;
+        margin: 5px 0 0 0;
+      }
 
-  .button {
-    outline:0;
-    height:50%;
-    width: 70%;
-    margin-top: :5%;
-    padding: 7px 0 7px 0;
-  }
- #iconbell{
+      .button {
+        outline: 0;
+        height: 50%;
+        width: 70%;
+        margin-top: :5%;
+        padding: 7px 0 7px 0;
+      }
+      #iconbell {
         padding-top: 4px;
         width: 40%;
         height: 30%
       }
-   #phone{
-      width: 60%;
-  }
-}
-/* ----------- iPad 1 and 2 ----------- */
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
-    #form{
-      margin-top: 30%;
+      #phone {
+        width: 60%;
+      }
     }
+    /* ----------- iPad 1 and 2 ----------- */
+    /* Portrait and Landscape */
 
-   #phone{
-      width: 43%;
-  }
-}
-/*--------*/
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+      #form {
+        margin-top: 30%;
+      }
 
-/* ----------- iPhone 6 ----------- */
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    #mud{
-      margin-top: 10%;
-      width: 50%;
+      #phone {
+        width: 43%;
+      }
     }
-  #iconbell{
+    /*--------*/
+    /* ----------- iPhone 6 ----------- */
+    /* Portrait and Landscape */
+
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+      #mud {
+        margin-top: 10%;
+        width: 50%;
+      }
+      #iconbell {
         width: 40%;
         height: 30%
       }
-    #form{
-      margin-top: 40%;
-    }
-     #imginheader{
+      #form {
+        margin-top: 40%;
+      }
+      #imginheader {
         width: 50%;
         height: 50%;
       }
-      #imgbackinheader{
+      #imgbackinheader {
         width: 15%;
         height: 15%;
         margin: 0 0 0 15px;
       }
 
-    .textbox ,.selectbox{
-    outline:0; */
-    height:80%;
-    width: 90%;
-    margin: 5px 0 0 0 ;
-  }
+      .textbox,
+      .selectbox {
+        outline: 0;
+        */ height: 80%;
+        width: 90%;
+        margin: 5px 0 0 0;
+      }
 
-  .button {
-    outline:0;
-    height: 80%;
-    width: 70%;
-    padding: 7px 0 7px 0;
+      .button {
+        outline: 0;
+        height: 80%;
+        width: 70%;
+        padding: 7px 0 7px 0;
+      }
 
-  }
+      #phone {
+        width: 45%;
+      }
+    }
 
-   #phone{
-      width: 45%;
-  }
-}
-h3{
+    h3 {
       font-size: 100%;
       color: black;
     }
-body {
-        background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
-         /*no-repeat center center fixed;*/
-        background-size: cover;
+
+    body {
+      background: url('{%static 'Urgent/Client/11C-Payment/1.png' %}');
+      /*no-repeat center center fixed;*/
+      background-size: cover;
     }
-    #form{
-      border:solid 2px red;
+
+    #form {
+      border: solid 2px red;
       background-color: white;
       /*width: 400px;*/
       /*height: 500px;*/
     }
-</style>
+  </style>
 </head>
+
 <body>
-<div>
-    <div id="container" >
-        <header id="header">
-            <div class="row">
-                <div class="col-xs-3 col-md-3" style="text-align: left;">
+  <div>
+    <div id="container">
+      <header id="header">
+        <div class="row">
+          <div class="col-xs-3 col-md-3" style="text-align: left;">
 
-                       <!-- <a href="/history"><img  id="imgbackinheader"  src="https://lh4.googleusercontent.com/TrbB5EaJdCQi3fSLWFDJLqNik97urMrwj-6gtiEoGz2mHNAz190yaOgKCE9mOHKZgZVAgvRNcFf5Auo=w1366-h638"></a> -->
-                       <a href="/mechanic_his"><img  id="imgbackinheader"  src="{%static 'Urgent/Icon/Back.png' %}"></a>
-                    </div>
-                    <div class="col-xs-6 col-md-6" style="text-align: center;">
-                     <span style="font-size:20px; color: #fff;   "><p id="date"> </span>
-                    </div>
-                    <div class="col-xs-3 col-md-3" style="padding-right: 30px">
+            <!-- <a href="/history"><img  id="imgbackinheader"  src="https://lh4.googleusercontent.com/TrbB5EaJdCQi3fSLWFDJLqNik97urMrwj-6gtiEoGz2mHNAz190yaOgKCE9mOHKZgZVAgvRNcFf5Auo=w1366-h638"></a> -->
+            <a href="/mechanic_his"><img  id="imgbackinheader"  src="{%static 'Urgent/Icon/Back.png' %}"></a>
+          </div>
+          <div class="col-xs-6 col-md-6" style="text-align: center;">
+            <span style="font-size:20px; color: #fff;   "><p id="date"> </span>
+          </div>
+          <div class="col-xs-3 col-md-3" style="padding-right: 30px">
 
-                    </div>
-            </div>
-        </header>
+          </div>
+        </div>
+      </header>
 
 
     </div>
     <div id="content" style="margin-top: 4%;">
-            <div class="row" style="background-color:#0c1c3e; ">
-                <div class="col-xs-2 col-md-2"></div>
-                <div class="col-xs-8 col-md-8" style="height: 400px; margin: 2% 0 0 0; ">
-                        <div>
-                            <div style="background-color: #F5C00D; text-align: center; ">
-                            <div class="row" >
-                        <div class="col-xs-6 col-md-6" style="text-align: center; margin-left: 2%;">
-                          <h3 id="date2" style="padding: 1% 0 0 0;"></h3>
-                        </div>
-                        <!-- <div class="col-xs-4 col-md-4" style="text-align: center; margin-left: 4%;">
+      <div class="row" style="background-color:#0c1c3e; ">
+        <div class="col-xs-2 col-md-2"></div>
+        <div class="col-xs-8 col-md-8" style="height: 400px; margin: 2% 0 0 0; ">
+          <div>
+            <div style="background-color: #F5C00D; text-align: center; ">
+              <div class="row">
+                <div class="col-xs-6 col-md-6" style="text-align: center; margin-left: 2%;">
+                  <h3 id="date2" style="padding: 1% 0 0 0;"></h3>
+                </div>
+                <!-- <div class="col-xs-4 col-md-4" style="text-align: center; margin-left: 4%;">
                           <h3 id="time" style="padding: 1% 0 0 0;"></h3>
                         </div> -->
-                        <div class="col-xs-5 col-md-5" style="text-align: center;">
-                         <h3 id="price">Cash </h3>
-                        </div>
-                      </div>
-
-                            <div id="map" style="height: 200px;">
-
-                            </div>
-                            </div>
-
-                        </div>
-                   <br>
-                    <div style="background-color: white; border-radius: 5px; margin-bottom: 5%;">
-                      <div class="row" >
-                        <div class="col-xs-3 col-md-3" style="text-align: center;">
-                          <img id="mud" src="{%static 'Urgent/Garage/10G-History info/6.png'%}">
-                        </div>
-                        <div class="col-xs-9 col-md-9" style="text-align: left;">
-                          <h3 id="place"> </h3>
-                        </div>
-                      </div>
-
-
-
-                    </div>
-                    <div style="background-color: #FFF; border-radius: 5px; ">
-                        <h3 id="detail" style="margin: 5% 0 5% 5%;"> </h3>
-                    </div>
-
-              <div  id="contact" style=" width: 100%;">
-                            <div  style="float: left; width: 50%; text-align: center;" >
-                                <img id="picclimech" src="{%static 'Urgent/Garage/10G-History info/7.png'%}" style="width: 50%; margin: 7% 0 0 0; padding: 0;">
-                            </div>
-                            <div  style="width: 40%; display: inline-block;"  >
-                                 <h3 id="user" style="font-size: 100%; color: white;">Name: </h3>
-
-                            </div>
-
-
-                    </div>
-
+                <div class="col-xs-5 col-md-5" style="text-align: center;">
+                  <h3 id="price">Cash </h3>
                 </div>
+              </div>
+
+              <div id="map" style="height: 200px;">
+
+              </div>
+            </div>
+
+          </div>
+          <br>
+          <div style="background-color: white; border-radius: 5px; margin-bottom: 5%;">
+            <div class="row">
+              <div class="col-xs-3 col-md-3" style="text-align: center;">
+                <img id="mud" src="{%static 'Urgent/Garage/10G-History info/6.png'%}">
+              </div>
+              <div class="col-xs-9 col-md-9" style="text-align: left;">
+                <h3 id="place"> </h3>
+              </div>
+            </div>
 
 
-                <div class="col-xs-2 col-md-2"></div>
-             </div>
+
+          </div>
+          <div style="background-color: #FFF; border-radius: 5px; ">
+            <h3 id="detail" style="margin: 5% 0 5% 5%;"> </h3>
+          </div>
+
+          <div id="contact" style=" width: 100%;">
+            <div style="float: left; width: 50%; text-align: center;">
+              <img id="picclimech" src="{%static 'Urgent/Garage/10G-History info/7.png'%}" style="width: 50%; margin: 7% 0 0 0; padding: 0;">
+            </div>
+            <div style="width: 40%; display: inline-block;">
+              <h3 id="user" style="font-size: 100%; color: white;">Name: </h3>
+
+            </div>
+
+
+          </div>
 
         </div>
 
-</div>
-<script>
 
-  var history
-  var position
+        <div class="col-xs-2 col-md-2"></div>
+      </div>
+
+    </div>
+
+  </div>
+  <script>
+    var history
+    var position
 
 
 
-  function initMap() {
+    function initMap() {
 
-    var history_data
+      var history_data
 
-    $.ajax({
-          url: '/pannawat',
-          async:false,
-          complete: function(data, err) {
-            console.log(data);
-            var cut = data.responseJSON.fields.locations.split(",")
-            var lat = cut[0]
-            var lon = cut[1]
-            position = {lat: parseFloat(lat), lng: parseFloat(lon)};
-            console.log(position);
-            history_data = data.responseJSON.fields
-            document.getElementById('date').innerHTML = history_data.date
-            document.getElementById('date2').innerHTML = history_data.date
-            // document.getElementById('time').innerHTML = history_data.time
-            document.getElementById('price').innerHTML =document.getElementById('price').innerHTML+ history_data.price
-            document.getElementById('place').innerHTML = history_data.place
-            document.getElementById('detail').innerHTML = history_data.detail
-             document.getElementById('user').innerHTML = document.getElementById('user').innerHTML+history_data.user
-            console.log(data.responseJSON.fields);
+      $.ajax({
+        url: '/pannawat',
+        async: false,
+        complete: function(data, err) {
+          console.log(data);
+          var cut = data.responseJSON.fields.locations.split(",")
+          var lat = cut[0]
+          var lon = cut[1]
+          position = {
+            lat: parseFloat(lat),
+            lng: parseFloat(lon)
+          };
+          console.log(position);
+          history_data = data.responseJSON.fields
+          document.getElementById('date').innerHTML = history_data.date
+          document.getElementById('date2').innerHTML = history_data.date
+          // document.getElementById('time').innerHTML = history_data.time
+          document.getElementById('price').innerHTML = document.getElementById('price').innerHTML + history_data.price
+          document.getElementById('place').innerHTML = history_data.place
+          document.getElementById('detail').innerHTML = history_data.detail
+          document.getElementById('user').innerHTML = document.getElementById('user').innerHTML + history_data.user
+          console.log(data.responseJSON.fields);
         }
       });
 
-    var history = { "history":history_data};
-    var uluru = {lat: -25.363, lng: 131.044};
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: position
-    });
-    var marker = new google.maps.Marker({
-      position: position,
-      map: map
-    });
-  }
-
-
-</script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
-</script>
+      var history = {
+        "history": history_data
+      };
+      var uluru = {
+        lat: -25.363,
+        lng: 131.044
+      };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: position
+      });
+      var marker = new google.maps.Marker({
+        position: position,
+        map: map
+      });
+    }
+  </script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABtz7sfkMygVwWaTmKt474Lio37dou6c0&callback=initMap">
+  </script>
 
 </body>
+
 </html>

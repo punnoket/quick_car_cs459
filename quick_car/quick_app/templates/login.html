@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 {% load static %}
+
 <head>
   <title>login</title>
   <meta charset="utf-8">
@@ -10,247 +11,254 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></link>
   <style>
-      header{
-        width: 100%;
-       background-color: #0f1933;
-       padding: 15px 0 15px 0;
-       text-align: center;
-       border-style: solid;
-       border-color: #0f1933 #0f1933 #fff #0f1933;
-      }
-      #imginheader{
-        width: 30%;
-        height: 30%;
-      }
-      .col-xs-6{
-        width: 50%;
-        height: 800px;
-      }
-      #imginarticle{
-        width: 90%;
-      }
-       #imginarticle2 {
-        margin-top: 40%;
-        width: 30%;
-
-      }
-       #imginarticle3 {
-        margin-top: 30%;
-        width: 15%;
-
-      }
-      #imginarticle4,#imginarticle5{
-        margin-top: 45%;
-        width: 13%;
-      }
-
-      p ,a{
-        font-size: 30px;
-        color: #fff;
-        text-decoration: none;
-      }
-      #convenience{
-        text-align: right;
-        padding: 15px 20px 15px 0;
-      }
-      #safty{
-        text-align: left;
-        padding: 0 15px 15px 20px;
-      }
-      #fast{
-        text-align: right;
-        padding: 15px 20px 15px 0;
-      }
-      #trust{
-        text-align: center;
-        padding: 0 0 20% 0;
-      }
-      html, body {
-  height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-.textbox {
-    border: 1px solid #848484;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    outline:0;
-    height:25px;
-    width: 275px;
-    padding-left:10px;
-     box-sizing: border-box;
-    padding-right:10px;
-  }
-   .button {
-  border: 1px solid #000;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    outline:0;
-    height:30px;
-    width: 200px;
-    margin : 30px 0 0 0 ;
-    padding: 3px 0 0 0;
-    background-color: #000;
-    color: #fff;
-
-  }*::-webkit-input-placeholder {
-    color: black;
-}
-*:-moz-placeholder {
-    /* FF 4-18 */
-    color: black;
-}
-*::-moz-placeholder {
-    /* FF 19+ */
-    color: black;
-}
-*:-ms-input-placeholder {
-    /* IE 10+ */
-    color: black;
-}
-
-
-/* ----------- iPhone 5 and 5S ----------- */
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 568px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-
-     #form{
-      margin-top: 30%;
+    header {
+      width: 100%;
+      background-color: #0f1933;
+      padding: 15px 0 15px 0;
+      text-align: center;
+      border-style: solid;
+      border-color: #0f1933 #0f1933 #fff #0f1933;
     }
-    #imginheader{
+
+    #imginheader {
+      width: 30%;
+      height: 30%;
+    }
+
+    .col-xs-6 {
+      width: 50%;
+      height: 800px;
+    }
+
+    #imginarticle {
+      width: 90%;
+    }
+
+    #imginarticle2 {
+      margin-top: 40%;
+      width: 30%;
+    }
+
+    #imginarticle3 {
+      margin-top: 30%;
+      width: 15%;
+    }
+
+    #imginarticle4,
+    #imginarticle5 {
+      margin-top: 45%;
+      width: 13%;
+    }
+
+    p,
+    a {
+      font-size: 30px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    #convenience {
+      text-align: right;
+      padding: 15px 20px 15px 0;
+    }
+
+    #safty {
+      text-align: left;
+      padding: 0 15px 15px 20px;
+    }
+
+    #fast {
+      text-align: right;
+      padding: 15px 20px 15px 0;
+    }
+
+    #trust {
+      text-align: center;
+      padding: 0 0 20% 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .textbox {
+      border: 1px solid #848484;
+      -webkit-border-radius: 30px;
+      -moz-border-radius: 30px;
+      border-radius: 30px;
+      outline: 0;
+      height: 25px;
+      width: 275px;
+      padding-left: 10px;
+      box-sizing: border-box;
+      padding-right: 10px;
+    }
+
+    .button {
+      border: 1px solid #000;
+      -webkit-border-radius: 30px;
+      -moz-border-radius: 30px;
+      border-radius: 30px;
+      outline: 0;
+      height: 30px;
+      width: 200px;
+      margin: 30px 0 0 0;
+      padding: 3px 0 0 0;
+      background-color: #000;
+      color: #fff;
+    }
+
+    *::-webkit-input-placeholder {
+      color: black;
+    }
+
+    *:-moz-placeholder {
+      /* FF 4-18 */
+      color: black;
+    }
+
+    *::-moz-placeholder {
+      /* FF 19+ */
+      color: black;
+    }
+
+    *:-ms-input-placeholder {
+      /* IE 10+ */
+      color: black;
+    }
+    /* ----------- iPhone 5 and 5S ----------- */
+    /* Portrait and Landscape */
+
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {
+
+      #form {
+        margin-top: 30%;
+      }
+      #imginheader {
         width: 50%;
         height: 50%;
       }
-      #imgbackinheader{
+      #imgbackinheader {
         width: 10%;
         height: 10%;
         margin: 0 0 0 15px;
       }
-    h3{
-      font-size: 50%;
-    }
-    .textbox {
-    outline:0; */
-    height:50%;
-    width: 90%;
-    margin :5px 0 0 0;
-  }
+      h3 {
+        font-size: 50%;
+      }
+      .textbox {
+        outline: 0;
+        */ height: 50%;
+        width: 90%;
+        margin: 5px 0 0 0;
+      }
 
-  .button {
-    outline:0;
-    height:5%;
-    width: 70%;
-    margin-top: :5%;
-    padding: 7px 0 7px 0;
-  }
-  .fake-input input {
-    width: 30%;
-    height: 30px;
-  }
-.fake-input img {
-   top: 7px;
-   left: 5%;
- }
-   #phone{
-      width: 60%;
-  }
-}
-/* ----------- iPad 1 and 2 ----------- */
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 768px)
-  and (max-device-width: 1024px)
-  and (-webkit-min-device-pixel-ratio: 1) {
-    #form{
-      margin-top: 30%;
+      .button {
+        outline: 0;
+        height: 5%;
+        width: 70%;
+        margin-top: :5%;
+        padding: 7px 0 7px 0;
+      }
+      .fake-input input {
+        width: 30%;
+        height: 30px;
+      }
+      .fake-input img {
+        top: 7px;
+        left: 5%;
+      }
+      #phone {
+        width: 60%;
+      }
     }
-    .fake-input input {
-    width: 15%;
-    height: 30px;
-  }
-.fake-input img {
-   top: 2.25px;
-   left: 21.25%;
- }
-   #phone{
-      width: 43%;
-  }
-}
-/*--------*/
+    /* ----------- iPad 1 and 2 ----------- */
+    /* Portrait and Landscape */
 
-/* ----------- iPhone 6 ----------- */
-/* Portrait and Landscape */
-@media only screen
-  and (min-device-width: 375px)
-  and (max-device-width: 667px)
-  and (-webkit-min-device-pixel-ratio: 2) {
-    .bgimg {
-    background-image: url('{%static 'Urgent/Mainpage/11.png' %}');
-    background-position: center;
-    background-size: cover;
-   }
-     #imginheader{
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+      #form {
+        margin-top: 30%;
+      }
+      .fake-input input {
+        width: 15%;
+        height: 30px;
+      }
+      .fake-input img {
+        top: 2.25px;
+        left: 21.25%;
+      }
+      #phone {
+        width: 43%;
+      }
+    }
+    /*--------*/
+    /* ----------- iPhone 6 ----------- */
+    /* Portrait and Landscape */
+
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+      .bgimg {
+        background-image: url('{%static 'Urgent/Mainpage/11.png' %}');
+        background-position: center;
+        background-size: cover;
+      }
+      #imginheader {
         width: 90%;
       }
 
-      #signup{
+      #signup {
         font-size: 100%;
       }
-    .textbox {
-    outline:0; */
-    height:80%;
-    width: 90%;
-    margin: 5px 0 0 0 ;
-    }
+      .textbox {
+        outline: 0;
+        */ height: 80%;
+        width: 90%;
+        margin: 5px 0 0 0;
+      }
 
-  .button {
-    outline:0;
-    height: 10%;
-    width: 70%;
-    padding: 2px 0 0 0;
-    }
+      .button {
+        outline: 0;
+        height: 10%;
+        width: 70%;
+        padding: 2px 0 0 0;
+      }
 
-.fake-input input {
-    width: 30%;
-    height: 30px;
-  }
+      .fake-input input {
+        width: 30%;
+        height: 30px;
+      }
 
-.fake-input img {
-   top: 6px;
-   left: 5%;
- }
-  #fastandsure{
-    width: 40%;
-    height: 360px;
-  }
-  #signin{
-    width: 60%;
-    height: 360px;
-  }
-   #imginarticle{
+      .fake-input img {
+        top: 6px;
+        left: 5%;
+      }
+      #fastandsure {
+        width: 40%;
+        height: 360px;
+      }
+      #signin {
+        width: 60%;
+        height: 360px;
+      }
+      #imginarticle {
         width: 90%;
       }
-       #imginarticle2 {
+      #imginarticle2 {
         margin-top: 15%;
         width: 50%;
-
       }
-       #imginarticle3 {
+      #imginarticle3 {
         margin-top: 25%;
         width: 35%;
-
       }
-      #imginarticle5{
+      #imginarticle5 {
         margin-top: 30%;
         width: 20%;
       }
-      #imginarticle4{
+      #imginarticle4 {
         margin-top: 25%;
         width: 20%;
       }
@@ -260,188 +268,195 @@
         color: #fff;
         text-decoration: none;
       }
-      #convenience{
+      #convenience {
         text-align: right;
         padding: 15px 20px 15px 0;
       }
-      #safty{
+      #safty {
         text-align: left;
         padding: 0 15px 15px 20px;
       }
-      #fast{
+      #fast {
         text-align: right;
         padding: 15px 20px 15px 0;
       }
-      #trust{
+      #trust {
         text-align: center;
         padding: 0 0 20% 0;
       }
-}
+    }
 
 
 
- #fastandsure{
-    width: 40%;
-    padding: 15% 0 0 5%;
-  }
-  #signin{
-    width: 60%;
-    padding: 20% 0 0 10%;
-  }
-.col-xs-6{
- /*border-style: solid;*/
-  /*border-color: #0f1933 #0f1933 #fff #0f1933;*/
-}
-label{
-  color: #fff;
-}
-.bgimg {
-    background-image: url('{%static 'Urgent/MainPage/11.png' %}');
-    /*min-height: 100%;*/
-    background-position: center;
-    background-size: cover;
-}
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    #fastandsure {
+      width: 40%;
+      padding: 15% 0 0 5%;
+    }
+
+    #signin {
+      width: 60%;
+      padding: 20% 0 0 10%;
+    }
+
+    .col-xs-6 {
+      /*border-style: solid;*/
+      /*border-color: #0f1933 #0f1933 #fff #0f1933;*/
+    }
+
+    label {
+      color: #fff;
+    }
+
+    .bgimg {
+      background-image: url('{%static 'Urgent/MainPage/11.png' %}');
+      /*min-height: 100%;*/
+      background-position: center;
+      background-size: cover;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
+
 <body>
-    <div id="container" >
-        <header id="header">
-              <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
-                    <div class="col-xs-4 col-md-4">
-                    </div>
-                    <div class="col-xs-4 col-md-4" style="text-align: center;">
-                        <img  id="imginheader"  src="{%static 'Urgent/MainPage/Logo.png' %}">
-                    </div>
-                    <div class="col-xs-4 col-md-4">
-                    </div>
-                </div>
-        </header>
-    </div>
-    <div class="bgimg">
-         <section  id="login">
-          <article>
-              <div class="col-xs-6 col-md-6" id="fastandsure" >
-                <img id="imginarticle" src="{%static 'Urgent/MainPage/2.png' %}">
-              </div>
-
-               <div class="col-xs-6 col-md-6" ng-app="myApp" ng-controller="myCtrl"   id="signin">
-          <input id="email" class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 1%;">
-                <br>
-                <input id="password" class="textbox" type="password"  placeholder="Password" style="margin-bottom: 1%;">
-                <br>
-                <input type="checkbox" id="remember_me" name="_remember_me" checked />
-                <label for="remember_me">Remember me</label>
-                <label style="color:red;" id="invalidpw"></label>
-                 <br>
-
-                 <br><br>
-                 <p style="color: #65C6BB" id="signup">Sign up? <a style="color: #65C6BB" id="signup" href="/signup">Client</a> | <a style="color: #65C6BB" id="signup" href="/signgarage">Garage</a></p>
-                 <button ng-click="login()" class="button">LOGIN</button>
-              </div>
-          </article>
-        </section>
-
-        <section id="convenience">
-          <article>
-
-              <div>
-              <img id="imginarticle2" src="{%static 'Urgent/MainPage/3.png' %}">
-                <p style="color: black;">
-                  You don't need to fine the garage
-                  since we collect them all for you.<br />
-                  <b id="bold">'JUST SHARE YOUR LOCATION'</b>
-
-                </p>
-              </div>
-          </article>
-        </section>
-        <section id="safty">
-          <article>
-          <div>
-          <img id="imginarticle3" src="{%static 'Urgent/MainPage/4.png' %}">
-            <p style="color: white;">
-              All the provided garages are verified and <br />  passed the standard test.
-            </p>
-          </div>
-
-          </article>
-        </section>
-        <section id="fast">
-          <article>
-          <div>
-          <img  id="imginarticle4" src="{%static 'Urgent/MainPage/5.png' %}">
-            <p style="color: black;">
-              The mechanich will get to you <br />  within <b> 20 MINUTES. </b>
-            </p>
-          </div>
-
-          </article>
-        </section>
-        <section id="trust">
-          <article>
-            <div>
-              <img  id="imginarticle5" src="{%static 'Urgent/MainPage/6.png' %}">
-              <p style="color: white;">
-                We will make your day <b>SMOOTH</b> <br /> even though your car is broken down.
-              </p>
-            </div>
-          </article>
-        </section>
-        </section>
-
-    </div>
-    <footer>
-        <div style="width: 100%; background-color:#0c1c3e ; ">
-              <p style="color: white;  text-align: center; ">
-                URGENT Delivery | 139 Thonglor10 Klongton Wattana, Bangkok 10110, Thailand |  Near BTS Thonglor <br>| Tel. 02 999 9
-              </p>
+  <div id="container">
+    <header id="header">
+      <div class="row" style="margin: 10px 0 10px 0;color: #FFFFFF">
+        <div class="col-xs-4 col-md-4">
         </div>
-    </footer>
+        <div class="col-xs-4 col-md-4" style="text-align: center;">
+          <img id="imginheader" src="{%static 'Urgent/MainPage/Logo.png' %}">
+        </div>
+        <div class="col-xs-4 col-md-4">
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="bgimg">
+    <section id="login">
+      <article>
+        <div class="col-xs-6 col-md-6" id="fastandsure">
+          <img id="imginarticle" src="{%static 'Urgent/MainPage/2.png' %}">
+        </div>
 
-    <script>
+        <div class="col-xs-6 col-md-6" ng-app="myApp" ng-controller="myCtrl" id="signin">
+          <input id="email" class="textbox" type="text" placeholder="E-mail" style="margin-bottom: 1%;">
+          <br>
+          <input id="password" class="textbox" type="password" placeholder="Password" style="margin-bottom: 1%;">
+          <br>
+          <input type="checkbox" id="remember_me" name="_remember_me" checked />
+          <label for="remember_me">Remember me</label>
+          <label style="color:red;" id="invalidpw"></label>
+          <br>
 
-      var app = angular.module('myApp', []);
+          <br><br>
+          <p style="color: #65C6BB" id="signup">Sign up? <a style="color: #65C6BB" id="signup" href="/signup">Client</a> | <a style="color: #65C6BB" id="signup" href="/signgarage">Garage</a></p>
+          <button ng-click="login()" class="button">LOGIN</button>
+        </div>
+      </article>
+    </section>
 
-      app.config(function($httpProvider) {
-          $httpProvider.defaults.xsrfCookieName = 'csrftoken';
-          $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
-      });
-      app.config(function($interpolateProvider) {
-          $interpolateProvider.startSymbol('[[');
-          $interpolateProvider.endSymbol(']]');
-      });
-      app.controller('myCtrl', function($scope, $http, $location, $window) {
-        $scope.login = function() {
-              var email=angular.element(document.getElementById("email"));
-              var password=angular.element(document.getElementById("password"));
+    <section id="convenience">
+      <article>
 
-              var parameter = JSON.stringify({username:email.val(), password:password.val()});
+        <div>
+          <img id="imginarticle2" src="{%static 'Urgent/MainPage/3.png' %}">
+          <p style="color: black;">
+            You don't need to fine the garage since we collect them all for you.<br />
+            <b id="bold">'JUST SHARE YOUR LOCATION'</b>
 
-              $http.post("{% url 'auth_login' %}",parameter)
-              .then(function(response) {
-                console.log(response.data.type);
-                if(response.data.type == 'user') {
-                  $window.location.href = "/map";
-                } else if(response.data.type == 'mechanic') {
-                  console.log(111111111111111111);
-                  $window.location.href = "/mechanic_home"
-                } else {
+          </p>
+        </div>
+      </article>
+    </section>
+    <section id="safty">
+      <article>
+        <div>
+          <img id="imginarticle3" src="{%static 'Urgent/MainPage/4.png' %}">
+          <p style="color: white;">
+            All the provided garages are verified and <br /> passed the standard test.
+          </p>
+        </div>
 
-                document.getElementById("invalidpw").innerHTML = "* Invalid User/Password"
+      </article>
+    </section>
+    <section id="fast">
+      <article>
+        <div>
+          <img id="imginarticle4" src="{%static 'Urgent/MainPage/5.png' %}">
+          <p style="color: black;">
+            The mechanich will get to you <br /> within <b> 20 MINUTES. </b>
+          </p>
+        </div>
 
-                }
+      </article>
+    </section>
+    <section id="trust">
+      <article>
+        <div>
+          <img id="imginarticle5" src="{%static 'Urgent/MainPage/6.png' %}">
+          <p style="color: white;">
+            We will make your day <b>SMOOTH</b> <br /> even though your car is broken down.
+          </p>
+        </div>
+      </article>
+    </section>
+    </section>
+
+  </div>
+  <footer>
+    <div style="width: 100%; background-color:#0c1c3e ; ">
+      <p style="color: white;  text-align: center; ">
+        URGENT Delivery | 139 Thonglor10 Klongton Wattana, Bangkok 10110, Thailand | Near BTS Thonglor <br>| Tel. 02 999 9
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    var app = angular.module('myApp', []);
+
+    app.config(function($httpProvider) {
+      $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+      $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
+    });
+    app.config(function($interpolateProvider) {
+      $interpolateProvider.startSymbol('[[');
+      $interpolateProvider.endSymbol(']]');
+    });
+    app.controller('myCtrl', function($scope, $http, $location, $window) {
+      $scope.login = function() {
+        var email = angular.element(document.getElementById("email"));
+        var password = angular.element(document.getElementById("password"));
+
+        var parameter = JSON.stringify({
+          username: email.val(),
+          password: password.val()
+        });
+
+        $http.post("{% url 'auth_login' %}", parameter)
+          .then(function(response) {
+            console.log(response.data.type);
+            if (response.data.type == 'user') {
+              $window.location.href = "/map";
+            } else if (response.data.type == 'mechanic') {
+              console.log(111111111111111111);
+              $window.location.href = "/mechanic_home"
+            } else {
+
+              document.getElementById("invalidpw").innerHTML = "* Invalid User/Password"
+
+            }
 
 
-              }, function(response) {
+          }, function(response) {
 
-              });
-          };
+          });
+      };
 
-      });
-    </script>
+    });
+  </script>
 
 </body>
+
 </html>
